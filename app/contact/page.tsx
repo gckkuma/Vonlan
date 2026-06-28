@@ -5,7 +5,6 @@ import SectionHeading from '@/components/SectionHeading';
 import ContactForm from '@/components/ContactForm';
 import DivisionContacts from '@/components/DivisionContacts';
 import { CONTACT, META_DESCRIPTIONS, SITE } from '@/lib/data/site';
-import { PAGE_IMAGES } from '@/lib/images';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -22,84 +21,34 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Discuss your next infrastructure project"
-        intro="Whether you are planning a water supply scheme, road network, power facility or commercial building — our team is ready to discuss your requirements and provide the technical expertise your project needs."
-        image={PAGE_IMAGES.contact}
+        intro="Whether you are planning a water supply scheme, road network, power facility, resort or commercial building — our team is ready to discuss your requirements and provide the technical expertise your project needs."
       />
 
-      {/* Details + form */}
       <section className="section">
         <div className="container-x grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
-          {/* Left: details */}
+          {/* Details */}
           <div>
             <SectionHeading eyebrow="Head office" title="Get in touch" />
             <dl className="mt-8 space-y-6">
-              <div className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-                  <MapPin className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Address</dt>
-                  <dd className="mt-1 text-sm text-brand-dark">{CONTACT.address}</dd>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-                  <Phone className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Telephone</dt>
-                  <dd className="mt-1 space-y-0.5 text-sm text-brand-dark">
-                    {CONTACT.phones.map((phone) => (
-                      <div key={phone}>
-                        <a href={`tel:${phone.replace(/[^+\d]/g, '')}`} className="hover:text-brand-greenDark">
-                          {phone}
-                        </a>
-                      </div>
-                    ))}
-                  </dd>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-                  <Printer className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Fax</dt>
-                  <dd className="mt-1 text-sm text-brand-dark">{CONTACT.fax}</dd>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-                  <Mail className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Email</dt>
-                  <dd className="mt-1 text-sm text-brand-dark">
-                    <a href={`mailto:${CONTACT.email}`} className="hover:text-brand-greenDark">
-                      {CONTACT.email}
-                    </a>
-                  </dd>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-                  <Building2 className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Registration</dt>
-                  <dd className="mt-1 text-sm text-brand-dark">
-                    Reg. No. {CONTACT.companyRegistration} · VAT {CONTACT.vatRegistration}
-                  </dd>
-                </div>
-              </div>
+              <Detail icon={MapPin} label="Address">{CONTACT.address}</Detail>
+              <Detail icon={Phone} label="Telephone">
+                {CONTACT.phones.map((p) => (
+                  <a key={p} href={`tel:${p.replace(/[^+\d]/g, '')}`} className="block hover:text-brand-greenDark">
+                    {p}
+                  </a>
+                ))}
+              </Detail>
+              <Detail icon={Printer} label="Fax">{CONTACT.fax}</Detail>
+              <Detail icon={Mail} label="Email">
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-brand-greenDark">{CONTACT.email}</a>
+              </Detail>
+              <Detail icon={Building2} label="Registration">
+                Reg. No. {CONTACT.companyRegistration} · VAT {CONTACT.vatRegistration}
+              </Detail>
             </dl>
           </div>
 
-          {/* Right: form */}
+          {/* Form */}
           <ContactForm variant="light" />
         </div>
       </section>
@@ -136,5 +85,27 @@ export default function ContactPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function Detail({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: typeof MapPin;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex gap-4">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
+        <Icon className="h-5 w-5" aria-hidden />
+      </span>
+      <div>
+        <dt className="text-xs font-semibold uppercase tracking-wider text-brand-muted">{label}</dt>
+        <dd className="mt-1 text-sm text-brand-dark">{children}</dd>
+      </div>
+    </div>
   );
 }

@@ -3,28 +3,30 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data/site';
 
 interface LogoProps {
-  /** "dark" applies a white filter so the logo reads on the dark brand background. */
+  /** "dark" uses the light-on-dark logo variant (green mark + white wordmark). */
   variant?: 'light' | 'dark';
-  /** Rendered height in px; width scales with the logo's 223:74 aspect ratio. */
+  /** Rendered height in px; width scales with the logo's 2.5:1 aspect ratio. */
   height?: number;
   className?: string;
   /** When false, renders the image without a Link wrapper. */
   link?: boolean;
 }
 
-const ASPECT = 223 / 74;
+const ASPECT = 1983 / 793;
 
 export default function Logo({
   variant = 'light',
-  height = 38,
+  height = 36,
   className = '',
   link = true,
 }: LogoProps) {
   const width = Math.round(height * ASPECT);
+  // Transparent PNGs: full-colour for light surfaces, green-mark + white wordmark for dark.
+  const src = variant === 'dark' ? '/logo-light.png' : '/logo.png';
 
-  const image = (
+  const img = (
     <Image
-      src="/logo.jpeg"
+      src={src}
       alt={`${SITE.name} logo`}
       width={width}
       height={height}
@@ -32,16 +34,6 @@ export default function Logo({
       style={{ height, width: 'auto' }}
     />
   );
-
-  // The logo is a colour JPEG with a solid (non-transparent) background, so a
-  // CSS invert filter would just produce a white block on dark surfaces.
-  // Instead, present the colour mark on a small white chip when on dark bg.
-  const img =
-    variant === 'dark' ? (
-      <span className="inline-flex items-center rounded-md bg-white px-2.5 py-1.5">{image}</span>
-    ) : (
-      image
-    );
 
   if (!link) return <span className={className}>{img}</span>;
 

@@ -6,18 +6,12 @@
   html {
     scroll-behavior: smooth;
   }
-
   body {
-    @apply bg-brand-offwhite text-brand-dark font-sans antialiased;
+    @apply bg-brand-offwhite font-sans text-brand-dark antialiased;
   }
-
-  h1,
-  h2,
-  h3,
-  h4 {
+  h1, h2, h3, h4 {
     @apply font-display tracking-tight;
   }
-
   ::selection {
     @apply bg-brand-green/20 text-brand-dark;
   }
@@ -31,93 +25,59 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2;
   }
-
-  .btn-green {
-    @apply btn bg-brand-green text-white hover:bg-brand-greenDark;
-  }
-
-  .btn-outline-dark {
-    @apply btn border border-white/25 text-white hover:bg-white/10;
-  }
-
-  .btn-outline {
-    @apply btn border border-brand-stone text-brand-dark hover:border-brand-green hover:text-brand-green;
-  }
+  .btn-green { @apply btn bg-brand-green text-white hover:bg-brand-greenDark; }
+  .btn-outline-dark { @apply btn border border-white/25 text-white hover:bg-white/10; }
+  .btn-outline { @apply btn border border-brand-stone text-brand-dark hover:border-brand-green hover:text-brand-green; }
 
   .eyebrow {
     @apply inline-flex items-center gap-2 rounded-full bg-brand-greenLight px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-greenDark;
   }
-
-  .section {
-    @apply py-16 sm:py-24;
-  }
-}
-
-@layer components {
-  /* Eyebrow with a leading rule — editorial section labels */
+  /* simple green label with a leading rule (used by SectionHeading) */
   .eyebrow-line {
-    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-green;
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-green;
   }
   .eyebrow-line::before {
     content: '';
     @apply h-px w-8 bg-brand-green;
   }
 
-  /* Blueprint grid overlay for dark sections (engineering motif) */
-  .bp-grid {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  .bp-grid-fade {
-    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 0%, #000 40%, transparent 100%);
-    mask-image: radial-gradient(ellipse 90% 80% at 50% 0%, #000 40%, transparent 100%);
-  }
+  .section { @apply py-16 sm:py-24; }
+}
 
-  /* Big tabular figures for stats / values */
+@layer utilities {
   .tnum {
     font-variant-numeric: tabular-nums;
     font-feature-settings: 'tnum' 1;
   }
-}
 
-@layer utilities {
-  /* Green accent underline for a single highlighted word in a headline */
-  .accent-underline {
-    background-image: linear-gradient(transparent 62%, rgba(42, 147, 65, 0.35) 62%);
-    background-repeat: no-repeat;
-  }
-
-  /*
-   * Scroll-reveal via progressive enhancement (see components/Reveal.tsx).
-   * Hidden only when JS is available; otherwise content stays visible for
-   * crawlers and no-JS users. Disabled under reduced-motion.
-   */
+  /* Scroll-reveal — progressive enhancement (crawler/no-JS safe). Subtle fade-up only. */
   .js .reveal {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    will-change: opacity, transform;
   }
-  .js .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-  }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    .js .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+    .js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
   }
-}
 
-/* Custom scrollbar for filter pill rows */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Infinite logo marquee */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee { animation: marquee 45s linear infinite; }
+  .marquee-row:hover .animate-marquee { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee { animation: none; flex-wrap: wrap; justify-content: center; }
+  }
+  /* edge fade for marquee */
+  .edge-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
 }

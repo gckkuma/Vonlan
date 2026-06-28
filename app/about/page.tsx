@@ -1,57 +1,57 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Target, Compass, Leaf, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { Quote, ArrowRight } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
-import ClientStrip from '@/components/ClientStrip';
 import Reveal from '@/components/Reveal';
-import { ABOUT, TIMELINE, VISION, MISSION, POLICIES } from '@/lib/data/about';
-import { DIRECTORS } from '@/lib/data/directors';
-import { META_DESCRIPTIONS, SITE } from '@/lib/data/site';
-import { PAGE_IMAGES } from '@/lib/images';
-
-/** Initials from a name, e.g. "A.A. Lalith Adikari" -> "LA". */
-function initials(name: string): string {
-  const words = name.replace(/[.]/g, ' ').split(/\s+/).filter((w) => w.length > 1);
-  const picked = words.length >= 2 ? [words[0], words[words.length - 1]] : words;
-  return picked.map((w) => w[0]?.toUpperCase()).join('');
-}
+import { ABOUT, TIMELINE, VISION, MISSION } from '@/lib/data/about';
+import { LEADERS } from '@/lib/data/leadership';
+import { META_DESCRIPTIONS, SITE, CIDA_GRADES } from '@/lib/data/site';
 
 export const metadata: Metadata = {
-  title: 'About Vonlan',
+  title: 'About',
   description: META_DESCRIPTIONS.about,
   alternates: { canonical: '/about' },
   openGraph: { title: `About · ${SITE.shortName}`, description: META_DESCRIPTIONS.about, url: `${SITE.url}/about` },
 };
 
+const statements = LEADERS.filter((l) => l.statement);
+
 export default function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About us"
+        eyebrow="About"
         title={ABOUT.headline}
-        intro="Vonlan Constructions (Pvt) Ltd — a subsidiary of Sanken Construction, delivering infrastructure that serves communities across Sri Lanka."
-        image={PAGE_IMAGES.about}
+        intro="A company of the Sanken Group, executing landmark infrastructure across Sri Lanka and the Maldives since 2007."
+        image="/images/work/premadasa-stadium.jpg"
       />
 
-      {/* Company story */}
+      {/* Story */}
       <section className="section">
-        <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="space-y-5">
-            <SectionHeading eyebrow="Our story" title="Built on a passion for excellence" />
-            {ABOUT.story.map((para, i) => (
-              <p key={i} className="text-base leading-relaxed text-brand-muted">
-                {para}
-              </p>
-            ))}
+        <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <SectionHeading eyebrow="Our story" title="Built on the Sanken legacy" />
+            <div className="mt-6 space-y-5">
+              {ABOUT.story.map((p) => (
+                <p key={p.slice(0, 24)} className="text-lg leading-relaxed text-brand-muted">
+                  {p}
+                </p>
+              ))}
+            </div>
+            <Link href="/credentials" className="btn-outline mt-8">
+              View our credentials
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </div>
-          <div className="lg:pt-4">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
               <Image
-                src="/images/project-polonnaruwa-water-supply.jpg"
-                alt="Vonlan water treatment infrastructure"
+                src="/images/work/nwsdb-battaramulla.jpg"
+                alt="Vonlan infrastructure delivery"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
               />
             </div>
@@ -59,26 +59,77 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Leadership */}
+      <section className="section bg-white">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Leadership"
+            title="Guided by experience"
+            description="A focused executive team backed by the depth of the Sanken Group."
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {LEADERS.map((l) => (
+              <Reveal key={l.name} className="flex flex-col">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-brand-stone">
+                  {l.photo ? (
+                    <Image
+                      src={`/images/team/${l.photo}.jpg`}
+                      alt={l.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 20vw"
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <span className="flex h-full items-center justify-center font-display text-3xl text-brand-muted">
+                      {l.name.split(' ').slice(-1)[0][0]}
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-4 text-base font-bold text-brand-dark">{l.name}</h3>
+                <p className="text-sm font-semibold text-brand-green">{l.role}</p>
+                <p className="mt-1 text-xs leading-relaxed text-brand-muted">{l.qualifications}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* CEO / COO statements */}
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            {statements.map((l) => (
+              <Reveal key={l.name} className="rounded-3xl border border-brand-stone bg-brand-offwhite p-8">
+                <Quote className="h-8 w-8 text-brand-green" aria-hidden />
+                <p className="mt-4 text-lg leading-relaxed text-brand-dark">{l.statement}</p>
+                <p className="mt-6 text-sm font-bold text-brand-dark">{l.name}</p>
+                <p className="text-sm text-brand-muted">{l.role}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Vision & Mission */}
       <section className="section bg-brand-dark text-white">
-        <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/15 text-brand-green ring-1 ring-brand-green/30">
-              <Compass className="h-6 w-6" aria-hidden />
-            </span>
-            <h2 className="mt-5 text-2xl font-bold sm:text-3xl">Our vision</h2>
-            <p className="mt-4 text-lg leading-relaxed text-white/80">{VISION}</p>
+        <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <SectionHeading dark eyebrow="Vision" title="Our purpose" />
+            <p className="mt-6 text-2xl font-display font-semibold leading-snug text-white">{VISION}</p>
+            <div className="mt-10 grid grid-cols-2 gap-6">
+              {CIDA_GRADES.map((c) => (
+                <div key={c.sector} className="border-t border-white/15 pt-3">
+                  <div className="text-2xl font-bold text-brand-green">CIDA {c.grade}</div>
+                  <div className="mt-1 text-xs uppercase tracking-wider text-white/55">{c.sector}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div>
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/15 text-brand-green ring-1 ring-brand-green/30">
-              <Target className="h-6 w-6" aria-hidden />
-            </span>
-            <h2 className="mt-5 text-2xl font-bold sm:text-3xl">Our mission</h2>
-            <ul className="mt-5 space-y-4">
-              {MISSION.map((point, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-white/70">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" aria-hidden />
-                  <span>{point}</span>
+          <div className="lg:col-span-7">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-white/55">Mission</h3>
+            <ul className="mt-6 space-y-5">
+              {MISSION.map((m, i) => (
+                <li key={i} className="flex gap-4 border-b border-white/10 pb-5 last:border-0">
+                  <span className="shrink-0 font-display text-lg font-bold text-brand-green">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p className="leading-relaxed text-white/75">{m}</p>
                 </li>
               ))}
             </ul>
@@ -89,88 +140,17 @@ export default function AboutPage() {
       {/* Timeline */}
       <section className="section">
         <div className="container-x">
-          <SectionHeading
-            eyebrow="Our journey"
-            title="Milestones since 2007"
-            description="From our first water supply contracts to a wholly-owned subsidiary of the Sanken Group."
-          />
-          <ol className="mt-10 border-l border-brand-stone">
-            {TIMELINE.map((item, i) => (
-              <Reveal key={i} delay={i * 0.03}>
-                <li className="relative pb-8 pl-8 last:pb-0">
-                  <span className="absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-brand-green bg-brand-offwhite" />
-                  <span className="text-sm font-bold text-brand-green">{item.year}</span>
-                  <p className="mt-1 text-base leading-relaxed text-brand-dark">{item.milestone}</p>
+          <SectionHeading eyebrow="Milestones" title="Eighteen years of delivery" />
+          <ol className="mt-12 max-w-3xl">
+            {TIMELINE.map((t) => (
+              <Reveal key={t.year + t.milestone.slice(0, 10)}>
+                <li className="grid grid-cols-[5rem_1fr] gap-6 border-t border-brand-stone py-6 sm:grid-cols-[8rem_1fr]">
+                  <span className="font-display text-lg font-bold text-brand-green">{t.year}</span>
+                  <p className="leading-relaxed text-brand-dark">{t.milestone}</p>
                 </li>
               </Reveal>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* Trusted by — clients & partners */}
-      <ClientStrip />
-
-      {/* Board of Directors */}
-      <section className="section bg-white">
-        <div className="container-x">
-          <SectionHeading
-            eyebrow="Leadership"
-            title="Board of Directors"
-            description="Decades of combined engineering and management experience, drawn from across the Sanken Group."
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {DIRECTORS.map((director, i) => (
-              <Reveal key={director.name} delay={(i % 3) * 0.05}>
-                <article className="flex h-full flex-col rounded-2xl border border-brand-stone bg-brand-offwhite p-6">
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-brand-dark text-lg font-bold tracking-wide text-brand-green">
-                      {initials(director.name)}
-                    </span>
-                    <span className="h-px flex-1 bg-brand-stone" aria-hidden />
-                  </div>
-                  <h3 className="mt-5 text-lg font-bold text-brand-dark">{director.name}</h3>
-                  <p className="text-sm font-semibold text-brand-green">{director.role}</p>
-                  <p className="mt-1 text-xs font-medium text-brand-muted">{director.qualifications}</p>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-muted">{director.bio}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Policies */}
-      <section className="section">
-        <div className="container-x grid gap-8 lg:grid-cols-2">
-          <div className="rounded-3xl border border-brand-stone bg-white p-8">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-              <ShieldCheck className="h-6 w-6" aria-hidden />
-            </span>
-            <h2 className="mt-5 text-2xl font-bold text-brand-dark">{POLICIES.quality.title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-brand-muted">{POLICIES.quality.body}</p>
-            <ul className="mt-5 space-y-3">
-              {POLICIES.quality.points.map((point, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-brand-dark">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" aria-hidden />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-3xl border border-brand-stone bg-white p-8">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
-              <Leaf className="h-6 w-6" aria-hidden />
-            </span>
-            <h2 className="mt-5 text-2xl font-bold text-brand-dark">{POLICIES.environmental.title}</h2>
-            <div className="mt-3 space-y-4">
-              {POLICIES.environmental.body.map((para, i) => (
-                <p key={i} className="text-sm leading-relaxed text-brand-muted">
-                  {para}
-                </p>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
     </>

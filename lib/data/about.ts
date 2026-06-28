@@ -4,11 +4,11 @@
  */
 
 export const ABOUT = {
-  headline: 'Passion for excellence since 2007',
+  headline: 'Uplifting the comforts of the nation by enhancing its infrastructure',
   story: [
-    "Vonlan Constructions (Pvt) Ltd was incorporated on 27th June 2007 as an associate company to Sanken Construction (Pvt) Ltd, one of Sri Lanka's most respected construction companies. Built on the same passion for excellence, Vonlan was established with a singular focus: infrastructure that serves communities.",
-    'In the years that followed, Vonlan steadily grew its portfolio across water supply, highways and power. By 2015, the company diversified into building construction — adding commercial and institutional projects to its capabilities. In 2016, Vonlan became a wholly-owned subsidiary of Sanken, cementing its place within one of the country\'s leading construction groups.',
-    'Today, Vonlan holds CIDA grading C2 for Water Supply and C3 for Highways, Bridges, Irrigation and Buildings. The company is a registered member of the National Chamber of the Association of Specialised & Licensed Contractors (NCASL) under the Major and Specialist Constructors category. With ISO 9001:2015, ISO 14001:2004 and OHSAS 18001:2007 certifications active, quality and safety are embedded in every project we deliver.',
+    "Vonlan Constructions (Pvt) Ltd was founded on 27th June 2007 as a company of the Sanken Group — one of Sri Lanka's most respected construction organisations. Leveraging that heritage, Vonlan was established with a singular focus: infrastructure that serves communities.",
+    'From its first water-supply contracts, Vonlan grew across highways, power and — since 2015 — building construction. Today it executes landmark work across six infrastructure sectors in Sri Lanka and the Maldives, from 350 MW power stations and national venues to luxury island resorts.',
+    "Vonlan holds CIDA's highest grade — C1 — in both Water Supply and Building Construction, and C3 in Roads, Highways and Bridges. Guided by a leadership team driving sustainability, green building and build-operate-transfer projects, quality and safety are embedded in every project we deliver.",
   ],
 } as const;
 
@@ -18,21 +18,14 @@ export interface TimelineItem {
 }
 
 export const TIMELINE: TimelineItem[] = [
-  { year: 'June 2007', milestone: 'Vonlan Constructions (Pvt) Ltd incorporated as associate of Sanken Construction (Pvt) Ltd' },
-  { year: '2008–2010', milestone: 'First major water supply contracts — Negombo WTP, Pottuvil Tower & Transmission' },
-  { year: '2011–2012', milestone: 'Polonnaruwa WSP (Rs 3,300M) and Galle WSP completed; Hithadhoo Maldives project' },
-  { year: '2013', milestone: 'Kantale Water Treatment Plant (Rs 212M) and Negombo WSP completed' },
-  { year: '2013', milestone: 'ISO 14001:2004 Environmental Management certification' },
-  { year: '2014', milestone: 'National Business Excellence Award — Runner-Up, Construction Sector' },
-  { year: '2015', milestone: 'National Award for Construction Performance — Ampara Water Supply (Rs 757M)' },
-  { year: '2015', milestone: 'Diversification into building construction; Toyota Lanka Negombo completed' },
-  { year: '2016', milestone: 'Vonlan becomes wholly-owned subsidiary of Sanken Construction (Pvt) Ltd' },
-  { year: '2017', milestone: 'ISO 9001:2015 Quality Management certification' },
-  {
-    year: '2017–present',
-    milestone:
-      'Active projects: Medirigiriya WSP, Polonnaruwa Township Tower, Toyota Lanka Kandy & Matara, Red Cross Building, Sujatha Vidyalaya',
-  },
+  { year: '2007', milestone: 'Vonlan Constructions (Pvt) Ltd founded as a company of the Sanken Group' },
+  { year: '2009–2011', milestone: 'First major water-supply contracts — Pottuvil, Negombo, and the award-winning Ampara scheme (Rs 757M)' },
+  { year: '2012', milestone: 'Polonnaruwa Water Supply Project completed (Rs 1,683M) — JV with Hyundai Engineering' },
+  { year: '2015', milestone: 'National Award for Construction Performance — Ampara Water Supply Project' },
+  { year: '2015–2016', milestone: 'Diversification into building construction; becomes a full member of the Sanken Group' },
+  { year: '2019–2021', milestone: 'CIDA upgrade to C1; landmark builds — Premadasa Stadium, Red Cross HQ, Maldives resorts (Alila, Ritz-Carlton, OZO)' },
+  { year: '2023', milestone: 'Cargills Distribution Centre & Cargills Square; Battaramulla NWSDB office — value-engineered delivery' },
+  { year: '2025', milestone: 'Sobhadanavi 350 MW LNG power station completed; BIA Lotus Lounge; Medirigiriya Phase III' },
 ];
 
 export const VISION = 'To be the passionate leader in infrastructure construction in the region.';

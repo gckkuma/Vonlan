@@ -1,107 +1,157 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, PlayCircle } from 'lucide-react';
-import { HERO_IMAGES } from '@/lib/images';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import CountUp from './CountUp';
 import { STATS } from '@/lib/data/site';
 
-/**
- * Full-bleed photographic hero with a 3-image crossfade slideshow behind a
- * fixed headline and stat strip. Heavy-construction feel — no SaaS card.
- */
+interface Slide {
+  image: string;
+  eyebrow: string;
+  headline: string;
+  caption: string;
+  href: string;
+}
+
+const SLIDES: Slide[] = [
+  {
+    image: '/images/hero/alila.jpg',
+    eyebrow: 'Hospitality · Maldives',
+    headline: 'Luxury resorts, engineered to last',
+    caption: 'Alila Kothaifaru, Maldives · Rs 804 M',
+    href: '/projects?filter=international',
+  },
+  {
+    image: '/images/hero/sobhadanavi.jpg',
+    eyebrow: 'Power & Energy',
+    headline: "Powering Sri Lanka's future",
+    caption: 'Sobhadanavi 350 MW LNG Power Station · 2025',
+    href: '/projects?filter=power-energy',
+  },
+  {
+    image: '/images/hero/galadari.jpg',
+    eyebrow: 'Landmark Interiors',
+    headline: 'Spaces, beautifully finished',
+    caption: 'Galadari Hotel Ballroom · Colombo',
+    href: '/projects?filter=buildings',
+  },
+  {
+    image: '/images/hero/cargills-katana.jpg',
+    eyebrow: 'Commercial & Industrial',
+    headline: 'Built for industry and commerce',
+    caption: 'Cargills Central Distribution Centre · Katana',
+    href: '/projects?filter=buildings',
+  },
+];
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export default function Hero() {
-  const [active, setActive] = useState(0);
-  const reduceMotion = useReducedMotion();
+  const [i, setI] = useState(0);
+  const reduce = useReducedMotion();
+  const go = useCallback((n: number) => setI((p) => (n + SLIDES.length) % SLIDES.length), []);
 
   useEffect(() => {
-    if (reduceMotion) return; // respect reduced-motion: no autoplay
-    const id = setInterval(() => setActive((i) => (i + 1) % HERO_IMAGES.length), 5500);
+    if (reduce) return;
+    const id = setInterval(() => setI((p) => (p + 1) % SLIDES.length), 5500);
     return () => clearInterval(id);
-  }, [reduceMotion]);
+  }, [reduce, i]);
+
+  const s = SLIDES[i];
 
   return (
     <section className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-brand-dark text-white lg:min-h-[760px]">
-      {/* Crossfading photos */}
+      {/* Slides */}
       <AnimatePresence>
         <motion.div
-          key={active}
-          initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.02 }}
-          animate={{ opacity: 1, scale: reduceMotion ? 1 : 1.09 }}
+          key={i}
+          initial={{ opacity: 0, scale: reduce ? 1 : 1.05 }}
+          animate={{ opacity: 1, scale: reduce ? 1 : 1.1 }}
           exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 1.1, ease: 'easeInOut' }, scale: { duration: 7, ease: 'linear' } }}
+          transition={{ opacity: { duration: 1 }, scale: { duration: 6.5, ease: 'linear' } }}
           className="absolute inset-0"
         >
-          <Image
-            src={HERO_IMAGES[active]}
-            alt="Vonlan infrastructure construction in Sri Lanka"
-            fill
-            priority={active === 0}
-            sizes="100vw"
-            className="object-cover"
-          />
+          <Image src={s.image} alt={s.caption} fill priority sizes="100vw" className="object-cover object-center" />
         </motion.div>
       </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/75 to-brand-dark/35" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/40" aria-hidden />
 
-      {/* Legibility overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-brand-dark/20" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/30" aria-hidden />
-
-      <div className="container-x relative w-full py-20 lg:py-28">
+      <div className="container-x relative w-full py-16 lg:py-20">
         <div className="max-w-2xl">
-          <span className="eyebrow-line">Infrastructure Construction · Sri Lanka</span>
+          {/* per-slide text layer */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.55, ease: EASE }}
+            >
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-green">
+                {s.eyebrow}
+              </span>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+                {s.headline}
+              </h1>
+              <p className="mt-5 text-sm font-medium uppercase tracking-wider text-white/65">{s.caption}</p>
+            </motion.div>
+          </AnimatePresence>
 
-          <h1 className="mt-7 text-[2.7rem] font-bold leading-[1.03] tracking-tight sm:text-6xl lg:text-[4.4rem]">
-            Building the infrastructure that moves Sri Lanka forward
-          </h1>
-
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-            Water supply networks, highways, power plants and landmark buildings — Vonlan has
-            delivered over 50 major infrastructure projects since 2007, as a subsidiary of Sanken
-            Construction.
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+            Vonlan Constructions delivers water, highways, power, buildings and aviation
+            infrastructure across Sri Lanka and the Maldives — a CIDA C1 company of the Sanken Group.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/projects" className="btn-green">
               View our projects
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <Link href="/about" className="btn-outline-dark">
-              <PlayCircle className="h-4 w-4" aria-hidden />
-              Our story
+              About Vonlan
             </Link>
           </div>
         </div>
 
-        {/* Inline stat strip + slide indicators */}
-        <div className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t border-white/15 pt-8">
-          <dl className="grid max-w-3xl flex-1 grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            {STATS.map((stat) => (
-              <div key={stat.label}>
-                <dt className="tnum text-3xl font-bold sm:text-4xl">{stat.value}</dt>
-                <dd className="mt-1 text-xs font-medium uppercase tracking-wider text-white/60">
-                  {stat.label}
-                </dd>
-              </div>
-            ))}
-          </dl>
+        {/* Controls */}
+        <div className="mt-12 flex items-center gap-4">
           <div className="flex gap-2">
-            {HERO_IMAGES.map((src, i) => (
+            {SLIDES.map((sl, idx) => (
               <button
-                key={src}
+                key={sl.image}
                 type="button"
-                onClick={() => setActive(i)}
-                aria-label={`Show slide ${i + 1}`}
-                aria-pressed={i === active}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === active ? 'w-8 bg-brand-green' : 'w-4 bg-white/30 hover:bg-white/50'
-                }`}
+                onClick={() => go(idx)}
+                aria-label={`Slide ${idx + 1}`}
+                aria-pressed={idx === i}
+                className={`h-1.5 rounded-full transition-all ${idx === i ? 'w-10 bg-brand-green' : 'w-5 bg-white/30 hover:bg-white/50'}`}
               />
             ))}
           </div>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => go(i - 1)} aria-label="Previous slide" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-white/60 hover:text-white">
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button type="button" onClick={() => go(i + 1)} aria-label="Next slide" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-white/60 hover:text-white">
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
+
+        {/* Stat strip with count-up */}
+        <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-6 border-t border-white/15 pt-8 sm:grid-cols-4">
+          {STATS.map((stat) => (
+            <div key={stat.label}>
+              <dt className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                {stat.isText ? stat.suffix : <CountUp value={stat.value} suffix={stat.suffix} />}
+              </dt>
+              <dd className="mt-1 text-xs font-medium uppercase tracking-wider text-white/65">{stat.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

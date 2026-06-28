@@ -5,17 +5,8 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { SITE, META_DESCRIPTIONS, CONTACT } from '@/lib/data/site';
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-});
-
-const sora = Sora({
-  subsets: ['latin'],
-  variable: '--font-sora',
-  display: 'swap',
-});
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display: 'swap' });
+const sora = Sora({ subsets: ['latin'], variable: '--font-sora', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -67,7 +58,7 @@ const orgJsonLd = {
   name: SITE.name,
   alternateName: SITE.shortName,
   url: SITE.url,
-  logo: `${SITE.url}/logo.jpeg`,
+  logo: `${SITE.url}/logo.png`,
   image: `${SITE.url}/images/hero-construction.jpg`,
   description: SITE.description,
   telephone: CONTACT.phones[0],

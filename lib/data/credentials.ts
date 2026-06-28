@@ -42,8 +42,8 @@ export const CSR = {
       body: 'Vonlan donated a hermitage facility to the Vasanagama Village community, supporting the spiritual and cultural life of the village.',
     },
     {
-      title: 'Vasanagama Vidyalaya — school donations',
-      body: 'Vonlan has donated school supplies and materials to Vasanagama Vidyalaya, supporting education in rural communities where our infrastructure work takes place.',
+      title: 'Mattumagala Ragama Sacred Heart Church cemetery',
+      body: 'Vonlan refurbished the Mattumagala Ragama Sacred Heart Church cemetery, helping preserve a site of historical and cultural significance for the community.',
     },
   ] as CsrItem[],
 };

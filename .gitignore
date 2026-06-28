@@ -32,3 +32,6 @@ _content_clean.txt
 _*.png
 _*.jpg
 _*.txt
+
+# extracted source-asset library (kept locally, not in repo)
+content/2025-profile/

@@ -3,8 +3,7 @@ import { Suspense } from 'react';
 import PageHeader from '@/components/PageHeader';
 import ProjectsExplorer from '@/components/ProjectsExplorer';
 import { META_DESCRIPTIONS, SITE } from '@/lib/data/site';
-import { PROJECTS } from '@/lib/data/projects';
-import { PAGE_IMAGES } from '@/lib/images';
+import { PROJECTS, PORTFOLIO_VALUE } from '@/lib/data/projects';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -15,14 +14,15 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const total = PROJECTS.length;
+  const valueBn = (PORTFOLIO_VALUE / 1e9).toFixed(1);
 
   return (
     <>
       <PageHeader
         eyebrow="Portfolio"
-        title="Projects delivered across Sri Lanka"
-        intro={`Browse our portfolio of ${total} infrastructure projects — water supply, highways, power and buildings. Filter by sector and status.`}
-        image={PAGE_IMAGES.projects}
+        title="Projects delivered across Sri Lanka & the Maldives"
+        intro={`${total} infrastructure projects spanning water, buildings, roads & bridges, and power — over Rs ${valueBn} billion in contract value. Filter by sector or view our international work.`}
+        image="/images/work/cargills-square-night.jpg"
       />
       <section className="section">
         <div className="container-x">

@@ -1,0 +1,69 @@
+import Image from 'next/image';
+import SectionHeading from './SectionHeading';
+
+/**
+ * Animated client-logo marquee. Real logos on clean white tiles, scrolling
+ * continuously (paused on hover, static under reduced-motion).
+ */
+const LOGOS: { slug: string; name: string }[] = [
+  { slug: 'alila', name: 'Alila Kothaifaru Maldives' },
+  { slug: 'hilton', name: 'Hilton Colombo' },
+  { slug: 'sri-lanka-cricket', name: 'Sri Lanka Cricket' },
+  { slug: 'galadari', name: 'Galadari Hotels' },
+  { slug: 'toyota', name: 'Toyota Lanka' },
+  { slug: 'adb', name: 'Asian Development Bank' },
+  { slug: 'sl-navy', name: 'Sri Lanka Navy' },
+  { slug: 'vatech-wabag', name: 'VA Tech Wabag' },
+  { slug: 'vinci', name: 'VINCI Construction' },
+  { slug: 'hyundai', name: 'Hyundai Engineering' },
+  { slug: 'rda', name: 'Road Development Authority' },
+  { slug: 'nwsdb', name: 'National Water Supply & Drainage Board' },
+  { slug: 'civil-aviation', name: 'Civil Aviation Authority' },
+  { slug: 'red-cross', name: 'Sri Lanka Red Cross Society' },
+  { slug: 'ceb', name: 'Ceylon Electricity Board' },
+  { slug: 'ladies-college', name: "Ladies' College, Colombo" },
+  { slug: 'ltl', name: 'LTL Holdings' },
+  { slug: 'biwater', name: 'Biwater International' },
+  { slug: 'uga', name: 'Uga Escapes' },
+  { slug: 'vogue', name: 'Vogue Jewellers' },
+  { slug: 'catic', name: 'CATIC' },
+];
+
+function LogoItem({ slug, name }: { slug: string; name: string }) {
+  return (
+    <li className="flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-brand-stone bg-white px-6">
+      <span className="relative block h-10 w-full">
+        <Image src={`/images/clients/${slug}.png`} alt={name} fill sizes="160px" className="object-contain" />
+      </span>
+    </li>
+  );
+}
+
+export default function ClientLogoWall() {
+  return (
+    <section className="section border-y border-brand-stone bg-brand-offwhite">
+      <div className="container-x">
+        <SectionHeading
+          align="center"
+          eyebrow="Trusted by"
+          title="Clients & partners across Sri Lanka and the Maldives"
+          description="We work directly for national authorities and alongside leading international hospitality, engineering and infrastructure organisations."
+          className="mx-auto"
+        />
+      </div>
+
+      <div className="marquee-row edge-fade mt-12 overflow-hidden">
+        <ul className="animate-marquee flex w-max gap-4">
+          {[...LOGOS, ...LOGOS].map((logo, idx) => (
+            <LogoItem key={`${logo.slug}-${idx}`} {...logo} />
+          ))}
+        </ul>
+      </div>
+
+      <p className="container-x mt-10 text-center text-sm text-brand-muted">
+        …and many more, including the Ritz-Carlton Maldives, Cargills (Ceylon), JICA and Suez
+        International.
+      </p>
+    </section>
+  );
+}

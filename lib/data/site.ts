@@ -1,7 +1,6 @@
 /**
  * Global site configuration for Vonlan Constructions (Pvt) Ltd.
- * Single source of truth for navigation, contact details, stats and certifications.
- * Content sourced from the Vonlan Website Content Pack (June 2025).
+ * Verified against the 2025 Company Profile (the current source of truth).
  */
 
 export const SITE = {
@@ -9,9 +8,10 @@ export const SITE = {
   shortName: 'Vonlan',
   domain: 'vonlan.lk',
   url: 'https://www.vonlan.lk',
-  tagline: 'Passion for excellence since 2007',
+  founded: 2007,
+  positioning: 'Uplifting the comforts of the nation by enhancing its infrastructure.',
   description:
-    "Sri Lanka's trusted infrastructure contractor. Water supply, highways, power and buildings. ISO certified. 50+ projects delivered since 2007.",
+    "Sri Lanka's infrastructure construction studio — water, highways & bridges, power, buildings and aviation. CIDA C1. A Sanken Group company. 65+ projects since 2007.",
   parent: {
     name: 'Sanken Construction (Pvt) Ltd',
     url: 'https://www.sankenconstruction.com',
@@ -32,125 +32,100 @@ export const CONTACT = {
   email: 'vonlan@vonlan.lk',
   companyRegistration: 'PV60442',
   vatRegistration: '114604429 7000',
-  bankers: [
-    'Commercial Bank of Ceylon PLC',
-    'Bank of Ceylon',
-    'Hatton National Bank PLC',
-    "People's Bank",
-  ],
-  auditors: 'Jayasinghe & Company',
-  secretaries: 'G W Secretaries & Accountants (Pvt) Ltd',
 } as const;
 
-/**
- * Division contacts. Emails are stored split (user/domain) so they can be
- * assembled client-side on click — never rendered as plain-text mailto links,
- * to deter spam harvesters (per the content pack instruction).
- */
 export const DIVISIONS = [
-  { division: 'Contracts & Marketing', person: 'Division Head', emailUser: 'contracts', emailDomain: 'vonlan.lk' },
-  { division: 'Project Execution & Control', person: 'Division Head', emailUser: 'projects', emailDomain: 'vonlan.lk' },
-  { division: 'Human Resource Development', person: 'Division Head', emailUser: 'hr', emailDomain: 'vonlan.lk' },
-  { division: 'Finance Planning & Monitoring', person: 'Division Head', emailUser: 'finance', emailDomain: 'vonlan.lk' },
+  { division: 'Contracts & Marketing', emailUser: 'contracts', emailDomain: 'vonlan.lk' },
+  { division: 'Project Execution & Control', emailUser: 'projects', emailDomain: 'vonlan.lk' },
+  { division: 'Human Resource Development', emailUser: 'hr', emailDomain: 'vonlan.lk' },
+  { division: 'Finance Planning & Monitoring', emailUser: 'finance', emailDomain: 'vonlan.lk' },
 ] as const;
 
 export const NAV_LINKS = [
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services/water-supply' },
+  { label: 'Clients', href: '/clients' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Credentials', href: '/credentials' },
+  { label: 'Commitments', href: '/commitments' },
   { label: 'Careers', href: '/careers' },
 ] as const;
 
-export const STATS = [
-  { value: '17+', label: 'Years active' },
-  { value: '50+', label: 'Projects delivered' },
-  { value: '6', label: 'Sectors served' },
-  { value: 'ISO', label: '9001 · 14001 · OHSAS' },
-] as const;
+/** Headline stats — verified to 2025 (founded 2007 → 18 years; 65+ across registers). */
+export interface Stat {
+  value: number;
+  suffix: string;
+  label: string;
+  sub: string;
+  isText?: boolean;
+}
+export const STATS: Stat[] = [
+  { value: 18, suffix: '+', label: 'Years delivering', sub: 'Since 2007' },
+  { value: 70, suffix: '+', label: 'Projects executed', sub: 'Across 6 sectors' },
+  { value: 6, suffix: '', label: 'Infrastructure sectors', sub: 'Water to aviation' },
+  { value: 0, suffix: 'C1', label: 'CIDA grading', sub: 'Water & Buildings', isText: true },
+];
 
-export const CERTIFICATIONS = [
-  {
-    code: 'ISO 9001:2015',
-    name: 'Quality Management System',
-    scope:
-      'Construction and maintenance of civil engineering infrastructure — water supply, roads, highways, power & buildings',
-    since: '2017',
-  },
-  {
-    code: 'ISO 14001:2004',
-    name: 'Environmental Management System',
-    scope: 'All project and operational activities',
-    since: 'Since 2013',
-  },
-  {
-    code: 'OHSAS 18001:2007',
-    name: 'Occupational Health & Safety Management System',
-    scope: 'Water Supply & Drainage, Road & Highway projects',
-    since: 'Active',
-  },
-  {
-    code: 'CIDA C2',
-    name: 'Construction Industry Development Authority',
-    scope: 'Water Supply sector grading',
-    since: 'Active',
-  },
-  {
-    code: 'CIDA C3',
-    name: 'Construction Industry Development Authority',
-    scope: 'Highways, Bridges, Irrigation & Buildings grading',
-    since: 'Active',
-  },
-  {
-    code: 'NCASL Member',
-    name: 'National Chamber — Major & Specialist Constructors',
-    scope: 'Full member',
-    since: 'Active',
-  },
+/** CIDA grades per the 2025 profile (water & buildings upgraded to C1). */
+export const CIDA_GRADES = [
+  { sector: 'Water Supply', grade: 'C1' },
+  { sector: 'Buildings', grade: 'C1' },
+  { sector: 'Roads & Highways', grade: 'C3' },
+  { sector: 'Bridges', grade: 'C3' },
 ] as const;
-
-/** Compact cert bar used on the homepage and footer. */
-export const CERT_BAR = ['ISO 9001:2015', 'ISO 14001:2004', 'OHSAS 18001:2007', 'CIDA Registered'] as const;
 
 /**
- * Marquee clients and international partners Vonlan has delivered for —
- * sourced from the project database. Used in the "Trusted by" credibility strip.
+ * Certifications. CIDA grades are confirmed in the 2025 profile.
+ * ISO 9001 / 14001 / OHSAS held historically but not restated in the 2025
+ * profile — kept here as `unconfirmed` pending client confirmation.
  */
-export const CLIENTS = [
-  'National Water Supply & Drainage Board',
-  'Sanken Construction',
-  'Toyota Lanka',
-  'Sri Lanka Red Cross Society',
-  'Hyundai Engineering',
-  'Taisei Corporation',
-  'VINCI Construction',
-  'Biwater',
-  'VA TECH WABAG',
-  'Hitachi Plant Technologies',
-  'LTL Projects',
-  'State Engineering Corporation',
+export const CERTIFICATIONS = [
+  { code: 'CIDA C1', name: 'Water Supply & Sewerage', note: 'Highest national grade', confirmed: true },
+  { code: 'CIDA C1', name: 'Building Construction', note: 'Highest national grade', confirmed: true },
+  { code: 'CIDA C3', name: 'Roads & Highways', note: 'National grading', confirmed: true },
+  { code: 'CIDA C3', name: 'Bridges', note: 'National grading', confirmed: true },
 ] as const;
 
-export type MetaPage =
-  | 'home'
-  | 'about'
-  | 'projects'
-  | 'credentials'
-  | 'careers'
-  | 'contact';
+export const AWARD = {
+  title: 'National Award for Construction Performance',
+  category: 'Civil Engineering · 2015',
+  project: 'Ampara Water Supply Project',
+  note: 'Turnkey design, construction & completion — recognised at national level.',
+} as const;
 
-/** Meta descriptions from the content pack (each ≤ 160 chars). */
+/** Marquee clients & partners — from the 2025 profile client roster. */
+export const CLIENTS = [
+  'National Water Supply & Drainage Board',
+  'Sri Lanka Cricket',
+  'Ceylon Electricity Board',
+  'Toyota Lanka',
+  'Cargills (Ceylon) PLC',
+  'Sri Lanka Red Cross Society',
+  'Airport & Aviation Services',
+  'Civil Aviation Authority',
+  'Hilton Colombo',
+  'Galadari Hotels',
+  'LTL Holdings',
+  'Road Development Authority',
+  'Asian Development Bank',
+  'JICA',
+  'Sri Lanka Navy',
+  'Hyundai Engineering',
+  'VINCI Construction',
+  'VA Tech Wabag',
+  'Biwater International',
+  "Ladies' College, Colombo",
+  'Ministry of Megapolis',
+  'Uga Escapes',
+] as const;
+
+export type MetaPage = 'home' | 'about' | 'projects' | 'credentials' | 'careers' | 'contact';
+
 export const META_DESCRIPTIONS: Record<MetaPage, string> = {
-  home:
-    "Vonlan Constructions — Sri Lanka's trusted infrastructure contractor. Water supply, highways, power, buildings. ISO certified. 50+ projects delivered since 2007.",
-  about:
-    'Learn about Vonlan Constructions — incorporated 2007, wholly-owned Sanken subsidiary, ISO 9001/14001/OHSAS certified, CIDA registered infrastructure contractor.',
-  projects:
-    "Browse Vonlan's portfolio of 50+ infrastructure projects — water supply, highways, power, and buildings across Sri Lanka. Filterable by sector and status.",
-  credentials:
-    'ISO 9001:2015, ISO 14001, OHSAS 18001. National Award for Construction Performance 2015. CIDA C2/C3. National Business Excellence Award 2014 runner-up.',
-  careers:
-    'Build your career at Vonlan Constructions. We recruit Civil Engineers, QS, Project Managers and Site Supervisors for major Sri Lanka infrastructure projects.',
-  contact:
-    'Contact Vonlan Constructions — No 45B, Ambatale, Mulleriyawa New Town. Tel: +94 (011) 24 14 142. Email: vonlan@vonlan.lk. Discuss your next project.',
+  home: "Vonlan Constructions — Sri Lanka's infrastructure studio. Water, highways, power, buildings & aviation. CIDA C1. A Sanken Group company. 65+ projects since 2007.",
+  about: 'Vonlan Constructions — founded 2007, a Sanken Group company. CIDA C1 graded, executing landmark infrastructure across Sri Lanka and the Maldives.',
+  projects: "Vonlan's portfolio — 65+ infrastructure projects across water, highways, power, buildings and aviation, in Sri Lanka and the Maldives. Filter by sector and status.",
+  credentials: 'Vonlan credentials — CIDA C1 (Water & Buildings), C3 (Roads & Bridges), National Award for Construction Performance 2015, and a Sanken Group pedigree.',
+  careers: 'Build your career at Vonlan Constructions — engineers, QS, project managers and site teams delivering major infrastructure across Sri Lanka.',
+  contact: 'Contact Vonlan Constructions — No 45B, Ambatale, Mulleriyawa New Town. +94 (011) 24 14 142 · vonlan@vonlan.lk.',
 };

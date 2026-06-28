@@ -1,7 +1,8 @@
 /**
- * The six sectors Vonlan operates in. Used by the homepage sector grid,
- * the dynamic /services/[sector] pages, the projects filter and navigation.
- * Content sourced from the Vonlan Website Content Pack (June 2025).
+ * The six infrastructure sectors Vonlan operates in.
+ * CIDA grades and emphasis verified against the 2025 Company Profile.
+ * `hasPhotos: false` sectors render as typographic "drawing-sheet" plates
+ * until real photography is supplied.
  */
 
 export type SectorSlug =
@@ -12,32 +13,22 @@ export type SectorSlug =
   | 'irrigation'
   | 'sea-airport';
 
-/** Lucide icon name keys, mapped to components in components/SectorIcon.tsx */
-export type SectorIcon =
-  | 'droplets'
-  | 'milestone'
-  | 'zap'
-  | 'building'
-  | 'sprout'
-  | 'anchor';
+export type SectorIcon = 'droplets' | 'milestone' | 'zap' | 'building' | 'sprout' | 'anchor';
 
 export interface Sector {
   slug: SectorSlug;
   name: string;
-  /** Short label for filter pills and compact UI */
   shortName: string;
   icon: SectorIcon;
-  cardDescription: string;
-  projectCount: string;
-  headline: string;
+  grade: string | null;
+  count: string;
+  tagline: string;
   intro: string;
   scope: string[];
   metrics: string[];
-  featuredProjectNames: string[];
-  certCallout: { title: string; body: string };
+  hasPhotos: boolean;
   metaTitle: string;
   metaDescription: string;
-  noteToClient?: string;
 }
 
 export const SECTORS: Sector[] = [
@@ -46,204 +37,132 @@ export const SECTORS: Sector[] = [
     name: 'Water Supply & Sewerage',
     shortName: 'Water',
     icon: 'droplets',
-    cardDescription:
-      'Design, construction and commissioning of water treatment plants, transmission mains, distribution networks and elevated storage towers.',
-    projectCount: '31 projects completed',
-    headline: 'Water supply & sewerage',
+    grade: 'CIDA C1',
+    count: '33 projects',
+    tagline: 'Our largest discipline — treatment, transmission, storage.',
     intro:
-      "Vonlan's single largest sector by project volume. Since 2008, we have delivered over 20 completed water supply and sewerage projects across Sri Lanka — from elevated storage towers serving rural communities to large-scale treatment plants handling tens of thousands of cubic metres per day. We work directly for the National Water Supply & Drainage Board, international engineering firms, and overseas clients.",
+      "Vonlan's deepest sector. Since 2008 we have delivered more than thirty water supply and sewerage contracts across Sri Lanka and the Maldives — from treatment plants and elevated towers to hundreds of kilometres of transmission and distribution mains — working directly for the National Water Supply & Drainage Board and international engineering firms.",
     scope: [
-      'Design and construction of water intake structures and treatment plants',
-      'Elevated water towers and ground-level service reservoirs',
-      'Transmission mains — ductile iron, HDPE, and PVC pipelines',
-      'Water distribution networks across urban and rural areas',
-      'Pump houses, booster stations, and associated mechanical works',
-      'Gravity sewerage networks and sewage collection systems',
-      'Portable water distribution systems (overseas projects: Maldives)',
+      'Water treatment plants, intakes & pump stations',
+      'Elevated towers & ground service reservoirs',
+      'Transmission & distribution mains — DI, HDPE, uPVC',
+      'Gravity sewerage & potable distribution networks',
+      'Desalinated potable water & sewage facilities (Maldives)',
     ],
-    metrics: [
-      '20+ completed water supply projects',
-      'Largest single project value: Rs 3,300 Million',
-      'CIDA grading C2 for Water Supply',
-    ],
-    featuredProjectNames: [
-      'Ampara Water Supply Project — Turnkey Design & Build',
-      'Polonnaruwa Water Supply Project',
-      'Panama Water Supply Project — 1000m³ Tower, 37km T&D',
-    ],
-    certCallout: {
-      title: 'CIDA C2 — Water Supply',
-      body: 'Highest grading Vonlan holds, reflecting our depth of experience across treatment, transmission and distribution. Backed by ISO 9001:2015 quality systems on every scheme.',
-    },
+    metrics: ['33 completed contracts', 'Up to Rs 1.68 Bn single project', 'CIDA grade C1'],
+    hasPhotos: false,
     metaTitle: 'Water Supply & Sewerage Construction',
     metaDescription:
-      'Water supply and sewerage construction across Sri Lanka. Treatment plants, transmission mains, elevated towers. 20+ projects. National Water Board approved.',
+      'Water supply & sewerage construction across Sri Lanka — treatment plants, towers, transmission mains. 33 projects. CIDA C1. National Water Board approved.',
   },
   {
     slug: 'highways-bridges',
     name: 'Highways & Bridges',
     shortName: 'Highways',
     icon: 'milestone',
-    cardDescription:
-      'Road improvement, viaduct construction and bridge works across Sri Lanka, including major expressway contracts.',
-    projectCount: '6 projects completed',
-    headline: 'Highways & bridges',
+    grade: 'CIDA C3',
+    count: '8 projects',
+    tagline: 'Expressway viaducts to provincial bridge networks.',
     intro:
-      "From rural road improvement programmes to major expressway contracts, Vonlan has delivered highway and bridge projects totalling over Rs 2,000 million. Our work on the Outer Circular Highway — including Viaduct 2 (Rs 1,057M) and Viaducts 14 & 15 (Rs 513M) — demonstrates our capability to execute high-value, technically demanding road infrastructure alongside leading international contractors.",
+      'From expressway viaducts on the Outer Circular Highway to a current programme of KFAED-funded bridges with the Road Development Authority, Vonlan executes technically demanding road and bridge infrastructure alongside leading international and national contractors.',
     scope: [
-      'Expressway viaduct construction — reinforced concrete and prestressed works',
-      'Rural road improvement and provincial road rehabilitation',
-      'Bridge construction and pipe bridge installation',
-      'Road drainage and earthworks',
-      'Road surface and pavement works',
+      'Expressway viaduct construction — RC & prestressed',
+      'Bridge construction & rehabilitation (RDA / KFAED)',
+      'Provincial road improvement & maintenance',
+      'Road drainage, earthworks & pavements',
     ],
-    metrics: [
-      '6 completed highway and bridge projects',
-      'Largest project: Rs 1,057 Million',
-      'CIDA grading C3',
-    ],
-    featuredProjectNames: [
-      'Outer Circular Highway — Viaduct 2',
-      'Outer Circular Highway — Viaducts 14 & 15',
-      'Provincial Road Improvement Project — Dambulla',
-    ],
-    certCallout: {
-      title: 'CIDA C3 — Highways & Bridges',
-      body: 'Registered for high-value road and bridge contracts, with OHSAS 18001 occupational health & safety systems applied across all road and highway projects.',
-    },
+    metrics: ['Outer Circular Highway viaducts', '3 KFAED bridge contracts active', 'CIDA grade C3'],
+    hasPhotos: false,
     metaTitle: 'Highway & Bridge Construction',
     metaDescription:
-      'Highway and bridge construction in Sri Lanka. Outer Circular Highway viaducts, provincial roads, bridge works. CIDA C3 graded. Rs 1B+ project experience.',
+      'Highway & bridge construction in Sri Lanka — Outer Circular Highway viaducts, RDA/KFAED bridges, provincial roads. CIDA C3 graded.',
   },
   {
     slug: 'power-energy',
     name: 'Power & Energy',
     shortName: 'Power',
     icon: 'zap',
-    cardDescription:
-      'Power plant civil works, mini hydropower construction, and substation infrastructure.',
-    projectCount: '6 projects completed',
-    headline: 'Power & energy',
+    grade: null,
+    count: '9 projects',
+    tagline: 'Civil works for thermal, LNG and hydropower.',
     intro:
-      "Vonlan has delivered civil and structural works for power generation facilities, including a 300 MW thermal power plant and two mini hydropower projects in the hill country. Working alongside Sanken's in-house engineering expertise, we bring precision construction to energy infrastructure that demands the highest standards of quality and safety.",
+      "Vonlan delivers civil and structural works for power generation — from the 300 MW Yugadanavi and 350 MW Sobhadanavi LNG combined-cycle plants at Kerawalapitiya to grid substations and hill-country mini-hydropower. We bring power-grade precision, drawing on the Sanken Group's engineering depth.",
     scope: [
-      'Civil and structural works for thermal power plants',
-      'Powerhouse construction for mini and micro hydropower schemes',
-      'Hydropower channel construction — lined concrete channels',
-      'Substation and electrical infrastructure civil works',
-      'Uma Oya Multipurpose Development Project works',
+      'Civil & structural works for thermal / LNG plants',
+      'Powerhouse & channel works for mini-hydropower',
+      'Grid substation civil infrastructure',
+      'Turbine, cooling-tower & control-building foundations',
     ],
-    metrics: [
-      '6 completed power & energy projects',
-      'Kerawalapitiya Power Plant 300 MW (Rs 290M)',
-    ],
-    featuredProjectNames: [
-      'Kerawalapitiya Power Plant — 300 MW',
-      'Kirkoswald Mini Hydro Power Project — Power House',
-      'Kirkoswald Mini Hydropower Project — Channel',
-    ],
-    certCallout: {
-      title: 'Engineering depth from the Sanken Group',
-      body: "Power projects draw on parent company Sanken's specialist engineering expertise, delivered under Vonlan's ISO 9001:2015 quality and OHSAS 18001 safety frameworks.",
-    },
+    metrics: ['Sobhadanavi 350 MW LNG', 'Yugadanavi 300 MW CCPP', '9 completed contracts'],
+    hasPhotos: true,
     metaTitle: 'Power Plant & Hydropower Civil Works',
     metaDescription:
-      'Power plant civil works and mini hydropower construction. Kerawalapitiya 300MW plant, Kirkoswald hydro project. Vonlan Constructions, Sri Lanka.',
+      'Power civil works in Sri Lanka — Sobhadanavi 350MW LNG, Yugadanavi 300MW, grid substations, Kirkoswald hydro. Vonlan Constructions.',
   },
   {
     slug: 'buildings',
-    name: 'Buildings',
+    name: 'Building Construction',
     shortName: 'Buildings',
     icon: 'building',
-    cardDescription:
-      'Commercial, institutional and industrial buildings — from design-build to fit-out.',
-    projectCount: '9 completed · 5 ongoing',
-    headline: 'Buildings',
+    grade: 'CIDA C1',
+    count: '24 projects',
+    tagline: 'Landmark, hospitality, institutional & aviation.',
     intro:
-      'Since diversifying into building construction in 2015, Vonlan has completed nine buildings and has five ongoing — working for clients including Toyota Lanka, the Sri Lanka Red Cross, and the Sugathadasa National Sports Complex. Our portfolio spans commercial showrooms, institutional buildings, school buildings and industrial facilities, with individual project values reaching Rs 685 million.',
+      'Our fastest-growing sector and a showcase of finish quality — luxury Maldivian resorts (Alila, Ritz-Carlton, OZO), the R. Premadasa International Cricket Stadium, the Galadari ballroom, Ladies’ College, Cargills’ distribution and retail developments, and BIA airport lounges. Individual contracts reach Rs 800 million.',
     scope: [
-      'Commercial buildings — showrooms, office buildings, service centres',
-      'Institutional and educational buildings',
-      'Industrial and factory buildings — construction and refurbishment',
-      'Sports and recreational facility construction and renovation',
-      "Design-build capability through Sanken's in-house design team",
+      'Luxury hospitality & resort construction (Maldives)',
+      'Institutional, educational & sports facilities',
+      'Commercial, retail & distribution developments',
+      'Aviation lounges & interiors',
+      'Design-build through the Sanken design office',
     ],
-    metrics: [
-      '9 completed buildings',
-      '5 ongoing',
-      'Largest ongoing project: Rs 685 Million (Red Cross Building)',
-    ],
-    featuredProjectNames: [
-      'Red Cross Building',
-      'School Building for Sujatha Vidyalaya',
-      'New Service Building — Toyota Lanka (Pvt) Ltd, Negombo',
-    ],
-    certCallout: {
-      title: 'CIDA C3 — Buildings',
-      body: "Design-build capability through Sanken's in-house design team, delivered to ISO 9001:2015 quality standards and international brand requirements.",
-    },
-    metaTitle: 'Commercial & Institutional Building Construction',
+    metrics: ['23 projects', 'Up to Rs 804 M (Alila Maldives)', 'CIDA grade C1'],
+    hasPhotos: true,
+    metaTitle: 'Building Construction',
     metaDescription:
-      'Commercial and institutional building construction in Sri Lanka. Toyota Lanka, Red Cross, Sugathadasa Arena. ISO certified. Design-build capability.',
+      'Building construction in Sri Lanka & Maldives — Alila & Ritz-Carlton resorts, R. Premadasa Stadium, Galadari, Cargills, BIA lounges. CIDA C1.',
   },
   {
     slug: 'irrigation',
     name: 'Irrigation',
     shortName: 'Irrigation',
     icon: 'sprout',
-    cardDescription:
-      'Irrigation channel construction, reservoir works, and rural water infrastructure.',
-    projectCount: 'Active capability',
-    headline: 'Irrigation',
+    grade: null,
+    count: 'Capability',
+    tagline: 'Channels, reservoirs & rural water infrastructure.',
     intro:
-      "Vonlan's irrigation capability supports Sri Lanka's agricultural communities through construction of irrigation channels, rural water distribution systems, and related civil works. As one of our established sectors under CIDA C3 grading, we apply the same rigour to irrigation infrastructure that we bring to all our projects.",
+      "Vonlan's irrigation capability supports Sri Lanka's agricultural communities through channel construction, reservoir civil works and rural water distribution — applying the same engineering rigour brought to every Vonlan sector.",
     scope: [
-      'Irrigation channel construction and rehabilitation',
+      'Irrigation channel construction & rehabilitation',
+      'Reservoir & bund civil works',
       'Rural water distribution networks',
-      'Reservoir and bund civil works',
-      'CIDA C3 graded for Irrigation',
     ],
-    metrics: ['CIDA grading C3 for Irrigation', 'Rural water infrastructure capability'],
-    featuredProjectNames: [],
-    certCallout: {
-      title: 'CIDA C3 — Irrigation',
-      body: 'Registered for irrigation civil works and channel construction, applying the same ISO 9001:2015 quality standards used across all Vonlan sectors.',
-    },
+    metrics: ['Established capability', 'Rural water infrastructure'],
+    hasPhotos: false,
     metaTitle: 'Irrigation & Rural Water Infrastructure',
     metaDescription:
-      'Irrigation channel construction, reservoir works and rural water distribution across Sri Lanka. CIDA C3 graded. Vonlan Constructions infrastructure.',
-    noteToClient:
-      'Specific irrigation project names and values will be added as Vonlan supplies them from company records.',
+      'Irrigation channel construction, reservoir works and rural water distribution across Sri Lanka. Vonlan Constructions infrastructure.',
   },
   {
     slug: 'sea-airport',
-    name: 'Sea & Airport',
-    shortName: 'Sea & Airport',
+    name: 'Seaports & Airports',
+    shortName: 'Sea & Air',
     icon: 'anchor',
-    cardDescription: 'Port and airport support infrastructure construction.',
-    projectCount: 'Active capability',
-    headline: 'Sea & airport',
+    grade: null,
+    count: 'Aviation & ports',
+    tagline: 'Airport infrastructure & specialist port works.',
     intro:
-      "Vonlan's capabilities extend to port and airport infrastructure construction, drawing on parent company Sanken's long experience in these specialist sectors. We have both the CIDA registration and the technical relationships — with international partners including Ballast Nedam, Vinci, and Hyundai Engineering — to support port and aviation infrastructure projects.",
+      'Vonlan extends to aviation and port infrastructure — delivering refurbished international lounges at Bandaranaike International Airport for Airport & Aviation Services, and drawing on the Sanken Group’s relationships with global contractors for specialist port works.',
     scope: [
-      'Airport civil and ground infrastructure works',
-      'Port and harbour civil construction',
-      'Specialist civil works in partnership with international contractors',
+      'Airport terminal lounges & interiors (BIA)',
+      'Aviation ground & civil infrastructure',
+      'Port & harbour civil works (Sanken Group)',
     ],
-    metrics: [
-      'International contractor partnerships',
-      'Sanken Group specialist experience',
-    ],
-    featuredProjectNames: [],
-    certCallout: {
-      title: 'Partnerships with global contractors',
-      body: 'Technical relationships with international partners including Ballast Nedam, Vinci and Hyundai Engineering support specialist port and aviation infrastructure works.',
-    },
-    metaTitle: 'Sea & Airport Infrastructure',
+    metrics: ['BIA Araliya & Lotus lounges', 'Civil Aviation Authority', 'International partners'],
+    hasPhotos: false,
+    metaTitle: 'Seaport & Airport Infrastructure',
     metaDescription:
-      "Port and airport support infrastructure construction in Sri Lanka, drawing on Sanken Group experience and international contractor partnerships.",
-    noteToClient:
-      'Specific sea and airport project examples will be added as Vonlan confirms them from company records.',
+      'Airport lounge and port infrastructure in Sri Lanka — BIA Araliya & Lotus lounges, specialist civil works with the Sanken Group.',
   },
 ];
 
