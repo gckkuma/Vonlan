@@ -3,12 +3,15 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { StatusBadge, SectorBadge } from './Badges';
 import { workImage, type Work } from '@/lib/data/work';
+import { findProject } from '@/lib/data/projects';
 
 /** Project card: real photo, name, client, value, status & sector badges. */
 export default function WorkCard({ work }: { work: Work }) {
+  const project = findProject(work.match);
+  const href = project ? `/projects/${project.slug}` : '/projects';
   return (
     <Link
-      href={`/projects/${work.slug}`}
+      href={href}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-brand-dark">

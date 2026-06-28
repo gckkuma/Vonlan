@@ -7,6 +7,8 @@ import type { SectorSlug } from './sectors';
 
 export interface Work {
   slug: string;
+  /** Keyword used to resolve the real register project this card links to. */
+  match: string;
   name: string;
   client: string;
   sector: SectorSlug;
@@ -23,6 +25,7 @@ export interface Work {
 export const WORK: Work[] = [
   {
     slug: 'alila-kothaifaru-maldives',
+    match: 'alila',
     name: 'Alila Kothaifaru, Maldives',
     client: 'Ballentine (Pvt) Ltd',
     sector: 'buildings',
@@ -38,6 +41,7 @@ export const WORK: Work[] = [
   },
   {
     slug: 'ritz-carlton-maldives',
+    match: 'ritz',
     name: 'The Ritz-Carlton Maldives, Fari Island',
     client: 'CPRC Maldives (Pvt) Ltd',
     sector: 'buildings',
@@ -53,6 +57,7 @@ export const WORK: Work[] = [
   },
   {
     slug: 'sobhadanavi-power-station',
+    match: 'sobhadanavi',
     name: 'Sobhadanavi 350 MW LNG Power Station',
     client: 'LTL Projects (Pvt) Ltd',
     sector: 'power-energy',
@@ -67,6 +72,7 @@ export const WORK: Work[] = [
   },
   {
     slug: 'premadasa-stadium',
+    match: 'premadasa',
     name: 'R. Premadasa International Cricket Stadium',
     client: 'Sri Lanka Cricket',
     sector: 'buildings',
@@ -81,6 +87,7 @@ export const WORK: Work[] = [
   },
   {
     slug: 'cargills-square-bandarawela',
+    match: 'bandarawela',
     name: 'Cargills Square, Bandarawela',
     client: 'Empire Investments Company (Pvt) Ltd',
     sector: 'buildings',
@@ -95,6 +102,7 @@ export const WORK: Work[] = [
   },
   {
     slug: 'araliya-lounge-bia',
+    match: 'araliya',
     name: 'Araliya Lounge, Bandaranaike Int’l Airport',
     client: 'Airport & Aviation Services (Sri Lanka) Ltd',
     sector: 'sea-airport',
