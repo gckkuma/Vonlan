@@ -65,6 +65,34 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+  /* Faint blueprint grid for dark sections */
+  .bp-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+
+  /* Animated tower-crane backdrop */
+  @keyframes crane-trolley {
+    0%, 100% { transform: translateX(-26px); }
+    50% { transform: translateX(46px); }
+  }
+  @keyframes crane-hook {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(48px); }
+  }
+  @keyframes crane-sway {
+    0%, 100% { transform: rotate(-0.6deg); }
+    50% { transform: rotate(0.6deg); }
+  }
+  .crane-trolley { animation: crane-trolley 7s ease-in-out infinite; }
+  .crane-hook { animation: crane-hook 4.5s ease-in-out infinite; }
+  .crane-sway { animation: crane-sway 9s ease-in-out infinite; transform-origin: 215px 110px; }
+  @media (prefers-reduced-motion: reduce) {
+    .crane-trolley, .crane-hook, .crane-sway { animation: none; }
+  }
+
   /* Infinite logo marquee */
   @keyframes marquee {
     from { transform: translateX(0); }

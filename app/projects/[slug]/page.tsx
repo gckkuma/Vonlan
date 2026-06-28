@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight, Building2, MapPin, Globe } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
 import ProjectStats from '@/components/ProjectStats';
+import CraneMotif from '@/components/CraneMotif';
 import SectionHeading from '@/components/SectionHeading';
 import SectorIcon from '@/components/SectorIcon';
 import { StatusBadge, SectorBadge } from '@/components/Badges';
@@ -84,10 +85,15 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
       </section>
 
       {/* By the numbers */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeading eyebrow="By the numbers" title="Project at a glance" />
-          <div className="mt-10">
+      <section className="relative isolate overflow-hidden bg-brand-dark py-20 text-white sm:py-24">
+        <div className="bp-grid absolute inset-0 opacity-40" aria-hidden />
+        <div className="pointer-events-none absolute -right-10 bottom-0 hidden h-[115%] w-auto text-white/[0.07] lg:block" aria-hidden>
+          <CraneMotif className="h-full w-auto" />
+        </div>
+        <div className="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-brand-green/15 blur-[120px]" aria-hidden />
+        <div className="container-x relative">
+          <SectionHeading dark align="center" eyebrow="By the numbers" title="Project at a glance" className="mx-auto" />
+          <div className="mt-12">
             <ProjectStats
               valueLKR={project.valueLKR}
               sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
@@ -102,7 +108,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
       {/* Overview */}
       {project.description && (
-        <section className="pb-4">
+        <section className="pt-16 sm:pt-20">
           <div className="container-x max-w-3xl">
             <h2 className="text-2xl font-bold text-brand-dark">Overview</h2>
             <p className="mt-4 text-lg leading-relaxed text-brand-muted">{project.description}</p>

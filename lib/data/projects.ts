@@ -70,6 +70,11 @@ export function projectHero(p: Project): string | null {
 export function getProject(slug: string): Project | undefined {
   return PROJECTS.find((p) => p.slug === slug);
 }
+/** First project whose name or client matches a keyword — used to link client logos. */
+export function findProject(keyword: string): Project | undefined {
+  const kw = keyword.toLowerCase();
+  return PROJECTS.find((p) => `${p.name} ${p.client}`.toLowerCase().includes(kw));
+}
 export function getProjectsBySector(sector: SectorSlug): Project[] {
   // Photographed projects first for stronger cards.
   return PROJECTS.filter((p) => p.sector === sector).sort(
