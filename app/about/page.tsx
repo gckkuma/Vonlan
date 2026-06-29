@@ -25,7 +25,7 @@ export default function AboutPage() {
         eyebrow="About"
         title={ABOUT.headline}
         intro="A company of the Sanken Group, executing landmark infrastructure across Sri Lanka and the Maldives since 2007."
-        image="/images/work/premadasa-stadium.jpg"
+        image="/images/hero/about.jpg"
       />
 
       {/* Story */}

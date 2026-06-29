@@ -50,7 +50,7 @@ export default function CommitmentsPage() {
         eyebrow="Commitments"
         title="Built on safety, people and responsibility"
         intro="Beyond delivery, Vonlan is committed to the safety of every site, the growth of every employee, the quality of every handover, and the communities we serve."
-        image="/images/work/premadasa-stadium.jpg"
+        image="/images/hero/commitments.jpg"
       />
 
       {/* Commitments grid */}
