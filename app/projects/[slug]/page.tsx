@@ -47,8 +47,19 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
   const capacity = capacityStats(project.capacity);
   const related = getRelatedProjects(project.slug, project.sector, 3);
 
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE.url}/projects` },
+      { '@type': 'ListItem', position: 3, name: project.name, item: `${SITE.url}/projects/${project.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-brand-dark text-white">
         {hero ? (

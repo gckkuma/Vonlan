@@ -41,8 +41,19 @@ export default function ServicePage({ params }: { params: { sector: string } }) 
 
   const projects = getProjectsBySector(sector.slug).slice(0, 3);
 
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services` },
+      { '@type': 'ListItem', position: 3, name: sector.name, item: `${SITE.url}/services/${sector.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <PageHeader eyebrow="Services" title={sector.name} intro={sector.intro} image={HEADER_IMAGES[sector.slug]} />
 
       {/* Sector switcher */}

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { DM_Sans, Sora } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav';
@@ -48,36 +48,87 @@ export const metadata: Metadata = {
     description: META_DESCRIPTIONS.home,
     images: ['/images/hero-construction.jpg'],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  },
+  category: 'construction',
 };
 
-/** Organization structured data for richer search results. */
-const orgJsonLd = {
+export const viewport: Viewport = {
+  themeColor: '#221F1A',
+  colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+/**
+ * Structured data graph (Organization + WebSite) for rich results and
+ * answer-engine grounding. Address, contact, service area and capabilities
+ * are made explicit so search/AI can confidently describe the company.
+ */
+const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'GeneralContractor',
-  name: SITE.name,
-  alternateName: SITE.shortName,
-  url: SITE.url,
-  logo: `${SITE.url}/logo.png`,
-  image: `${SITE.url}/images/hero-construction.jpg`,
-  description: SITE.description,
-  telephone: CONTACT.phones[0],
-  faxNumber: CONTACT.fax,
-  email: CONTACT.email,
-  foundingDate: '2007',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'No 45B, Ambatale',
-    addressLocality: 'Mulleriyawa New Town',
-    addressCountry: 'LK',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: CONTACT.coordinates.lat,
-    longitude: CONTACT.coordinates.lng,
-  },
-  parentOrganization: { '@type': 'Organization', name: SITE.parent.name, url: SITE.parent.url },
-  sameAs: [SITE.parent.url],
+  '@graph': [
+    {
+      '@type': ['GeneralContractor', 'Organization'],
+      '@id': `${SITE.url}/#organization`,
+      name: SITE.name,
+      alternateName: SITE.shortName,
+      url: SITE.url,
+      logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png` },
+      image: `${SITE.url}/images/hero-construction.jpg`,
+      description: SITE.description,
+      slogan: 'Uplifting the comforts of the nation by enhancing its infrastructure.',
+      telephone: CONTACT.phones[0],
+      faxNumber: CONTACT.fax,
+      email: CONTACT.email,
+      foundingDate: '2007',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'No 45B, Ambatale',
+        addressLocality: 'Mulleriyawa New Town',
+        addressCountry: 'LK',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: CONTACT.coordinates.lat,
+        longitude: CONTACT.coordinates.lng,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: CONTACT.phones[0],
+        email: CONTACT.email,
+        contactType: 'sales',
+        areaServed: ['LK', 'MV'],
+        availableLanguage: ['en', 'si', 'ta'],
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'Sri Lanka' },
+        { '@type': 'Country', name: 'Maldives' },
+      ],
+      knowsAbout: [
+        'Water supply & sewerage construction',
+        'Highway & bridge construction',
+        'Power plant civil works',
+        'Building construction',
+        'Irrigation infrastructure',
+        'Airport & port infrastructure',
+      ],
+      award: 'National Award for Construction Performance 2015 — Civil Engineering',
+      parentOrganization: { '@type': 'Organization', name: SITE.parent.name, url: SITE.parent.url },
+      sameAs: [SITE.parent.url],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: SITE.url,
+      name: SITE.name,
+      publisher: { '@id': `${SITE.url}/#organization` },
+      inLanguage: 'en-LK',
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -92,7 +143,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body>
