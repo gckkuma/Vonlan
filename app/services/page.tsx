@@ -33,7 +33,7 @@ export default function ServicesIndexPage() {
         eyebrow="Capabilities"
         title="What we build"
         intro="Design-build capability backed by an in-house engineering team and decades of site experience — delivering infrastructure across six sectors in Sri Lanka and the Maldives."
-        image="/images/work/cargills-square.jpg"
+        image="/images/hero/sobhadanavi.jpg"
       />
 
       {/* Portfolio at a glance — engineering-draft graph */}
