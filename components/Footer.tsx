@@ -7,7 +7,7 @@ import { SECTORS } from '@/lib/data/sectors';
 
 const COMPANY = [
   { label: 'About', href: '/about' },
-  { label: 'Capabilities', href: '/services/water-supply' },
+  { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
   { label: 'Credentials', href: '/credentials' },
   { label: 'Careers', href: '/careers' },

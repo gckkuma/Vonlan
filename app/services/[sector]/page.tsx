@@ -6,6 +6,7 @@ import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import ProjectCard from '@/components/ProjectCard';
 import SectorIcon from '@/components/SectorIcon';
+import SectorMotif from '@/components/SectorMotif';
 import { SECTORS, getSector, type SectorSlug } from '@/lib/data/sectors';
 import { getProjectsBySector } from '@/lib/data/projects';
 import { SITE } from '@/lib/data/site';
@@ -82,23 +83,29 @@ export default function ServicePage({ params }: { params: { sector: string } }) 
           </div>
 
           <div className="lg:col-span-5">
-            <div className="rounded-3xl bg-brand-dark p-8 text-white">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/15 text-brand-green">
-                <SectorIcon icon={sector.icon} />
-              </span>
-              <h3 className="mt-5 text-xs font-semibold uppercase tracking-wider text-white/55">Key facts</h3>
-              <ul className="mt-4 space-y-4">
-                {sector.metrics.map((m) => (
-                  <li key={m} className="border-b border-white/10 pb-4 text-lg font-semibold leading-snug last:border-0">
-                    {m}
-                  </li>
-                ))}
-              </ul>
-              {sector.grade && (
-                <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-green/15 px-4 py-2 text-sm font-semibold text-brand-green">
-                  <BadgeCheck className="h-4 w-4" aria-hidden /> {sector.grade}
-                </p>
-              )}
+            <div className="relative isolate overflow-hidden rounded-3xl bg-brand-dark p-8 text-white">
+              <SectorMotif
+                icon={sector.icon}
+                className="pointer-events-none absolute inset-0 h-full w-full text-white/[0.08]"
+              />
+              <div className="relative">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/15 text-brand-green ring-1 ring-brand-green/25">
+                  <SectorIcon icon={sector.icon} />
+                </span>
+                <h3 className="mt-5 text-xs font-semibold uppercase tracking-wider text-white/55">Key facts</h3>
+                <ul className="mt-4 space-y-4">
+                  {sector.metrics.map((m) => (
+                    <li key={m} className="border-b border-white/10 pb-4 text-lg font-semibold leading-snug last:border-0">
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+                {sector.grade && (
+                  <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-green/15 px-4 py-2 text-sm font-semibold text-brand-green">
+                    <BadgeCheck className="h-4 w-4" aria-hidden /> {sector.grade}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>

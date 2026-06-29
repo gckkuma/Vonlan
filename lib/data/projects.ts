@@ -90,6 +90,17 @@ export function getRelatedProjects(slug: string, sector: SectorSlug, count = 3):
 /** Total listed contract value across the register (LKR). */
 export const PORTFOLIO_VALUE = PROJECTS.reduce((s, p) => s + (p.valueLKR ?? 0), 0);
 
+/** Per-sector totals (project count + listed value) for portfolio graphs. */
+export const SECTOR_TOTALS: Record<SectorSlug, { count: number; value: number }> = PROJECTS.reduce(
+  (acc, p) => {
+    const t = (acc[p.sector] ??= { count: 0, value: 0 });
+    t.count += 1;
+    t.value += p.valueLKR ?? 0;
+    return acc;
+  },
+  {} as Record<SectorSlug, { count: number; value: number }>,
+);
+
 /** Highest listed contract value within each sector — used for value-bar graphics. */
 export const SECTOR_MAX: Record<SectorSlug, number> = PROJECTS.reduce(
   (acc, p) => {

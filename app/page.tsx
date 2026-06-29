@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 import Hero from '@/components/Hero';
 import IntroSection from '@/components/IntroSection';
-import SectorCard from '@/components/SectorCard';
+import ServiceCard from '@/components/ServiceCard';
 import WorkCard from '@/components/WorkCard';
 import AwardsSection from '@/components/AwardsSection';
 import ClientLogoWall from '@/components/ClientLogoWall';
@@ -34,7 +34,7 @@ export default function HomePage() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SECTORS.map((sector, i) => (
               <Reveal key={sector.slug} delay={i * 0.05}>
-                <SectorCard sector={sector} />
+                <ServiceCard sector={sector} />
               </Reveal>
             ))}
           </div>

@@ -116,7 +116,7 @@ export const SECTORS: Sector[] = [
       'Aviation lounges & interiors',
       'Design-build through the Sanken design office',
     ],
-    metrics: ['23 projects', 'Up to Rs 804 M (Alila Maldives)', 'CIDA grade C1'],
+    metrics: ['24 projects', 'Up to Rs 804 M (Alila Maldives)', 'CIDA grade C1'],
     hasPhotos: true,
     metaTitle: 'Building Construction',
     metaDescription:

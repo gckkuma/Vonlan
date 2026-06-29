@@ -44,7 +44,7 @@ export const DIVISIONS = [
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services/water-supply' },
+  { label: 'Services', href: '/services' },
   { label: 'Clients', href: '/clients' },
   { label: 'Projects', href: '/projects' },
   { label: 'Commitments', href: '/commitments' },
