@@ -21,7 +21,8 @@ export default function CareersPage() {
         eyebrow="Careers"
         title={CAREERS.headline}
         intro={CAREERS.intro}
-        image="/images/work/sobhadanavi-power-1.jpg"
+        image="/images/hero/careers.jpg"
+        imagePosition="center 62%"
       />
 
       {/* Why Vonlan */}
