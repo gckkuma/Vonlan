@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
+import ClientLogoBackdrop from '@/components/ClientLogoBackdrop';
 import { findProject } from '@/lib/data/projects';
 import { SITE } from '@/lib/data/site';
 
@@ -54,7 +55,7 @@ export default function ClientsPage() {
         eyebrow="Clients & partners"
         title="Trusted by those who build the nation"
         intro="From national authorities to global hospitality, engineering and development organisations — Vonlan is the execution partner behind landmark infrastructure across Sri Lanka and the Maldives."
-        image="/images/work/araliya-lounge.jpg"
+        backdrop={<ClientLogoBackdrop />}
       />
 
       <section className="section">

@@ -10,6 +10,8 @@ interface PageHeaderProps {
   image?: string;
   /** CSS object-position for the background image (e.g. 'center 35%'). */
   imagePosition?: string;
+  /** Optional custom animated backdrop (e.g. a logo wall), used instead of a photo. */
+  backdrop?: ReactNode;
 }
 
 /** Dark hero band used at the top of inner pages. */
@@ -20,14 +22,22 @@ export default function PageHeader({
   children,
   image,
   imagePosition = 'center',
+  backdrop,
 }: PageHeaderProps) {
+  const hasBg = Boolean(image || backdrop);
   return (
     <section
       className={`relative isolate overflow-hidden bg-brand-dark text-white ${
-        image ? 'flex min-h-[420px] items-center sm:min-h-[500px]' : ''
+        hasBg ? 'flex min-h-[420px] items-center sm:min-h-[500px]' : ''
       }`}
     >
-      {image ? (
+      {backdrop ? (
+        <>
+          {backdrop}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/88 to-brand-dark/65" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" aria-hidden />
+        </>
+      ) : image ? (
         <>
           <Image
             src={image}

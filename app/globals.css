@@ -126,9 +126,11 @@
     to { transform: translateX(-50%); }
   }
   .animate-marquee { animation: marquee 45s linear infinite; }
+  .animate-marquee-slow { animation: marquee 65s linear infinite; }
+  .animate-marquee-rev { animation: marquee 55s linear infinite; animation-direction: reverse; }
   .marquee-row:hover .animate-marquee { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee { animation: none; flex-wrap: wrap; justify-content: center; }
+    .animate-marquee, .animate-marquee-slow, .animate-marquee-rev { animation: none; flex-wrap: wrap; justify-content: center; }
   }
   /* edge fade for marquee */
   .edge-fade {
