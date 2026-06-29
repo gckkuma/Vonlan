@@ -51,6 +51,7 @@ export default function CommitmentsPage() {
         title="Built on safety, people and responsibility"
         intro="Beyond delivery, Vonlan is committed to the safety of every site, the growth of every employee, the quality of every handover, and the communities we serve."
         image="/images/hero/commitments.jpg"
+        imagePosition="center 30%"
       />
 
       {/* Commitments grid */}
