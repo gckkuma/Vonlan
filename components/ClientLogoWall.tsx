@@ -27,6 +27,9 @@ const LOGOS: { slug: string; name: string }[] = [
   { slug: 'uga', name: 'Uga Escapes' },
   { slug: 'vogue', name: 'Vogue Jewellers' },
   { slug: 'catic', name: 'CATIC' },
+  { slug: 'cargills', name: 'Cargills (Ceylon) PLC' },
+  { slug: 'jica', name: 'JICA' },
+  { slug: 'airport-aviation', name: 'Airport & Aviation Services' },
 ];
 
 function LogoItem({ slug, name }: { slug: string; name: string }) {
@@ -61,8 +64,7 @@ export default function ClientLogoWall() {
       </div>
 
       <p className="container-x mt-10 text-center text-sm text-brand-muted">
-        …and many more, including the Ritz-Carlton Maldives, Cargills (Ceylon), JICA and Suez
-        International.
+        …and many more, including the Ritz-Carlton Maldives and Suez International.
       </p>
     </section>
   );

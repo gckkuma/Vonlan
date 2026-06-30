@@ -5,13 +5,13 @@ const LOGOS = [
   'nwsdb', 'ceb', 'rda', 'civil-aviation', 'sl-navy', 'megapolis', 'sri-lanka-cricket',
   'red-cross', 'alila', 'hilton', 'galadari', 'uga', 'toyota', 'vogue', 'adb',
   'vatech-wabag', 'vinci', 'hyundai', 'biwater', 'catic', 'ltl', 'ladies-college',
-  'sujatha', 'adhitya', 'nuga-rosmead', 'dic',
+  'sujatha', 'adhitya', 'nuga-rosmead', 'dic', 'cargills', 'jica', 'airport-aviation',
 ];
 
 const ROWS = [
-  { items: LOGOS.slice(0, 9), anim: 'animate-marquee' },
-  { items: LOGOS.slice(9, 18), anim: 'animate-marquee-rev' },
-  { items: LOGOS.slice(18), anim: 'animate-marquee-slow' },
+  { items: LOGOS.slice(0, 10), anim: 'animate-marquee' },
+  { items: LOGOS.slice(10, 20), anim: 'animate-marquee-rev' },
+  { items: LOGOS.slice(20), anim: 'animate-marquee-slow' },
 ];
 
 /** A drifting wall of client logos — used as a header backdrop behind the dark overlay. */

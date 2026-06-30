@@ -78,7 +78,9 @@ export default function ProjectsPage() {
             description="The full record of valued contracts — names, clients, values, years and status."
           />
           <div className="mt-10">
-            <ProjectRegisterTable />
+            <Suspense fallback={<div className="py-10 text-center text-brand-muted">Loading register…</div>}>
+              <ProjectRegisterTable />
+            </Suspense>
           </div>
         </div>
       </section>
