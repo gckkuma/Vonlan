@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Quote, ArrowRight } from 'lucide-react';
+import { Quote, ArrowRight, Building2 } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -49,12 +49,22 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
               <Image
-                src="/images/work/nwsdb-battaramulla.jpg"
-                alt="Vonlan infrastructure delivery"
+                src="/images/work/sobhadanavi-power-1.jpg"
+                alt="Vonlan-built Sobhadanavi 350 MW power station"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
+                className="kenburns object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep/80 via-brand-forestDeep/10 to-transparent" aria-hidden />
+              <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-brand-forest/95 px-5 py-4 text-white shadow-xl backdrop-blur-sm">
+                <Building2 className="h-8 w-8 shrink-0 text-brand-green" aria-hidden />
+                <div>
+                  <div className="text-sm font-bold leading-tight">A Sanken Group company</div>
+                  <div className="mt-0.5 text-xs uppercase tracking-wider text-white/60">
+                    Established 2007 · 18+ years
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
