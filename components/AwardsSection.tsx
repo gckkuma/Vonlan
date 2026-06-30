@@ -28,7 +28,7 @@ const PILLARS = [
 
 export default function AwardsSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-brand-dark py-20 text-white sm:py-28">
+    <section className="relative isolate overflow-hidden bg-brand-forest py-20 text-white sm:py-28">
       {/* depth glows */}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-brand-green/15 blur-[130px]" aria-hidden />
       <div className="pointer-events-none absolute -bottom-40 -left-40 h-[26rem] w-[26rem] rounded-full bg-brand-green/10 blur-[130px]" aria-hidden />

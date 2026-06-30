@@ -10,7 +10,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
   }, [error]);
 
   return (
-    <section className="bg-brand-dark text-white">
+    <section className="bg-brand-forest text-white">
       <div className="container-x flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
         <span className="text-sm font-semibold uppercase tracking-widest text-brand-green">Something went wrong</span>
         <h1 className="mt-4 text-3xl font-bold sm:text-4xl">We hit an unexpected error</h1>

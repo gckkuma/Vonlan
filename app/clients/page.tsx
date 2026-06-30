@@ -75,7 +75,7 @@ export default function ClientsPage() {
                     href={href}
                     className="group block overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
                   >
-                    <div className={`flex min-h-[120px] items-center justify-center p-8 ${c.dark ? 'bg-brand-dark' : 'bg-white'}`}>
+                    <div className={`flex min-h-[120px] items-center justify-center p-8 ${c.dark ? 'bg-brand-forest' : 'bg-white'}`}>
                       <span className="relative block h-12 w-full">
                         <Image src={`/images/clients/${c.slug}.png`} alt={c.name} fill sizes="200px" className="object-contain" />
                       </span>
@@ -98,7 +98,7 @@ export default function ClientsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-dark text-white">
+      <section className="bg-brand-forest text-white">
         <div className="container-x flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="max-w-xl text-2xl font-bold sm:text-3xl">Become our next valued client</h2>
           <Link href="/contact" className="btn-green">

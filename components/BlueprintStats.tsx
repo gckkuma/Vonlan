@@ -99,7 +99,7 @@ export default function BlueprintStats({
       {/* counters */}
       <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/12 bg-white/[0.06] lg:grid-cols-4">
         {counters.map((c, i) => (
-          <div key={i} className="bg-brand-dark/40 px-6 py-7">
+          <div key={i} className="bg-brand-forest/40 px-6 py-7">
             <div className="font-display text-4xl font-bold text-white sm:text-5xl">{c.node}</div>
             <div className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.15em] text-white/50">{c.label}</div>
           </div>

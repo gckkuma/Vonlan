@@ -34,12 +34,12 @@ export default function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-brand-dark transition-shadow duration-300 ${
+      className={`sticky top-0 z-50 bg-brand-forest transition-shadow duration-300 ${
         elevated ? 'shadow-lg shadow-black/30' : ''
       }`}
     >
       <nav className="container-x flex h-[68px] items-center justify-between gap-6 sm:h-[76px]">
-        <Logo variant="dark" height={32} />
+        <Logo variant="dark" height={40} />
 
         <ul className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (

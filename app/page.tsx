@@ -90,7 +90,7 @@ export default function HomePage() {
       <ClientLogoWall />
 
       {/* Contact CTA */}
-      <section className="bg-brand-dark text-white">
+      <section className="bg-brand-forest text-white">
         <div className="container-x grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading

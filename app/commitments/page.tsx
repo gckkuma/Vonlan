@@ -80,7 +80,7 @@ export default function CommitmentsPage() {
       </section>
 
       {/* CSR */}
-      <section className="section bg-brand-dark text-white">
+      <section className="section bg-brand-forest text-white">
         <div className="container-x">
           <SectionHeading
             dark

@@ -63,7 +63,7 @@ export default function Hero() {
   const s = SLIDES[i];
 
   return (
-    <section className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-brand-dark text-white lg:min-h-[760px]">
+    <section className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-brand-forest text-white lg:min-h-[760px]">
       {/* Slides */}
       <AnimatePresence>
         <motion.div
@@ -77,8 +77,8 @@ export default function Hero() {
           <Image src={s.image} alt={s.caption} fill priority sizes="100vw" className="object-cover object-center" />
         </motion.div>
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/75 to-brand-dark/35" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/40" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-forestDeep/95 via-brand-forestDeep/75 to-brand-forestDeep/35" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep via-transparent to-brand-forestDeep/40" aria-hidden />
 
       <div className="container-x relative w-full py-16 lg:py-20">
         <div className="max-w-2xl">

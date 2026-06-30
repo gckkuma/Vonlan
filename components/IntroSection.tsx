@@ -44,7 +44,7 @@ export default function IntroSection() {
               />
             </div>
           </div>
-          <div className="absolute -right-4 -top-6 hidden items-center gap-3 rounded-2xl bg-brand-dark px-5 py-4 text-white shadow-xl md:flex">
+          <div className="absolute -right-4 -top-6 hidden items-center gap-3 rounded-2xl bg-brand-forest px-5 py-4 text-white shadow-xl md:flex">
             <Building2 className="h-7 w-7 text-brand-green" aria-hidden />
             <div>
               <div className="text-2xl font-bold leading-none">18+ yrs</div>

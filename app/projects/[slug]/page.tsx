@@ -61,7 +61,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-brand-dark text-white">
+      <section className="relative isolate overflow-hidden bg-brand-forest text-white">
         {hero ? (
           <Image src={hero} alt={project.name} fill priority sizes="100vw" className="object-cover" />
         ) : (
@@ -69,7 +69,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
             <SectorIcon icon={sector.icon} className="h-40 w-40" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/75 to-brand-dark/45" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep via-brand-forestDeep/75 to-brand-forestDeep/45" aria-hidden />
         <div className="container-x relative flex min-h-[460px] flex-col justify-end py-12 lg:min-h-[540px]">
           <Link href="/projects" className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white">
             <ArrowLeft className="h-4 w-4" aria-hidden /> All projects
@@ -96,7 +96,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
       </section>
 
       {/* By the numbers */}
-      <section className="relative isolate overflow-hidden bg-brand-dark py-20 text-white sm:py-24">
+      <section className="relative isolate overflow-hidden bg-brand-forest py-20 text-white sm:py-24">
         <div className="bp-grid absolute inset-0 opacity-40" aria-hidden />
         <div className="pointer-events-none absolute -right-10 bottom-0 hidden h-[115%] w-auto text-white/[0.07] lg:block" aria-hidden>
           <CraneMotif className="h-full w-auto" />
@@ -165,7 +165,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
       )}
 
       {/* CTA */}
-      <section className="bg-brand-dark text-white">
+      <section className="bg-brand-forest text-white">
         <div className="container-x flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="max-w-xl text-2xl font-bold sm:text-3xl">Planning a similar project?</h2>
           <Link href="/contact" className="btn-green">

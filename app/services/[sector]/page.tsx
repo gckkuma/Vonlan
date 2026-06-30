@@ -94,7 +94,7 @@ export default function ServicePage({ params }: { params: { sector: string } }) 
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative isolate overflow-hidden rounded-3xl bg-brand-dark p-8 text-white">
+            <div className="relative isolate overflow-hidden rounded-3xl bg-brand-forest p-8 text-white">
               <SectorMotif
                 icon={sector.icon}
                 className="pointer-events-none absolute inset-0 h-full w-full text-white/[0.08]"
@@ -143,7 +143,7 @@ export default function ServicePage({ params }: { params: { sector: string } }) 
       )}
 
       {/* CTA */}
-      <section className="bg-brand-dark text-white">
+      <section className="bg-brand-forest text-white">
         <div className="container-x flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="max-w-xl text-2xl font-bold sm:text-3xl">
             Planning a {sector.shortName.toLowerCase()} project?

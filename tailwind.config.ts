@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Palette anchored on the two brand colours (#2A9341 / #221F1A), used as solid
- * trust blocks — dark nav/footer, green CTAs & badges — with warm neutrals.
+ * Palette anchored on the brand green, with forest surfaces for navigation,
+ * footer and section bands while retaining neutral dark text on light pages.
  */
 const config: Config = {
   content: [
@@ -18,8 +18,10 @@ const config: Config = {
           greenDark: '#1E6E30',
           greenLight: '#E8F5EC',
           dark: '#221F1A',
-          darkCard: '#2E2B25',
-          darkElevated: '#3D3830',
+          forestDeep: '#0C2612',
+          forest: '#12351A',
+          darkCard: '#1A4724',
+          darkElevated: '#245C30',
           offwhite: '#F7F6F3',
           stone: '#EAE8E3',
           muted: '#7A796F',

@@ -100,7 +100,7 @@ export default function CredentialsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-dark text-white">
+      <section className="bg-brand-forest text-white">
         <div className="container-x flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="max-w-xl text-2xl font-bold sm:text-3xl">Build with a certified, award-winning team</h2>
           <Link href="/contact" className="btn-green">

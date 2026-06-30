@@ -68,7 +68,7 @@ export default function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="bg-brand-dark">
+      <div className="bg-brand-forest">
         <div className="container-x flex flex-col gap-3 py-5 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved · Reg. No.{' '}

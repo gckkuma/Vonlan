@@ -37,7 +37,7 @@ export default function ServicesIndexPage() {
       />
 
       {/* Portfolio at a glance — engineering-draft graph */}
-      <section className="relative isolate overflow-hidden bg-brand-dark py-16 text-white sm:py-20">
+      <section className="relative isolate overflow-hidden bg-brand-forest py-16 text-white sm:py-20">
         <div className="bp-grid absolute inset-0 opacity-40" aria-hidden />
         <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-brand-green/15 blur-[120px]" aria-hidden />
         <div className="container-x relative">
@@ -72,7 +72,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-dark text-white">
+      <section className="bg-brand-forest text-white">
         <div className="container-x flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="max-w-xl text-2xl font-bold sm:text-3xl">Have a project in mind?</h2>
           <Link href="/contact" className="btn-green">

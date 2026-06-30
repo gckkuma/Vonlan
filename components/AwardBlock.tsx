@@ -15,7 +15,7 @@ interface AwardBlockProps {
 export default function AwardBlock({ title, body, meta, compact = false }: AwardBlockProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl bg-brand-dark text-white ${
+      className={`relative overflow-hidden rounded-3xl bg-brand-forest text-white ${
         compact ? 'p-7' : 'p-8 sm:p-12'
       }`}
     >

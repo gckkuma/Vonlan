@@ -27,15 +27,15 @@ export default function PageHeader({
   const hasBg = Boolean(image || backdrop);
   return (
     <section
-      className={`relative isolate overflow-hidden bg-brand-dark text-white ${
+      className={`relative isolate overflow-hidden bg-brand-forest text-white ${
         hasBg ? 'flex min-h-[420px] items-center sm:min-h-[500px]' : ''
       }`}
     >
       {backdrop ? (
         <>
           {backdrop}
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/88 to-brand-dark/65" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-forestDeep via-brand-forestDeep/88 to-brand-forestDeep/65" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep to-transparent" aria-hidden />
         </>
       ) : image ? (
         <>
@@ -48,8 +48,8 @@ export default function PageHeader({
             className="object-cover"
             style={{ objectPosition: imagePosition }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/85 to-brand-dark/55" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-forestDeep via-brand-forestDeep/85 to-brand-forestDeep/55" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep to-transparent" aria-hidden />
         </>
       ) : (
         <div

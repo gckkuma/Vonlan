@@ -107,7 +107,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="section bg-brand-dark text-white">
+      <section className="section bg-brand-forest text-white">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <SectionHeading dark eyebrow="Vision" title="Our purpose" />

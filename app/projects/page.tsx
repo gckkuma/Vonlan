@@ -37,7 +37,7 @@ export default function ProjectsPage() {
       />
 
       {/* Figures — the real numbers behind the portfolio */}
-      <section className="relative isolate overflow-hidden bg-brand-dark py-16 text-white sm:py-20">
+      <section className="relative isolate overflow-hidden bg-brand-forest py-16 text-white sm:py-20">
         <div className="bp-grid absolute inset-0 opacity-40" aria-hidden />
         <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-brand-green/15 blur-[120px]" aria-hidden />
         <div className="container-x relative">

@@ -14,7 +14,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={`/projects/${project.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-brand-dark">
+      <div className="relative aspect-[16/10] overflow-hidden bg-brand-forest">
         {img ? (
           <Image
             src={img}

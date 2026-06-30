@@ -14,7 +14,7 @@ export default function WorkCard({ work }: { work: Work }) {
       href={href}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-brand-dark">
+      <div className="relative aspect-[16/10] overflow-hidden bg-brand-forest">
         <Image
           src={workImage(work.images[0])}
           alt={work.name}
