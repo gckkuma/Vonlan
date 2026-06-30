@@ -50,7 +50,7 @@ export default function ProjectRegisterTable() {
             const sector = SECTOR_MAP[slug];
             return (
               <div key={slug}>
-                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-brand-dark pb-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-brand-green pb-3">
                   <h3 className="text-lg font-bold text-brand-dark">{sector.name}</h3>
                   <span className="font-mono text-xs uppercase tracking-wider text-brand-muted">
                     {rows.length} {rows.length === 1 ? 'project' : 'projects'} · {fmtBn(value)}
