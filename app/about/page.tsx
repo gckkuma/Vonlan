@@ -5,6 +5,7 @@ import { Quote, ArrowRight } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
+import ManagementTeam from '@/components/ManagementTeam';
 import { ABOUT, TIMELINE, VISION, MISSION } from '@/lib/data/about';
 import { LEADERS } from '@/lib/data/leadership';
 import { META_DESCRIPTIONS, SITE, CIDA_GRADES } from '@/lib/data/site';
@@ -103,6 +104,18 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Management team */}
+      <section className="section">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Management team"
+            title="The team behind delivery"
+            description="Day-to-day leadership across operations, finance, procurement, projects and engineering."
+          />
+          <ManagementTeam />
         </div>
       </section>
 
