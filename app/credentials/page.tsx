@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   openGraph: { title: `Credentials · ${SITE.shortName}`, description: META_DESCRIPTIONS.credentials, url: `${SITE.url}/credentials` },
 };
 
+const CERTIFICATES = [
+  { src: 'national-award-2015', label: 'National Award for Construction Performance 2015 — CIDA' },
+  { src: 'nbea-2014', label: 'National Business Excellence Award 2014 — Runner-Up' },
+  { src: 'iso-9001', label: 'ISO 9001:2015 — Quality Management' },
+  { src: 'iso-14001', label: 'ISO 14001:2004 — Environmental Management' },
+  { src: 'ohsas-18001', label: 'OHSAS 18001:2007 — Occupational Health & Safety' },
+];
+
 const ISO_CERTS = [
   { code: 'ISO 9001:2015', name: 'Quality Management System', scope: 'Construction & maintenance of civil engineering infrastructure — water, roads, power & buildings.', since: 'Certified since 2017', icon: BadgeCheck },
   { code: 'ISO 14001:2004', name: 'Environmental Management System', scope: 'All project and operational activities, with the 3R concept applied across every site.', since: 'Implemented 2013', icon: Leaf },
@@ -83,18 +91,38 @@ export default function CredentialsPage() {
         </div>
       </section>
 
-      {/* Official certificate graphic */}
-      <section className="bg-white pb-16 sm:pb-24">
+      {/* Certificates — original documents */}
+      <section className="section bg-white">
         <div className="container-x">
-          <div className="mx-auto max-w-5xl">
-            <Image
-              src="/images/awards-certifications.jpg"
-              alt="Vonlan awards & certifications overview"
-              width={1491}
-              height={1055}
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              className="h-auto w-full"
-            />
+          <SectionHeading
+            eyebrow="Certificates"
+            title="The official documents"
+            description="Our accreditations and awards, as issued. Click any certificate to view it full size."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {CERTIFICATES.map((c) => (
+              <Reveal key={c.src}>
+                <figure className="group overflow-hidden rounded-2xl border border-brand-stone bg-white">
+                  <a
+                    href={`/images/certificates/${c.src}.jpg`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block aspect-[3/4] bg-brand-offwhite"
+                  >
+                    <Image
+                      src={`/images/certificates/${c.src}.jpg`}
+                      alt={c.label}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain p-4 transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </a>
+                  <figcaption className="border-t border-brand-stone px-4 py-3 text-xs font-medium text-brand-muted">
+                    {c.label}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
