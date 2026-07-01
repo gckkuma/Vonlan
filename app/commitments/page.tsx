@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, GraduationCap, BadgeCheck, Leaf, HeartHandshake, Check } from 'lucide-react';
+import { ArrowRight, ShieldCheck, GraduationCap, BadgeCheck, Leaf, Check } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -88,17 +88,19 @@ export default function CommitmentsPage() {
             title="Serving society & the people"
             description={CSR.intro}
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {CSR.items.map((item) => (
-              <Reveal key={item.title}>
-                <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-7">
-                  <HeartHandshake className="h-7 w-7 text-brand-green" aria-hidden />
-                  <h3 className="mt-4 text-lg font-bold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">{item.body}</p>
-                </div>
-              </Reveal>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {CSR.focus.map((f) => (
+              <span
+                key={f.title}
+                className="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-sm font-medium text-white/80"
+              >
+                {f.title}
+              </span>
             ))}
           </div>
+          <Link href="/csr" className="btn-green mt-8">
+            Explore our CSR work <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
         </div>
       </section>
 
