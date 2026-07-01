@@ -41,15 +41,28 @@ export const DIVISIONS = [
   { division: 'Finance Planning & Monitoring', emailUser: 'finance', emailDomain: 'vonlan.lk' },
 ] as const;
 
-export const NAV_LINKS = [
+export interface NavLink {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}
+
+export const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  {
+    label: 'About',
+    href: '/about',
+    children: [
+      { label: 'About Us', href: '/about' },
+      { label: 'CSR', href: '/csr' },
+    ],
+  },
   { label: 'Services', href: '/services' },
   { label: 'Clients', href: '/clients' },
   { label: 'Projects', href: '/projects' },
   { label: 'Commitments', href: '/commitments' },
   { label: 'Careers', href: '/careers' },
-] as const;
+];
 
 /** Headline stats — verified to 2025 (founded 2007 → 18 years; 65+ across registers). */
 export interface Stat {

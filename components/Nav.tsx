@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { NAV_LINKS } from '@/lib/data/site';
 
@@ -42,19 +42,51 @@ export default function Nav() {
         <Logo variant="dark" height={40} />
 
         <ul className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  isActive(link.href) ? 'text-brand-green' : 'text-white/75 hover:text-white'
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.children ? (
+              <li key={link.href} className="group relative">
+                <Link
+                  href={link.href}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
+                  className={`inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive(link.href) ? 'text-brand-green' : 'text-white/75 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" aria-hidden />
+                </Link>
+                <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <ul className="min-w-[190px] rounded-xl border border-white/10 bg-brand-forest p-1.5 shadow-xl shadow-black/30">
+                    {link.children.map((c) => (
+                      <li key={c.href}>
+                        <Link
+                          href={c.href}
+                          aria-current={pathname === c.href ? 'page' : undefined}
+                          className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                            pathname === c.href ? 'text-brand-green' : 'text-white/75 hover:bg-white/5 hover:text-white'
+                          }`}
+                        >
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ) : (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive(link.href) ? 'text-brand-green' : 'text-white/75 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ),
+          )}
         </ul>
 
         <div className="flex items-center gap-2">
@@ -95,6 +127,25 @@ export default function Nav() {
                   >
                     {link.label}
                   </Link>
+                  {link.children && (
+                    <ul className="ml-3 border-l border-white/10 pl-3">
+                      {link.children
+                        .filter((c) => c.href !== link.href)
+                        .map((c) => (
+                          <li key={c.href}>
+                            <Link
+                              href={c.href}
+                              aria-current={pathname === c.href ? 'page' : undefined}
+                              className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
+                                pathname === c.href ? 'text-brand-green' : 'text-white/70'
+                              }`}
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
                 </li>
               ))}
               <li className="pt-2">

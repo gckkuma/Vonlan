@@ -27,23 +27,65 @@ export const AWARDS: Award[] = [
 export interface CsrItem {
   title: string;
   body: string;
+  meta?: string;
+}
+
+export interface CsrFocus {
+  /** lucide-react icon name handled in the CSR page. */
+  icon: 'HeartHandshake' | 'GraduationCap' | 'Leaf' | 'Landmark';
+  title: string;
+  body: string;
 }
 
 export const CSR = {
   intro:
-    'Vonlan believes in giving back to the communities in which we work. Since our founding, we have supported community development alongside our infrastructure projects.',
-  items: [
+    'For Vonlan, construction is a form of service. Alongside every project, we invest in the people, places and institutions around us — giving back to the communities our infrastructure is built to serve.',
+  philosophy: [
+    'The water networks, roads, bridges and buildings we deliver exist for one reason: to improve everyday life for communities across Sri Lanka. That sense of purpose shapes how we work — responsibility to people and place is built into our projects, not treated as an afterthought.',
+    'As a member of the Sanken Group, we carry that responsibility beyond our site boundaries. We support education and youth development, protect the environment we build in, and help preserve the cultural and spiritual landmarks that hold communities together.',
+  ],
+  focus: [
     {
-      title: 'Leadership development programme',
-      body: 'Vonlan supports youth leadership development in partnership with community organisations, developing the skills and confidence of the next generation of professionals.',
+      icon: 'HeartHandshake',
+      title: 'Community upliftment',
+      body: 'Supporting the villages and neighbourhoods around our project sites — from local employment and infrastructure to direct assistance for community needs.',
     },
     {
+      icon: 'GraduationCap',
+      title: 'Education & youth',
+      body: 'Investing in the next generation through school donations, skills development and youth leadership programmes that build confidence and capability.',
+    },
+    {
+      icon: 'Leaf',
+      title: 'Environment & responsibility',
+      body: 'Building responsibly — ISO 14001-aligned environmental management, careful stewardship of natural resources, and minimising our footprint on every site.',
+    },
+    {
+      icon: 'Landmark',
+      title: 'Culture & heritage',
+      body: 'Helping preserve the religious, cultural and historical landmarks that give our communities their identity and continuity.',
+    },
+  ] as CsrFocus[],
+  items: [
+    {
       title: 'Vasanagama Village Hermitage',
-      body: 'Vonlan donated a hermitage facility to the Vasanagama Village community, supporting the spiritual and cultural life of the village.',
+      body: 'Vonlan built and donated a hermitage (aranya) facility for the Vasanagama Village community, supporting the spiritual life and quiet reflection of the village and its monks.',
+      meta: 'Vasanagama Village',
+    },
+    {
+      title: 'Vasanagama Vidyalaya school donation',
+      body: 'We donated learning materials and school supplies to the students of Vasanagama Vidyalaya, helping young learners in the community get the resources they need to thrive.',
+      meta: 'Education',
     },
     {
       title: 'Mattumagala Ragama Sacred Heart Church cemetery',
-      body: 'Vonlan refurbished the Mattumagala Ragama Sacred Heart Church cemetery, helping preserve a site of historical and cultural significance for the community.',
+      body: 'Vonlan refurbished the cemetery at the Sacred Heart Church, Mattumagala, Ragama — helping preserve a site of historical, cultural and spiritual significance for the parish community.',
+      meta: 'Heritage',
+    },
+    {
+      title: 'Youth leadership development',
+      body: 'In partnership with community organisations, Vonlan supports leadership development programmes that grow the skills and confidence of young people entering the workforce.',
+      meta: 'Youth',
     },
   ] as CsrItem[],
 };
