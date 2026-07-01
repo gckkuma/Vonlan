@@ -5,7 +5,7 @@ import { ArrowRight, HeartHandshake, GraduationCap, Leaf, Landmark, Quote } from
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
-import HeroCardSlider from '@/components/HeroCardSlider';
+import CsrHeroBackdrop from '@/components/CsrHeroBackdrop';
 import { CSR } from '@/lib/data/credentials';
 import { SITE } from '@/lib/data/site';
 
@@ -47,9 +47,8 @@ export default function CsrPage() {
         eyebrow="About · CSR"
         title="Corporate social responsibility"
         intro={CSR.intro}
-      >
-        <HeroCardSlider items={GALLERY} />
-      </PageHeader>
+        backdrop={<CsrHeroBackdrop />}
+      />
 
       {/* Philosophy */}
       <section className="section">
