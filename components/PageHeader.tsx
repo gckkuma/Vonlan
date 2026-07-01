@@ -12,6 +12,8 @@ interface PageHeaderProps {
   imagePosition?: string;
   /** Optional custom animated backdrop (e.g. a logo wall), used instead of a photo. */
   backdrop?: ReactNode;
+  /** Lighten the overlay over a backdrop so the imagery shows through more. */
+  lightBackdrop?: boolean;
 }
 
 /** Dark hero band used at the top of inner pages. */
@@ -23,6 +25,7 @@ export default function PageHeader({
   image,
   imagePosition = 'center',
   backdrop,
+  lightBackdrop = false,
 }: PageHeaderProps) {
   const hasBg = Boolean(image || backdrop);
   return (
@@ -34,8 +37,20 @@ export default function PageHeader({
       {backdrop ? (
         <>
           {backdrop}
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-forestDeep via-brand-forestDeep/88 to-brand-forestDeep/65" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep to-transparent" aria-hidden />
+          <div
+            className={`absolute inset-0 bg-gradient-to-r ${
+              lightBackdrop
+                ? 'from-brand-forestDeep/95 via-brand-forestDeep/55 to-brand-forestDeep/25'
+                : 'from-brand-forestDeep via-brand-forestDeep/88 to-brand-forestDeep/65'
+            }`}
+            aria-hidden
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-t ${
+              lightBackdrop ? 'from-brand-forestDeep/70 to-transparent' : 'from-brand-forestDeep to-transparent'
+            }`}
+            aria-hidden
+          />
         </>
       ) : image ? (
         <>

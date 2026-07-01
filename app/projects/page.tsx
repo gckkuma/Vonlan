@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import PageHeader from '@/components/PageHeader';
+import HeroPhotoWall from '@/components/HeroPhotoWall';
 import ProjectsExplorer from '@/components/ProjectsExplorer';
 import BlueprintStats from '@/components/BlueprintStats';
 import ProjectRegisterTable from '@/components/ProjectRegisterTable';
@@ -18,6 +19,22 @@ export const metadata: Metadata = {
 
 const BAR_ORDER: SectorSlug[] = ['water-supply', 'buildings', 'highways-bridges', 'power-energy'];
 
+// A cross-sector mix of real project photos for the hero backdrop wall.
+const HERO_PHOTOS = [
+  'alila-aerial',
+  'sobhadanavi-power-1',
+  'premadasa-stadium-1',
+  'cargills-square-night',
+  'galadari-ballroom-1',
+  'live-kaduwela-bridge',
+  'live-300mw',
+  'araliya-lounge',
+  'live-panama-tower',
+  'ritz-carlton-villa',
+  'live-och-viaduct2',
+  'live-negombo-wtp',
+];
+
 export default function ProjectsPage() {
   const total = PROJECTS.length;
   const valueBn = (PORTFOLIO_VALUE / 1e9).toFixed(1);
@@ -33,7 +50,8 @@ export default function ProjectsPage() {
         eyebrow="Portfolio"
         title="Projects delivered across Sri Lanka & the Maldives"
         intro={`${total} infrastructure projects spanning water, buildings, roads & bridges, and power — over Rs ${valueBn} billion in contract value. Filter by sector or view our international work.`}
-        image="/images/work/cargills-square-night.jpg"
+        backdrop={<HeroPhotoWall dir="/images/work" photos={HERO_PHOTOS} />}
+        lightBackdrop
       />
 
       {/* Figures — the real numbers behind the portfolio */}
