@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BadgeCheck, Leaf, ShieldCheck } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import AwardBlock from '@/components/AwardBlock';
+import CertificateGallery from '@/components/CertificateGallery';
 import Reveal from '@/components/Reveal';
 import { AWARDS } from '@/lib/data/credentials';
 import { CIDA_GRADES, META_DESCRIPTIONS, SITE } from '@/lib/data/site';
@@ -45,8 +45,8 @@ export default function CredentialsPage() {
         eyebrow="Credentials"
         title="Certified, awarded and accredited"
         intro="CIDA C1 graded, ISO 9001 / 14001 and OHSAS 18001 certified, and recognised at national level for construction performance."
-        image="/images/work/premadasa-stadium-1.jpg"
-        imagePosition="center 45%"
+        image="/images/hero/sobhadanavi.jpg"
+        imagePosition="center 55%"
       />
 
       {/* Credentials at a glance */}
@@ -132,31 +132,7 @@ export default function CredentialsPage() {
             title="The official documents"
             description="Our accreditations and awards, as issued. Click any certificate to view it full size."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {CERTIFICATES.map((c) => (
-              <Reveal key={c.src}>
-                <figure className="group overflow-hidden rounded-2xl border border-brand-stone bg-white">
-                  <a
-                    href={`/images/certificates/${c.src}.jpg`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative block aspect-[3/4] bg-brand-offwhite"
-                  >
-                    <Image
-                      src={`/images/certificates/${c.src}.jpg`}
-                      alt={c.label}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain p-4 transition-transform duration-300 group-hover:scale-[1.02]"
-                    />
-                  </a>
-                  <figcaption className="border-t border-brand-stone px-4 py-3 text-xs font-medium text-brand-muted">
-                    {c.label}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+          <CertificateGallery items={CERTIFICATES} />
         </div>
       </section>
 
