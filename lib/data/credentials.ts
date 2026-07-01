@@ -9,9 +9,20 @@ export interface Award {
   body: string;
   meta?: string;
   featured?: boolean;
+  source?: { label: string; href: string };
 }
 
 export const AWARDS: Award[] = [
+  {
+    title: 'National Construction Excellence Award — Excellence Award, Rs 150–450 M category',
+    body: 'Presented by the Construction Industry Development Authority (CIDA) at the National Construction Excellence Awards, for the construction of the Aditya Ayurveda Hospital building in Anuradhapura for Gunawardena Ayurveda Holdings (Pvt) Ltd — recognising quality, timely delivery and technical execution.',
+    meta: 'Rs 150–450 M category · CIDA',
+    featured: true,
+    source: {
+      label: 'Read the coverage — Daily Mirror',
+      href: 'https://www.dailymirror.lk/business/Vonlan-Constructions-honoured-with-Excellence-Award/215-266336',
+    },
+  },
   {
     title: 'National Awards for Construction Performance 2015 — Civil Engineering Category',
     body: 'Presented by the Construction Industry Development Authority of Sri Lanka (CIDA) in recognition of design, construction and completion (Turnkey) of the Ampara Water Supply Project. Vonlan was recognised at national level for project scale, quality of delivery and technical execution.',

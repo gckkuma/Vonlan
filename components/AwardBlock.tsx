@@ -1,4 +1,4 @@
-import { Trophy } from 'lucide-react';
+import { Trophy, ArrowUpRight } from 'lucide-react';
 
 interface AwardBlockProps {
   title: string;
@@ -6,13 +6,14 @@ interface AwardBlockProps {
   meta?: string;
   /** Compact variant for the credentials list (the homepage uses the full hero). */
   compact?: boolean;
+  source?: { label: string; href: string };
 }
 
 /**
  * Dark award feature card with a trophy motif — used for the National Award
  * 2015 callout on the homepage and the awards on the credentials page.
  */
-export default function AwardBlock({ title, body, meta, compact = false }: AwardBlockProps) {
+export default function AwardBlock({ title, body, meta, compact = false, source }: AwardBlockProps) {
   return (
     <div
       className={`relative overflow-hidden rounded-3xl bg-brand-forest text-white ${
@@ -32,11 +33,24 @@ export default function AwardBlock({ title, body, meta, compact = false }: Award
           {title}
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">{body}</p>
-        {meta && (
-          <p className="mt-6 inline-flex rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-brand-green">
-            {meta}
-          </p>
-        )}
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          {meta && (
+            <p className="inline-flex rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-brand-green">
+              {meta}
+            </p>
+          )}
+          {source && (
+            <a
+              href={source.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-medium text-white/70 transition-colors hover:text-white"
+            >
+              {source.label}
+              <ArrowUpRight className="h-4 w-4" aria-hidden />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

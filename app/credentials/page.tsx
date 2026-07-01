@@ -76,7 +76,7 @@ export default function CredentialsPage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {AWARDS.map((a) => (
               <Reveal key={a.title}>
-                <AwardBlock title={a.title} body={a.body} meta={a.meta} compact />
+                <AwardBlock title={a.title} body={a.body} meta={a.meta} source={a.source} compact />
               </Reveal>
             ))}
           </div>
