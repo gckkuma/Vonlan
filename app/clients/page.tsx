@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import ClientLogoBackdrop from '@/components/ClientLogoBackdrop';
@@ -75,16 +75,10 @@ export default function ClientsPage() {
                     href={href}
                     className="group block overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
                   >
-                    <div className={`flex min-h-[120px] items-center justify-center p-8 ${c.dark ? 'bg-brand-forest' : 'bg-white'}`}>
+                    <div className={`flex min-h-[140px] items-center justify-center p-8 ${c.dark ? 'bg-brand-forest' : 'bg-white'}`}>
                       <span className="relative block h-12 w-full">
                         <Image src={`/images/clients/${c.slug}.png`} alt={c.name} fill sizes="200px" className="object-contain" />
                       </span>
-                    </div>
-                    <div className="flex items-center justify-between gap-2 border-t border-brand-stone px-4 py-3">
-                      <span className="truncate text-xs font-medium text-brand-muted">
-                        {c.name}
-                      </span>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-brand-stone transition-colors group-hover:text-brand-green" aria-hidden />
                     </div>
                   </Link>
                 </li>
