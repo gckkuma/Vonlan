@@ -82,7 +82,7 @@ export default function ClientsPage() {
                     </div>
                     <div className="flex items-center justify-between gap-2 border-t border-brand-stone px-4 py-3">
                       <span className="truncate text-xs font-medium text-brand-muted">
-                        {c.caption ?? c.name}
+                        {c.name}
                       </span>
                       <ArrowUpRight className="h-4 w-4 shrink-0 text-brand-stone transition-colors group-hover:text-brand-green" aria-hidden />
                     </div>
