@@ -47,6 +47,7 @@ export default function ContactForm({ variant = 'light' }: { variant?: 'light' |
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const message = watch('message') ?? '';
+  const dark = variant === 'dark';
 
   const onSubmit = async (_data: FormValues) => {
     // Obtain a reCAPTCHA v3 token where configured (placeholder-safe).
@@ -85,16 +86,16 @@ export default function ContactForm({ variant = 'light' }: { variant?: 'light' |
       }`}
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Full name" htmlFor="c-name" required error={errors.name?.message}>
+        <Field label="Full name" htmlFor="c-name" required error={errors.name?.message} dark={dark}>
           <input id="c-name" className={inputClass} placeholder="Your name" {...register('name')} />
         </Field>
-        <Field label="Email address" htmlFor="c-email" required error={errors.email?.message}>
+        <Field label="Email address" htmlFor="c-email" required error={errors.email?.message} dark={dark}>
           <input id="c-email" type="email" className={inputClass} placeholder="you@company.com" {...register('email')} />
         </Field>
-        <Field label="Phone number" htmlFor="c-phone" error={errors.phone?.message}>
+        <Field label="Phone number" htmlFor="c-phone" error={errors.phone?.message} dark={dark}>
           <input id="c-phone" className={inputClass} placeholder="+94 ..." {...register('phone')} />
         </Field>
-        <Field label="Project type" htmlFor="c-type" required error={errors.projectType?.message}>
+        <Field label="Project type" htmlFor="c-type" required error={errors.projectType?.message} dark={dark}>
           <select id="c-type" className={inputClass} defaultValue="" {...register('projectType')}>
             <option value="" disabled>
               Select a project type
@@ -115,6 +116,7 @@ export default function ContactForm({ variant = 'light' }: { variant?: 'light' |
           required
           error={errors.message?.message}
           hint={`${wordCount(message)}/500 words`}
+          dark={dark}
         >
           <textarea
             id="c-message"

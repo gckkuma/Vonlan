@@ -7,6 +7,7 @@ export function Field({
   required,
   error,
   hint,
+  dark,
   children,
 }: {
   label: string;
@@ -14,18 +15,27 @@ export function Field({
   required?: boolean;
   error?: string;
   hint?: string;
+  /** Use light label text on dark form surfaces (e.g. the homepage contact form). */
+  dark?: boolean;
   children: ReactNode;
 }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-brand-dark">
+      <label
+        htmlFor={htmlFor}
+        className={`mb-1.5 block text-sm font-medium ${dark ? 'text-white' : 'text-brand-dark'}`}
+      >
         {label}
         {required && <span className="text-brand-green"> *</span>}
-        {!required && <span className="ml-1 text-xs font-normal text-brand-muted">(optional)</span>}
+        {!required && (
+          <span className={`ml-1 text-xs font-normal ${dark ? 'text-white/50' : 'text-brand-muted'}`}>
+            (optional)
+          </span>
+        )}
       </label>
       {children}
-      {hint && !error && <p className="mt-1 text-xs text-brand-muted">{hint}</p>}
-      {error && <p className="mt-1 text-xs font-medium text-red-600">{error}</p>}
+      {hint && !error && <p className={`mt-1 text-xs ${dark ? 'text-white/50' : 'text-brand-muted'}`}>{hint}</p>}
+      {error && <p className={`mt-1 text-xs font-medium ${dark ? 'text-red-300' : 'text-red-600'}`}>{error}</p>}
     </div>
   );
 }

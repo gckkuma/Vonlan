@@ -28,9 +28,9 @@ export default function Footer() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-offwhite via-brand-offwhite/90 to-brand-offwhite/30" aria-hidden />
 
-        <div className="container-x relative grid gap-12 pb-44 pt-16 md:grid-cols-2 lg:grid-cols-4">
+        <div className="container-x relative grid grid-cols-2 gap-x-8 gap-y-12 pb-44 pt-16 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand — logo + 3 lines */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <Logo variant="light" height={38} />
             <p className="mt-5 text-sm font-semibold text-brand-dark">{SITE.name}</p>
             <p className="mt-1 max-w-xs text-sm text-brand-muted">{CONTACT.address}</p>
@@ -41,13 +41,13 @@ export default function Footer() {
             </p>
           </div>
 
-          <FooterCol title="Company" items={COMPANY} className="md:justify-self-center" />
+          <FooterCol title="Company" items={COMPANY} />
           <FooterCol
             title="Capabilities"
             items={SECTORS.map((s) => ({ label: s.name, href: `/services/${s.slug}` }))}
           />
 
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-dark">Accreditation</h3>
             <ul className="mt-5 space-y-2 text-sm">
               {CIDA_GRADES.map((c) => (
