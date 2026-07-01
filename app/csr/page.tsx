@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, HeartHandshake, GraduationCap, Leaf, Landmark, Quote } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
@@ -6,6 +7,15 @@ import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 import { CSR } from '@/lib/data/credentials';
 import { SITE } from '@/lib/data/site';
+
+const GALLERY = [
+  { src: 'school-donation', caption: 'Donating learning materials to students of Vasanagama Vidyalaya' },
+  { src: 'hermitage-opening', caption: 'Opening of the hermitage at Vasanagama Village' },
+  { src: 'school-students', caption: 'Handing over supplies to young learners' },
+  { src: 'hermitage-dana', caption: 'Alms offering at the Vasanagama hermitage' },
+  { src: 'school-ceremony', caption: 'School donation ceremony, Vasanagama Vidyalaya' },
+  { src: 'hermitage-procession', caption: 'Blessings at the Vasanagama hermitage' },
+];
 
 export const metadata: Metadata = {
   title: 'Corporate Social Responsibility',
@@ -112,6 +122,35 @@ export default function CsrPage() {
                   <h3 className="mt-2 text-lg font-bold">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/65">{item.body}</p>
                 </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="section">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="In pictures"
+            title="Moments from the community"
+            description="From the opening of the Vasanagama hermitage to donations for local schoolchildren."
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {GALLERY.map((g) => (
+              <Reveal key={g.src}>
+                <figure className="group overflow-hidden rounded-2xl border border-brand-stone bg-white">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-brand-stone">
+                    <Image
+                      src={`/images/csr/${g.src}.jpg`}
+                      alt={g.caption}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <figcaption className="px-4 py-3 text-xs leading-relaxed text-brand-muted">{g.caption}</figcaption>
+                </figure>
               </Reveal>
             ))}
           </div>
