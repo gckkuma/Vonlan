@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, BadgeCheck, Leaf, ShieldCheck } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
-import AwardBlock from '@/components/AwardBlock';
+import AwardsSlider from '@/components/AwardsSlider';
 import CertificateGallery from '@/components/CertificateGallery';
 import Reveal from '@/components/Reveal';
 import { AWARDS } from '@/lib/data/credentials';
@@ -103,24 +103,7 @@ export default function CredentialsPage() {
       <section className="section">
         <div className="container-x">
           <SectionHeading eyebrow="Awards" title="Recognised at national level" />
-          {(() => {
-            const featured = AWARDS.find((a) => a.featured) ?? AWARDS[0];
-            const rest = AWARDS.filter((a) => a !== featured);
-            return (
-              <div className="mt-10 space-y-6">
-                <Reveal>
-                  <AwardBlock title={featured.title} body={featured.body} meta={featured.meta} source={featured.source} />
-                </Reveal>
-                <div className="grid gap-6 lg:grid-cols-2">
-                  {rest.map((a) => (
-                    <Reveal key={a.title}>
-                      <AwardBlock title={a.title} body={a.body} meta={a.meta} source={a.source} compact />
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-            );
-          })()}
+          <AwardsSlider awards={AWARDS} />
         </div>
       </section>
 

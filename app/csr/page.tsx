@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, HeartHandshake, GraduationCap, Leaf, Landmark, Quote } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
+import PhotoSlider from '@/components/PhotoSlider';
 import { CSR } from '@/lib/data/credentials';
 import { SITE } from '@/lib/data/site';
 
@@ -46,6 +46,8 @@ export default function CsrPage() {
         eyebrow="About · CSR"
         title="Corporate social responsibility"
         intro={CSR.intro}
+        image="/images/csr/hermitage-opening.jpg"
+        imagePosition="center 45%"
       />
 
       {/* Philosophy */}
@@ -136,24 +138,7 @@ export default function CsrPage() {
             title="Moments from the community"
             description="From the opening of the Vasanagama hermitage to donations for local schoolchildren."
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {GALLERY.map((g) => (
-              <Reveal key={g.src}>
-                <figure className="group overflow-hidden rounded-2xl border border-brand-stone bg-white">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-brand-stone">
-                    <Image
-                      src={`/images/csr/${g.src}.jpg`}
-                      alt={g.caption}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <figcaption className="px-4 py-3 text-xs leading-relaxed text-brand-muted">{g.caption}</figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+          <PhotoSlider items={GALLERY} />
         </div>
       </section>
 
