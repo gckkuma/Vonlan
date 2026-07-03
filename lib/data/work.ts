@@ -99,6 +99,22 @@ export const WORK: Work[] = [
     images: ['alila-villa-dusk'],
     featured: true,
   },
+  {
+    slug: 'ritz-carlton-maldives',
+    match: 'ritz',
+    name: 'The Ritz-Carlton Maldives, Fari Island',
+    client: 'CPRC Maldives (Pvt) Ltd',
+    sector: 'buildings',
+    value: 'Rs 43.2 M',
+    year: '2021',
+    status: 'Completed',
+    location: 'Fari Island, Maldives',
+    overseas: true,
+    blurb:
+      'Beach pool villas, water villas and back-of-house buildings for a flagship Ritz-Carlton resort — opulence and functionality in every detail.',
+    images: ['ritz-carlton-villa'],
+    featured: true,
+  },
 ];
 
 export const getFeaturedWork = () => WORK.filter((w) => w.featured);
