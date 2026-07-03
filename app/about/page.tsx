@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Quote, ArrowRight, Building2 } from 'lucide-react';
+import { Quote, ArrowRight, Building2, Check } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -131,21 +131,36 @@ export default function AboutPage() {
 
       {/* Our strength */}
       <section className="section bg-white">
-        <div className="container-x">
-          <SectionHeading
-            align="center"
-            eyebrow="Our strength"
-            title="A complete construction ecosystem"
-            description="From design and piling to ready-mix concrete, structural steel, MEP and overseas construction, Vonlan draws on a full network of specialist companies — giving every project deep, end-to-end capability and resources at scale."
-            className="mx-auto"
-          />
-          <Reveal className="mx-auto mt-10 max-w-3xl">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHeading eyebrow="Our strength" title="A complete construction ecosystem" />
+            <p className="mt-6 text-lg leading-relaxed text-brand-muted">
+              Vonlan draws on a full network of specialist companies — giving every project deep,
+              end-to-end capability and resources at scale, from first design to final handover.
+            </p>
+            <ul className="mt-8 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
+              {[
+                'Design & planning',
+                'Piling & foundations',
+                'Ready-mix concrete',
+                'Structural steel & aluminium',
+                'MEP engineering',
+                'Overseas construction',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-brand-dark">
+                  <Check className="h-4 w-4 shrink-0 text-brand-green" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Reveal>
             <Image
               src="/images/our-strength.jpg"
               alt="The network of specialist construction companies behind Vonlan"
               width={1254}
               height={1254}
-              sizes="(max-width: 768px) 100vw, 768px"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="h-auto w-full rounded-3xl"
             />
           </Reveal>
