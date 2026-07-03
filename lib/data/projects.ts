@@ -64,6 +64,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /9-700-ft-2-floor-area-building-at-matara/, files: ['live-toyota-matara'] },
   { test: /ritz/, files: ['ritz-carlton-villa'] },
   { test: /alila/, files: ['alila-villa-dusk', 'alila-aerial'] },
+  { test: /indoor.?net/, files: ['premadasa-indoor-net'] },
   { test: /premadasa/, files: ['premadasa-stadium'] },
   { test: /katana|distribution cent/, files: ['cargills-katana'] },
   { test: /bandarawela|empire/, files: ['cargills-square', 'cargills-square-night'] },
@@ -155,6 +156,7 @@ function galleryKey(p: Project): string | null {
   const n = p.name.toLowerCase();
   const c = p.client.toLowerCase();
   if (/alila/.test(n)) return 'alila';
+  if (/indoor.?net/.test(n)) return 'premadasa-indoor-net';
   if (/premadasa/.test(n)) return 'premadasa';
   if (/galadari/.test(n)) return 'galadari';
   if (/mabel simon|ladies/.test(n)) return 'ladies-college';

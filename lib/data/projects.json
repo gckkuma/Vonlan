@@ -960,5 +960,18 @@
   "overseas": false,
   "capacity": "",
   "description": ""
+ },
+ {
+  "slug": "proposed-indoor-net-project-at-r-premadasa-international-cricket-stadium",
+  "name": "Proposed Indoor Net Project at R. Premadasa International Cricket Stadium",
+  "client": "Sri Lanka Cricket, Colombo 07",
+  "valueLKR": 314000000,
+  "value": "Rs 314 M",
+  "year": "2025",
+  "status": "Completed",
+  "sector": "buildings",
+  "overseas": false,
+  "capacity": "",
+  "description": ""
  }
 ]
