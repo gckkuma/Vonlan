@@ -173,6 +173,7 @@ function galleryKey(p: Project): string | null {
   if (/distribution cent|katana/.test(n)) return 'cargills-katana';
   if (/bandarawela|cargills square/.test(n)) return 'cargills-square';
   if (/araliya/.test(n)) return 'araliya-lounge';
+  if (/lotus/.test(n)) return 'lotus-lounge';
   if (/sobhadanavi/.test(n)) return 'sobhadanavi';
   if (/ayurv/.test(n)) return 'ayurveda';
   if (/red cross|dharmapala/.test(n)) return 'red-cross';
