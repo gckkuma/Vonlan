@@ -32,11 +32,17 @@ const LOGOS: { slug: string; name: string }[] = [
   { slug: 'airport-aviation', name: 'Airport & Aviation Services' },
 ];
 
+const ROWS = [
+  { items: LOGOS.slice(0, 8), anim: 'animate-marquee' },
+  { items: LOGOS.slice(8, 16), anim: 'animate-marquee-rev' },
+  { items: LOGOS.slice(16), anim: 'animate-marquee-slow' },
+];
+
 function LogoItem({ slug, name }: { slug: string; name: string }) {
   return (
-    <li className="flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-brand-stone bg-white px-6">
-      <span className="relative block h-10 w-full">
-        <Image src={`/images/clients/${slug}.png`} alt={name} fill sizes="160px" className="object-contain" />
+    <li className="flex h-24 w-56 shrink-0 items-center justify-center rounded-xl border border-brand-stone bg-white px-6">
+      <span className="relative block h-14 w-full">
+        <Image src={`/images/clients/${slug}.png`} alt={name} fill sizes="200px" className="object-contain" />
       </span>
     </li>
   );
@@ -55,12 +61,16 @@ export default function ClientLogoWall() {
         />
       </div>
 
-      <div className="marquee-row edge-fade mt-12 overflow-hidden">
-        <ul className="animate-marquee flex w-max gap-4">
-          {[...LOGOS, ...LOGOS].map((logo, idx) => (
-            <LogoItem key={`${logo.slug}-${idx}`} {...logo} />
-          ))}
-        </ul>
+      <div className="mt-12 space-y-4">
+        {ROWS.map((row, r) => (
+          <div key={r} className="marquee-row edge-fade overflow-hidden">
+            <ul className={`flex w-max gap-4 ${row.anim}`}>
+              {[...row.items, ...row.items].map((logo, idx) => (
+                <LogoItem key={`${logo.slug}-${idx}`} {...logo} />
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
 
       <p className="container-x mt-10 text-center text-sm text-brand-muted">

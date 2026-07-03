@@ -12,6 +12,11 @@
   h1, h2, h3, h4 {
     @apply font-display tracking-tight;
   }
+  /* Justify body copy site-wide (explicit text-* utility classes still override). */
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
   ::selection {
     @apply bg-brand-green/20 text-brand-dark;
   }
