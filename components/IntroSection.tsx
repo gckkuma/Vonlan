@@ -22,27 +22,16 @@ export default function IntroSection() {
           </Link>
         </div>
 
-        {/* Layered imagery */}
+        {/* Imagery */}
         <div className="relative">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+          <div className="relative aspect-square overflow-hidden rounded-3xl">
             <Image
-              src="/images/work/cargills-square.jpg"
-              alt="Vonlan-built Cargills Square, Bandarawela"
+              src="/images/home-intro.jpg"
+              alt="The infrastructure Vonlan builds across Sri Lanka — highways, bridges, ports, power and water"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
-          </div>
-          <div className="absolute -bottom-8 -left-6 hidden w-44 overflow-hidden rounded-2xl border-4 border-brand-offwhite shadow-xl sm:block lg:w-56">
-            <div className="relative aspect-[4/3]">
-              <Image
-                src="/images/work/galadari-ballroom-1.jpg"
-                alt="Galadari Hotel ballroom by Vonlan"
-                fill
-                sizes="224px"
-                className="object-cover"
-              />
-            </div>
           </div>
           <div className="absolute -right-4 -top-6 hidden items-center gap-3 rounded-2xl bg-brand-forest px-5 py-4 text-white shadow-xl md:flex">
             <Building2 className="h-7 w-7 text-brand-green" aria-hidden />
