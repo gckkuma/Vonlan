@@ -129,6 +129,29 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Our strength */}
+      <section className="section bg-white">
+        <div className="container-x">
+          <SectionHeading
+            align="center"
+            eyebrow="Our strength"
+            title="A complete construction ecosystem"
+            description="From design and piling to ready-mix concrete, structural steel, MEP and overseas construction, Vonlan draws on a full network of specialist companies — giving every project deep, end-to-end capability and resources at scale."
+            className="mx-auto"
+          />
+          <Reveal className="mx-auto mt-10 max-w-3xl">
+            <Image
+              src="/images/our-strength.jpg"
+              alt="The network of specialist construction companies behind Vonlan"
+              width={1254}
+              height={1254}
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="h-auto w-full rounded-3xl"
+            />
+          </Reveal>
+        </div>
+      </section>
+
       {/* Vision & Mission */}
       <section className="section bg-brand-forest text-white">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
