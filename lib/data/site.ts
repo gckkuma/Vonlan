@@ -11,7 +11,7 @@ export const SITE = {
   founded: 2007,
   positioning: 'Uplifting the comforts of the nation by enhancing its infrastructure.',
   description:
-    "Sri Lanka's infrastructure construction studio — water, highways & bridges, power, buildings and aviation. CIDA C1. A Sanken Group company. 65+ projects since 2007.",
+    "Sri Lanka's infrastructure construction studio — water, highways & bridges, power, buildings and aviation. CIDA C1. 65+ projects since 2007.",
   parent: {
     name: 'Sanken Construction (Pvt) Ltd',
     url: 'https://www.sankenconstruction.com',
@@ -136,10 +136,10 @@ export const CLIENTS = [
 export type MetaPage = 'home' | 'about' | 'projects' | 'credentials' | 'careers' | 'contact';
 
 export const META_DESCRIPTIONS: Record<MetaPage, string> = {
-  home: "Vonlan Constructions — Sri Lanka's infrastructure studio. Water, highways, power, buildings & aviation. CIDA C1. A Sanken Group company. 65+ projects since 2007.",
-  about: 'Vonlan Constructions — founded 2007, a Sanken Group company. CIDA C1 graded, executing landmark infrastructure across Sri Lanka and the Maldives.',
+  home: "Vonlan Constructions — Sri Lanka's infrastructure studio. Water, highways, power, buildings & aviation. CIDA C1. 65+ projects since 2007.",
+  about: 'Vonlan Constructions — founded 2007. CIDA C1 graded, executing landmark infrastructure across Sri Lanka and the Maldives.',
   projects: "Vonlan's portfolio — 65+ infrastructure projects across water, highways, power, buildings and aviation, in Sri Lanka and the Maldives. Filter by sector and status.",
-  credentials: 'Vonlan credentials — CIDA C1 (Water & Buildings), C3 (Roads & Bridges), National Award for Construction Performance 2015, and a Sanken Group pedigree.',
+  credentials: 'Vonlan credentials — CIDA C1 (Water & Buildings), C3 (Roads & Bridges), and the National Award for Construction Performance 2015.',
   careers: 'Build your career at Vonlan Constructions — engineers, QS, project managers and site teams delivering major infrastructure across Sri Lanka.',
   contact: 'Contact Vonlan Constructions — No 45B, Ambatale, Mulleriyawa New Town. +94 (011) 24 14 142 · vonlan@vonlan.lk.',
 };

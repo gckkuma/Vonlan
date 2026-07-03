@@ -35,7 +35,7 @@ export const WORK: Work[] = [
     location: 'Raa Atoll, Maldives',
     overseas: true,
     blurb:
-      'A two-year island build of beach and overwater villas — our highest-value building contract, executed for Sanken Overseas to exacting luxury-hospitality standards.',
+      'A two-year island build of beach and overwater villas — our highest-value building contract, executed to exacting luxury-hospitality standards.',
     images: ['alila-villa-dusk'],
     featured: true,
   },

@@ -6,10 +6,10 @@
 export const CAREERS = {
   headline: 'Build your career on solid ground',
   intro:
-    "At Vonlan, you will work on some of Sri Lanka's most significant infrastructure projects — water supply systems that communities depend on, highways that connect the nation, and buildings that serve thousands. We are a growing company with the backing of the Sanken Group, and we are always looking for talented people who share our passion for excellence.",
+    "At Vonlan, you will work on some of Sri Lanka's most significant infrastructure projects — water supply systems that communities depend on, highways that connect the nation, and buildings that serve thousands. We are a growing company, and we are always looking for talented people who share our passion for excellence.",
   why: [
     'Work on large-scale, nationally significant projects across 6 sectors',
-    "Part of the Sanken Group — one of Sri Lanka's leading construction organisations",
+    "One of Sri Lanka's growing construction organisations",
     'ISO-certified quality and safety systems on every project',
     'Training and career development opportunities',
     'A team that values precision, integrity, and doing the job right',

@@ -25,7 +25,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title={ABOUT.headline}
-        intro="A company of the Sanken Group, executing landmark infrastructure across Sri Lanka and the Maldives since 2007."
+        intro="Vonlan Constructions, a subsidiary of the Sanken Group, executing landmark infrastructure across Sri Lanka and the Maldives since 2007."
         image="/images/hero/about.jpg"
       />
 
@@ -33,7 +33,7 @@ export default function AboutPage() {
       <section className="section">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <SectionHeading eyebrow="Our story" title="Built on the Sanken legacy" />
+            <SectionHeading eyebrow="Our story" title="Built to serve the nation" />
             <div className="mt-6 space-y-5">
               {ABOUT.story.map((p) => (
                 <p key={p.slice(0, 24)} className="text-lg leading-relaxed text-brand-muted">
@@ -59,7 +59,7 @@ export default function AboutPage() {
               <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-brand-forest/95 px-5 py-4 text-white shadow-xl backdrop-blur-sm">
                 <Building2 className="h-8 w-8 shrink-0 text-brand-green" aria-hidden />
                 <div>
-                  <div className="text-sm font-bold leading-tight">A Sanken Group company</div>
+                  <div className="text-sm font-bold leading-tight">Vonlan Constructions</div>
                   <div className="mt-0.5 text-xs uppercase tracking-wider text-white/60">
                     Established 2007 · 18+ years
                   </div>
@@ -76,7 +76,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Leadership"
             title="Guided by experience"
-            description="A focused executive team backed by the depth of the Sanken Group."
+            description="A focused executive team with decades of construction experience."
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {LEADERS.map((l) => (

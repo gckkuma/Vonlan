@@ -103,7 +103,7 @@ export default function Hero() {
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
             Vonlan Constructions delivers water, highways, power, buildings and aviation
-            infrastructure across Sri Lanka and the Maldives — a CIDA C1 company of the Sanken Group.
+            infrastructure across Sri Lanka and the Maldives — a CIDA C1 infrastructure contractor.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

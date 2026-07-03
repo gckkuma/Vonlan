@@ -6,7 +6,7 @@
 export const ABOUT = {
   headline: 'Uplifting the comforts of the nation by enhancing its infrastructure',
   story: [
-    "Vonlan Constructions (Pvt) Ltd was founded on 27th June 2007 as a company of the Sanken Group — one of Sri Lanka's most respected construction organisations. Leveraging that heritage, Vonlan was established with a singular focus: infrastructure that serves communities.",
+    "Vonlan Constructions (Pvt) Ltd was founded on 27th June 2007 with a singular focus: to build the infrastructure that serves communities across Sri Lanka.",
     'From its first water-supply contracts, Vonlan grew across highways, power and — since 2015 — building construction. Today it executes landmark work across six infrastructure sectors in Sri Lanka and the Maldives, from 350 MW power stations and national venues to luxury island resorts.',
     "Vonlan holds CIDA's highest grade — C1 — in both Water Supply and Building Construction, and C3 in Roads, Highways and Bridges. Guided by a leadership team driving sustainability, green building and build-operate-transfer projects, quality and safety are embedded in every project we deliver.",
   ],
@@ -18,11 +18,11 @@ export interface TimelineItem {
 }
 
 export const TIMELINE: TimelineItem[] = [
-  { year: '2007', milestone: 'Vonlan Constructions (Pvt) Ltd founded as a company of the Sanken Group' },
+  { year: '2007', milestone: 'Vonlan Constructions (Pvt) Ltd founded' },
   { year: '2009–2011', milestone: 'First major water-supply contracts — Pottuvil, Negombo, and the award-winning Ampara scheme (Rs 757M)' },
   { year: '2012', milestone: 'Polonnaruwa Water Supply Project completed (Rs 1,683M) — JV with Hyundai Engineering' },
   { year: '2015', milestone: 'National Award for Construction Performance — Ampara Water Supply Project' },
-  { year: '2015–2016', milestone: 'Diversification into building construction; becomes a full member of the Sanken Group' },
+  { year: '2015–2016', milestone: 'Diversification into building construction' },
   { year: '2019–2021', milestone: 'CIDA upgrade to C1; landmark builds — Premadasa Stadium, Red Cross HQ, Maldives resorts (Alila, Ritz-Carlton, OZO)' },
   { year: '2023', milestone: 'Cargills Distribution Centre & Cargills Square; Battaramulla NWSDB office — value-engineered delivery' },
   { year: '2025', milestone: 'Sobhadanavi 350 MW LNG power station completed; BIA Lotus Lounge; Medirigiriya Phase III' },

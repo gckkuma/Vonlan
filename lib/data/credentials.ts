@@ -53,7 +53,7 @@ export const CSR = {
     'For Vonlan, construction is a form of service. Alongside every project, we invest in the people, places and institutions around us — giving back to the communities our infrastructure is built to serve.',
   philosophy: [
     'The water networks, roads, bridges and buildings we deliver exist for one reason: to improve everyday life for communities across Sri Lanka. That sense of purpose shapes how we work — responsibility to people and place is built into our projects, not treated as an afterthought.',
-    'As a member of the Sanken Group, we carry that responsibility beyond our site boundaries. We support education and youth development, protect the environment we build in, and help preserve the cultural and spiritual landmarks that hold communities together.',
+    'We carry that responsibility beyond our own site boundaries — supporting education and youth development, protecting the environment we build in, and helping preserve the cultural and spiritual landmarks that hold communities together.',
   ],
   focus: [
     {

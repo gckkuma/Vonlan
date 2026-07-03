@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     'Sri Lanka construction',
     'water supply construction',
     'highway construction Sri Lanka',
-    'Sanken Construction subsidiary',
     'CIDA contractor',
     'infrastructure construction',
   ],

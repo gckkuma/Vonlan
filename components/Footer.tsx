@@ -57,12 +57,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-xs text-brand-muted">
-              A company of the{' '}
-              <a href={SITE.parent.url} target="_blank" rel="noopener noreferrer" className="font-medium text-brand-greenDark hover:underline">
-                Sanken Group
-              </a>
-            </p>
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@ export const SECTORS: Sector[] = [
     count: '9 projects',
     tagline: 'Civil works for thermal, LNG and hydropower.',
     intro:
-      "Vonlan delivers civil and structural works for power generation — from the 300 MW Yugadanavi and 350 MW Sobhadanavi LNG combined-cycle plants at Kerawalapitiya to grid substations and hill-country mini-hydropower. We bring power-grade precision, drawing on the Sanken Group's engineering depth.",
+      'Vonlan delivers civil and structural works for power generation — from the 300 MW Yugadanavi and 350 MW Sobhadanavi LNG combined-cycle plants at Kerawalapitiya to grid substations and hill-country mini-hydropower. We bring power-grade precision and deep engineering expertise.',
     scope: [
       'Civil & structural works for thermal / LNG plants',
       'Powerhouse & channel works for mini-hydropower',
@@ -114,7 +114,7 @@ export const SECTORS: Sector[] = [
       'Institutional, educational & sports facilities',
       'Commercial, retail & distribution developments',
       'Aviation lounges & interiors',
-      'Design-build through the Sanken design office',
+      'In-house design-build capability',
     ],
     metrics: ['24 projects', 'Up to Rs 804 M (Alila Maldives)', 'CIDA grade C1'],
     hasPhotos: true,
@@ -152,17 +152,17 @@ export const SECTORS: Sector[] = [
     count: 'Aviation & ports',
     tagline: 'Airport infrastructure & specialist port works.',
     intro:
-      'Vonlan extends to aviation and port infrastructure — delivering refurbished international lounges at Bandaranaike International Airport for Airport & Aviation Services, and drawing on the Sanken Group’s relationships with global contractors for specialist port works.',
+      'Vonlan extends to aviation and port infrastructure — delivering refurbished international lounges at Bandaranaike International Airport for Airport & Aviation Services, and drawing on established relationships with global contractors for specialist port works.',
     scope: [
       'Airport terminal lounges & interiors (BIA)',
       'Aviation ground & civil infrastructure',
-      'Port & harbour civil works (Sanken Group)',
+      'Port & harbour civil works',
     ],
     metrics: ['BIA Araliya & Lotus lounges', 'Civil Aviation Authority', 'International partners'],
     hasPhotos: false,
     metaTitle: 'Seaport & Airport Infrastructure',
     metaDescription:
-      'Airport lounge and port infrastructure in Sri Lanka — BIA Araliya & Lotus lounges, specialist civil works with the Sanken Group.',
+      'Airport lounge and port infrastructure in Sri Lanka — BIA Araliya & Lotus lounges, and specialist civil works with global partners.',
   },
 ];
 
