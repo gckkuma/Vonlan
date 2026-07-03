@@ -65,11 +65,11 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /ritz/, files: ['ritz-carlton-villa'] },
   { test: /alila/, files: ['alila-villa-dusk', 'alila-aerial'] },
   { test: /premadasa/, files: ['premadasa-stadium'] },
-  { test: /katana|distribution/, files: ['cargills-katana'] },
+  { test: /katana|distribution cent/, files: ['cargills-katana'] },
   { test: /bandarawela|empire/, files: ['cargills-square', 'cargills-square-night'] },
   { test: /galadari/, files: ['galadari-ballroom-1', 'galadari-ballroom-2', 'galadari-ballroom-3'] },
   { test: /sobhadanavi/, files: ['sobhadanavi-power-1'] },
-  { test: /araliya/, files: ['araliya-lounge'] },
+  { test: /araliya|lotus/, files: ['araliya-lounge'] },
   { test: /battaramulla|area-engineer/, files: ['nwsdb-battaramulla'] },
   { test: /red-cross|dharmapala/, files: ['red-cross'] },
   { test: /ayurv/, files: ['ayurveda'] },
@@ -80,7 +80,10 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
 ];
 
 export function projectImages(p: Project): string[] {
-  for (const rule of IMAGE_RULES) if (rule.test.test(p.slug)) return rule.files;
+  // Match against slug + name + client so keyword rules (ritz, premadasa, toyota…)
+  // still hit projects whose slug is generic (e.g. "proposed-major-refurbishment…").
+  const hay = `${p.slug} ${p.name} ${p.client}`.toLowerCase();
+  for (const rule of IMAGE_RULES) if (rule.test.test(hay)) return rule.files;
   return [];
 }
 export function projectImage(p: Project): string | null {
