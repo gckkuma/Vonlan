@@ -79,6 +79,8 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /mabel-simon|ladies/, files: ['ladies-college-1', 'ladies-college-2', 'ladies-college-3'] },
   { test: /akbar/, files: ['akbarally-residence-1'] },
   { test: /sujatha/, files: ['sujatha-college-1'] },
+  { test: /car park area building/, files: ['toyota-wattala'] },
+  { test: /floor area building at negombo/, files: ['toyota-negombo'] },
   { test: /toyota/, files: ['toyota-1'] },
 ];
 
@@ -167,6 +169,7 @@ function galleryKey(p: Project): string | null {
   if (/akbar/.test(n)) return 'akbarally';
   if (/distribution cent|katana/.test(n)) return 'cargills-katana';
   if (/bandarawela|cargills square/.test(n)) return 'cargills-square';
+  if (/araliya/.test(n)) return 'araliya-lounge';
   if (/sobhadanavi/.test(n)) return 'sobhadanavi';
   if (/ayurv/.test(n)) return 'ayurveda';
   if (/red cross|dharmapala/.test(n)) return 'red-cross';
