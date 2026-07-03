@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/Img';
 
 /** A drifting two-row wall of photo cards — used as a hero backdrop (behind the overlay). */
 export default function HeroPhotoWall({ photos, dir }: { photos: string[]; dir: string }) {

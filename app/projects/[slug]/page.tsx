@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/Img';
 import { ArrowLeft, ArrowRight, Building2, MapPin, Globe } from 'lucide-react';
 import ProjectStats from '@/components/ProjectStats';
 import CraneMotif from '@/components/CraneMotif';
@@ -60,7 +60,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-brand-forest text-white">
         {hero ? (
-          <Image src={hero} alt={project.name} fill priority sizes="100vw" className="object-cover" />
+          <Image src={hero} alt={project.name} fill priority quality={62} sizes="100vw" className="object-cover" />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-white/10">
             <SectorIcon icon={sector.icon} className="h-40 w-40" />

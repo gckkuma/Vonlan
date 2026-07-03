@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/Img';
 import { ArrowRight, Building2 } from 'lucide-react';
 import { ABOUT } from '@/lib/data/about';
 

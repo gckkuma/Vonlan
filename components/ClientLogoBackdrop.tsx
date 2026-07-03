@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/Img';
 
 /** All client logo slugs (files in /public/images/clients). */
 const LOGOS = [

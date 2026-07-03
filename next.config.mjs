@@ -13,6 +13,11 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Our largest source art is ~2200px; drop the 3840 variant so ultra-wide
+    // screens don't pull a needlessly huge image for 100vw heroes.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    // Optimised images are keyed by their params — cache them hard.
+    minimumCacheTTL: 2678400, // 31 days
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],

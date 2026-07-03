@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/Img';
 import { ArrowUpRight, Globe } from 'lucide-react';
 import { StatusBadge, SectorBadge } from './Badges';
 import SectorIcon from './SectorIcon';
