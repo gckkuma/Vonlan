@@ -69,7 +69,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /major.?refurbishment/, files: ['premadasa-refurb'] },
   { test: /premadasa/, files: ['premadasa-stadium'] },
   { test: /katana|distribution cent/, files: ['cargills-katana'] },
-  { test: /bandarawela|empire/, files: ['cargills-square', 'cargills-square-night'] },
+  { test: /bandarawela|empire/, files: ['cargills-square'] },
   { test: /galadari/, files: ['galadari-ballroom-1', 'galadari-ballroom-2', 'galadari-ballroom-3'] },
   { test: /sobhadanavi/, files: ['sobhadanavi-power-1'] },
   { test: /araliya|lotus/, files: ['araliya-lounge'] },

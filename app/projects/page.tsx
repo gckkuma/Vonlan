@@ -24,7 +24,7 @@ const HERO_PHOTOS = [
   'alila-aerial',
   'sobhadanavi-power-1',
   'premadasa-stadium-1',
-  'cargills-square-night',
+  'cargills-square',
   'galadari-ballroom-1',
   'live-kaduwela-bridge',
   'live-300mw',
