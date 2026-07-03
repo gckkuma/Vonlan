@@ -47,7 +47,7 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our story" title="Built to serve the nation" />
             <div className="mt-6 space-y-5">
               {ABOUT.story.map((p) => (
-                <p key={p.slice(0, 24)} className="text-lg leading-relaxed text-brand-muted">
+                <p key={p.slice(0, 24)} className="text-lg leading-relaxed text-brand-dark">
                   {p}
                 </p>
               ))}
