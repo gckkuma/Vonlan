@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Image from 'next/image';
+import PageHeaderImage from './PageHeaderImage';
 
 interface PageHeaderProps {
   eyebrow?: string;
@@ -53,19 +53,7 @@ export default function PageHeader({
           />
         </>
       ) : image ? (
-        <>
-          <Image
-            src={image}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: imagePosition }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-forestDeep via-brand-forestDeep/85 to-brand-forestDeep/55" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep to-transparent" aria-hidden />
-        </>
+        <PageHeaderImage src={image} position={imagePosition} />
       ) : (
         <div
           className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-green/15 blur-3xl"

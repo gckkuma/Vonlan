@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from '@/components/Img';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import ClientLogoBackdrop from '@/components/ClientLogoBackdrop';
+import Reveal from '@/components/Reveal';
 import { findProject } from '@/lib/data/projects';
 import { SITE } from '@/lib/data/site';
 
@@ -66,21 +67,23 @@ export default function ClientsPage() {
             description="Select a client to view the project we delivered for them."
           />
           <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {CLIENT_LOGOS.map((c) => {
+            {CLIENT_LOGOS.map((c, i) => {
               const project = c.kw ? findProject(c.kw) : undefined;
               const href = project ? `/projects/${project.slug}` : '/projects';
               return (
                 <li key={c.slug}>
-                  <Link
-                    href={href}
-                    className="group block overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
-                  >
-                    <div className={`flex min-h-[140px] items-center justify-center p-8 ${c.dark ? 'bg-brand-forest' : 'bg-white'}`}>
-                      <span className="relative block h-12 w-full">
-                        <Image src={`/images/clients/${c.slug}.png`} alt={c.name} fill sizes="200px" className="object-contain" />
-                      </span>
-                    </div>
-                  </Link>
+                  <Reveal delay={(i % 4) * 0.06}>
+                    <Link
+                      href={href}
+                      className="group block overflow-hidden rounded-2xl border border-brand-stone bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-green hover:shadow-lg hover:shadow-brand-green/5"
+                    >
+                      <div className={`flex min-h-[140px] items-center justify-center p-8 ${c.dark ? 'bg-brand-forest' : 'bg-white'}`}>
+                        <span className="relative block h-12 w-full">
+                          <Image src={`/images/clients/${c.slug}.png`} alt={c.name} fill sizes="200px" className="object-contain" />
+                        </span>
+                      </div>
+                    </Link>
+                  </Reveal>
                 </li>
               );
             })}

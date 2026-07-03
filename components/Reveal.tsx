@@ -6,7 +6,11 @@ interface RevealProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   /** Stagger delay in seconds. */
   delay?: number;
+  /** Entry direction: fade-up (default), from a side, or fade-only. */
+  direction?: 'up' | 'left' | 'right' | 'none';
 }
+
+const DIR_CLASS = { up: '', left: 'reveal-left', right: 'reveal-right', none: 'reveal-none' } as const;
 
 /**
  * Scroll-into-view reveal via progressive enhancement.
@@ -16,7 +20,7 @@ interface RevealProps extends HTMLAttributes<HTMLDivElement> {
  * JS is present (the <html> gets a `js` class) and prefers-reduced-motion is
  * off — see the `.reveal` rules in globals.css.
  */
-export default function Reveal({ children, delay = 0, className = '', style, ...rest }: RevealProps) {
+export default function Reveal({ children, delay = 0, direction = 'up', className = '', style, ...rest }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -39,7 +43,7 @@ export default function Reveal({ children, delay = 0, className = '', style, ...
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
+      className={`reveal ${DIR_CLASS[direction]} ${visible ? 'is-visible' : ''} ${className}`}
       style={{ transitionDelay: delay ? `${delay}s` : undefined, ...style }}
       {...rest}
     >

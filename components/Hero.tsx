@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from '@/components/Img';
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import CountUp from './CountUp';
 import { STATS } from '@/lib/data/site';
 
@@ -54,6 +54,10 @@ export default function Hero() {
   const reduce = useReducedMotion();
   const go = useCallback((n: number) => setI((p) => (n + SLIDES.length) % SLIDES.length), []);
 
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const imageY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [-40, 40]);
+
   useEffect(() => {
     if (reduce) return;
     const id = setInterval(() => setI((p) => (p + 1) % SLIDES.length), 5500);
@@ -63,20 +67,22 @@ export default function Hero() {
   const s = SLIDES[i];
 
   return (
-    <section className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-brand-forest text-white lg:min-h-[760px]">
-      {/* Slides */}
-      <AnimatePresence>
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, scale: reduce ? 1 : 1.05 }}
-          animate={{ opacity: 1, scale: reduce ? 1 : 1.1 }}
-          exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 1 }, scale: { duration: 6.5, ease: 'linear' } }}
-          className="absolute inset-0"
-        >
-          <Image src={s.image} alt={s.caption} fill priority sizes="100vw" className="object-cover object-center" />
-        </motion.div>
-      </AnimatePresence>
+    <section ref={ref} className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-brand-forest text-white lg:min-h-[760px]">
+      {/* Slides — oversized wrapper so the scroll parallax never reveals an edge */}
+      <motion.div style={{ y: imageY }} className="absolute -inset-y-16 inset-x-0">
+        <AnimatePresence>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: reduce ? 1 : 1.05 }}
+            animate={{ opacity: 1, scale: reduce ? 1 : 1.1 }}
+            exit={{ opacity: 0 }}
+            transition={{ opacity: { duration: 1 }, scale: { duration: 6.5, ease: 'linear' } }}
+            className="absolute inset-0"
+          >
+            <Image src={s.image} alt={s.caption} fill priority quality={62} sizes="100vw" className="object-cover object-center" />
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
       <div className="absolute inset-0 bg-gradient-to-r from-brand-forestDeep/95 via-brand-forestDeep/75 to-brand-forestDeep/35" aria-hidden />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep via-transparent to-brand-forestDeep/40" aria-hidden />
 
@@ -153,6 +159,14 @@ export default function Hero() {
           ))}
         </dl>
       </div>
+
+      {/* Scroll-down cue */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-white/50 motion-safe:animate-bounce lg:block"
+      >
+        <ChevronDown className="h-6 w-6" />
+      </span>
     </section>
   );
 }

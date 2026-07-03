@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from '@/components/Img';
 import Link from 'next/link';
 import { Quote, ArrowRight, Building2, Check } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
@@ -7,6 +7,7 @@ import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 import ManagementTeam from '@/components/ManagementTeam';
 import StorySlider from '@/components/StorySlider';
+import Timeline from '@/components/Timeline';
 import { ABOUT, TIMELINE, VISION, MISSION } from '@/lib/data/about';
 import { LEADERS } from '@/lib/data/leadership';
 import { META_DESCRIPTIONS, SITE, CIDA_GRADES } from '@/lib/data/site';
@@ -207,16 +208,7 @@ export default function AboutPage() {
       <section className="section">
         <div className="container-x">
           <SectionHeading eyebrow="Milestones" title="Eighteen years of delivery" />
-          <ol className="mt-12 max-w-3xl">
-            {TIMELINE.map((t) => (
-              <Reveal key={t.year + t.milestone.slice(0, 10)}>
-                <li className="grid grid-cols-[5rem_1fr] gap-6 border-t border-brand-stone py-6 sm:grid-cols-[8rem_1fr]">
-                  <span className="font-display text-lg font-bold text-brand-green">{t.year}</span>
-                  <p className="leading-relaxed text-brand-dark">{t.milestone}</p>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
+          <Timeline items={TIMELINE} />
         </div>
       </section>
     </>

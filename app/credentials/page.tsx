@@ -5,6 +5,7 @@ import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import AwardsSlider from '@/components/AwardsSlider';
 import CertificateGallery from '@/components/CertificateGallery';
+import CountUp from '@/components/CountUp';
 import Reveal from '@/components/Reveal';
 import { AWARDS } from '@/lib/data/credentials';
 import { CIDA_GRADES, META_DESCRIPTIONS, SITE } from '@/lib/data/site';
@@ -26,10 +27,10 @@ const CERTIFICATES = [
 ];
 
 const CRED_STATS = [
-  { value: '18+', label: 'Years of operation', sub: 'Since 2007' },
-  { value: '3', label: 'Awards & honours', sub: 'National recognition' },
-  { value: '3', label: 'Management systems', sub: 'ISO 9001 · 14001 · OHSAS' },
-  { value: '4', label: 'CIDA-graded sectors', sub: 'C1 & C3' },
+  { value: 18, suffix: '+', label: 'Years of operation', sub: 'Since 2007' },
+  { value: 3, suffix: '', label: 'Awards & honours', sub: 'National recognition' },
+  { value: 3, suffix: '', label: 'Management systems', sub: 'ISO 9001 · 14001 · OHSAS' },
+  { value: 4, suffix: '', label: 'CIDA-graded sectors', sub: 'C1 & C3' },
 ];
 
 const ISO_CERTS = [
@@ -54,7 +55,7 @@ export default function CredentialsPage() {
         <div className="container-x grid grid-cols-2 gap-6 py-10 sm:py-12 lg:grid-cols-4">
           {CRED_STATS.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="font-display text-3xl font-bold text-brand-green sm:text-4xl">{s.value}</div>
+              <CountUp value={s.value} suffix={s.suffix} className="font-display text-3xl font-bold text-brand-green sm:text-4xl" />
               <div className="mt-1.5 text-sm font-semibold text-brand-dark">{s.label}</div>
               <div className="text-xs text-brand-muted">{s.sub}</div>
             </div>
@@ -82,8 +83,8 @@ export default function CredentialsPage() {
         <div className="container-x">
           <SectionHeading eyebrow="Management systems" title="ISO & OHSAS certified" />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {ISO_CERTS.map((c) => (
-              <Reveal key={c.code}>
+            {ISO_CERTS.map((c, i) => (
+              <Reveal key={c.code} delay={i * 0.08}>
                 <div className="flex h-full flex-col rounded-3xl border border-brand-stone bg-brand-offwhite p-8">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-greenLight text-brand-green">
                     <c.icon className="h-6 w-6" aria-hidden />
