@@ -6,6 +6,7 @@ import PageHeader from '@/components/PageHeader';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 import ManagementTeam from '@/components/ManagementTeam';
+import StorySlider from '@/components/StorySlider';
 import { ABOUT, TIMELINE, VISION, MISSION } from '@/lib/data/about';
 import { LEADERS } from '@/lib/data/leadership';
 import { META_DESCRIPTIONS, SITE, CIDA_GRADES } from '@/lib/data/site';
@@ -18,6 +19,16 @@ export const metadata: Metadata = {
 };
 
 const statements = LEADERS.filter((l) => l.statement);
+
+// A few milestone projects, shown as a slideshow in the "Our story" card.
+const MILESTONES = [
+  '/images/work/sobhadanavi-power-1.jpg',
+  '/images/work/alila-aerial.jpg',
+  '/images/work/premadasa-stadium.jpg',
+  '/images/work/ritz-carlton-villa.jpg',
+  '/images/work/cargills-square.jpg',
+  '/images/work/taj-bentota.jpg',
+];
 
 export default function AboutPage() {
   return (
@@ -47,15 +58,9 @@ export default function AboutPage() {
             </Link>
           </div>
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-              <Image
-                src="/images/work/sobhadanavi-power-1.jpg"
-                alt="Vonlan-built Sobhadanavi 350 MW power station"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="kenburns object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-forestDeep/80 via-brand-forestDeep/10 to-transparent" aria-hidden />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-brand-forest">
+              <StorySlider images={MILESTONES} />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-forestDeep/80 via-brand-forestDeep/10 to-transparent" aria-hidden />
               <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-brand-forest/95 px-5 py-4 text-white shadow-xl backdrop-blur-sm">
                 <Building2 className="h-8 w-8 shrink-0 text-brand-green" aria-hidden />
                 <div>
