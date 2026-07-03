@@ -57,6 +57,8 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /viaduct-2/, files: ['live-och-viaduct2'] },
   { test: /viaducts-14/, files: ['live-och-viaduct14'] },
   { test: /300mw-combined-cycle/, files: ['live-300mw'] },
+  { test: /powerhouse|penstock/, files: ['bogo-power'] },
+  { test: /gunasinghepura/, files: ['gunasinghepura-substation'] },
   { test: /upper-kotmale/, files: ['live-kotmale'] },
   { test: /uma-oya/, files: ['live-umaoya'] },
   { test: /relocated-houses-for-gatambe/, files: ['live-gatambe'] },
@@ -82,6 +84,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /mabel-simon|ladies/, files: ['ladies-college-1', 'ladies-college-2', 'ladies-college-3'] },
   { test: /akbar/, files: ['akbarally-residence-1'] },
   { test: /sujatha/, files: ['sujatha-college-1'] },
+  { test: /ocean.?pathway/, files: ['ocean-pathway'] },
   { test: /car park area building/, files: ['toyota-wattala'] },
   { test: /floor area building at negombo/, files: ['toyota-negombo'] },
   { test: /toyota/, files: ['toyota-1'] },
@@ -178,6 +181,8 @@ function galleryKey(p: Project): string | null {
   if (/ayurv/.test(n)) return 'ayurveda';
   if (/red cross|dharmapala/.test(n)) return 'red-cross';
   if (/sujatha/.test(n)) return 'sujatha';
+  if (/ocean.?pathway/.test(n)) return 'ocean-pathway';
+  if (/gunasinghepura/.test(n)) return 'gunasinghepura-substation';
   if (c.includes('toyota') && /kandy/.test(n)) return 'toyota-kandy';
   return null;
 }
