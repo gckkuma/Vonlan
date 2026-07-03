@@ -18,11 +18,11 @@ export const metadata: Metadata = {
 
 const CERTIFICATES = [
   { src: 'national-award-2015', label: 'National Award for Construction Performance 2015 — CIDA' },
+  { src: 'national-award-2020-2021', label: 'National Awards for Construction 2020/2021 — CIDA' },
   { src: 'nbea-2014', label: 'National Business Excellence Award 2014 — Runner-Up' },
   { src: 'iso-9001', label: 'ISO 9001:2015 — Quality Management' },
   { src: 'iso-14001', label: 'ISO 14001:2004 — Environmental Management' },
   { src: 'ohsas-18001', label: 'OHSAS 18001:2007 — Occupational Health & Safety' },
-  { src: 'iso-9001-2008', label: 'ISO 9001:2008 — Quality Management (DNV)' },
 ];
 
 const CRED_STATS = [
