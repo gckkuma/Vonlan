@@ -166,6 +166,7 @@ function galleryKey(p: Project): string | null {
   if (/mabel simon|ladies/.test(n)) return 'ladies-college';
   if (/akbar/.test(n)) return 'akbarally';
   if (/distribution cent|katana/.test(n)) return 'cargills-katana';
+  if (/bandarawela|cargills square/.test(n)) return 'cargills-square';
   if (/sobhadanavi/.test(n)) return 'sobhadanavi';
   if (/ayurv/.test(n)) return 'ayurveda';
   if (/red cross|dharmapala/.test(n)) return 'red-cross';
