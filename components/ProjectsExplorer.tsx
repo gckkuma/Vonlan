@@ -17,8 +17,14 @@ const FILTERS: { label: string; value: string }[] = [
 
 const PAGE_SIZE = 12;
 
-// Photographed projects first, then by value desc — for a stronger grid.
+// Latest projects first (newest completion year), then photographed, then value —
+// so the most recent work leads while the top cards still show photos.
+const yearOf = (p: (typeof PROJECTS)[number]) => {
+  const years = String(p.year ?? '').match(/\d{4}/g);
+  return years ? Math.max(...years.map(Number)) : 0;
+};
 const ORDERED = [...PROJECTS].sort((a, b) => {
+  if (yearOf(b) !== yearOf(a)) return yearOf(b) - yearOf(a);
   const ai = projectImage(a) ? 1 : 0;
   const bi = projectImage(b) ? 1 : 0;
   if (ai !== bi) return bi - ai;
