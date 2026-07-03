@@ -20,14 +20,14 @@ export const metadata: Metadata = {
 
 const statements = LEADERS.filter((l) => l.statement);
 
-// A few milestone projects, shown as a slideshow in the "Our story" card.
+// Highest-value milestone projects, shown as a slideshow in the "Our story" card.
 const MILESTONES = [
-  '/images/work/sobhadanavi-power-1.jpg',
-  '/images/work/alila-aerial.jpg',
-  '/images/work/premadasa-stadium.jpg',
-  '/images/work/ritz-carlton-villa.jpg',
-  '/images/work/cargills-square.jpg',
-  '/images/work/taj-bentota.jpg',
+  { src: '/images/work/live-polonnaruwa-wsp.jpg', value: 'Rs 1.68 Bn', name: 'Polonnaruwa Water Supply Project' },
+  { src: '/images/work/live-och-viaduct2.jpg', value: 'Rs 1.06 Bn', name: 'Outer Circular Highway — Viaduct 2' },
+  { src: '/images/work/alila-villa-dusk.jpg', value: 'Rs 804 M', name: 'Alila Kothaifaru, Maldives' },
+  { src: '/images/work/live-ampara.jpg', value: 'Rs 757 M', name: 'Ampara Water Supply Project' },
+  { src: '/images/work/cargills-square.jpg', value: 'Rs 457 M', name: 'Cargills Square, Bandarawela' },
+  { src: '/images/work/premadasa-stadium.jpg', value: 'Rs 394 M', name: 'R. Premadasa Cricket Stadium' },
 ];
 
 export default function AboutPage() {
@@ -59,7 +59,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-brand-forest">
-              <StorySlider images={MILESTONES} />
+              <StorySlider slides={MILESTONES} />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-forestDeep/80 via-brand-forestDeep/10 to-transparent" aria-hidden />
               <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-brand-forest/95 px-5 py-4 text-white shadow-xl backdrop-blur-sm">
                 <Building2 className="h-8 w-8 shrink-0 text-brand-green" aria-hidden />
