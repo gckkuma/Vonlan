@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight, Building2, MapPin, Globe } from 'lucide-react';
-import ProjectCard from '@/components/ProjectCard';
 import ProjectStats from '@/components/ProjectStats';
 import CraneMotif from '@/components/CraneMotif';
 import SectionHeading from '@/components/SectionHeading';
@@ -12,7 +11,6 @@ import { StatusBadge, SectorBadge } from '@/components/Badges';
 import {
   PROJECTS,
   getProject,
-  getRelatedProjects,
   projectHero,
   projectGallery,
   capacityStats,
@@ -45,7 +43,6 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
   const hero = projectHero(project);
   const gallery = projectGallery(project).filter((g) => g !== hero);
   const capacity = capacityStats(project.capacity);
-  const related = getRelatedProjects(project.slug, project.sector, 3);
 
   const breadcrumb = {
     '@context': 'https://schema.org',
@@ -146,20 +143,6 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                 ))}
               </div>
             )}
-          </div>
-        </section>
-      )}
-
-      {/* Related */}
-      {related.length > 0 && (
-        <section className="section bg-white">
-          <div className="container-x">
-            <SectionHeading eyebrow={sector.name} title="Related projects" />
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((p) => (
-                <ProjectCard key={p.slug} project={p} />
-              ))}
-            </div>
           </div>
         </section>
       )}
