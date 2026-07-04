@@ -7,6 +7,7 @@ import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 import ManagementTeam from '@/components/ManagementTeam';
 import StorySlider from '@/components/StorySlider';
+import StrengthDiagram from '@/components/StrengthDiagram';
 import Timeline from '@/components/Timeline';
 import { ABOUT, TIMELINE, VISION, MISSION } from '@/lib/data/about';
 import { LEADERS } from '@/lib/data/leadership';
@@ -136,9 +137,9 @@ export default function AboutPage() {
       </section>
 
       {/* Our strength */}
-      <section className="section bg-white">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+      <section className="section overflow-hidden bg-white">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
             <SectionHeading eyebrow="Our strength" title="A complete construction ecosystem" />
             <p className="mt-6 text-lg leading-relaxed text-brand-muted">
               Vonlan draws on a full network of specialist companies — giving every project deep,
@@ -160,16 +161,9 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
-          <Reveal>
-            <Image
-              src="/images/our-strength.jpg"
-              alt="The network of specialist construction companies behind Vonlan"
-              width={1254}
-              height={1254}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="h-auto w-full rounded-3xl"
-            />
-          </Reveal>
+          <div className="lg:col-span-7">
+            <StrengthDiagram />
+          </div>
         </div>
       </section>
 
