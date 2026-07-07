@@ -585,6 +585,19 @@
   "description": ""
  },
  {
+  "slug": "island-03-rah-falhu-huraa-maldives-100-villa-resort",
+  "name": "Island 03 — Rah Falhu Huraa Resort, Maldives (100-Villa Resort)",
+  "client": "CPRC (Maldives) Private Limited",
+  "valueLKR": null,
+  "value": "USD 242,851",
+  "year": "2020",
+  "status": "Completed",
+  "sector": "buildings",
+  "overseas": true,
+  "capacity": "",
+  "description": "Construction of a 100-villa resort on Rah Falhu Huraa (Island 03), Maldives."
+ },
+ {
   "slug": "ocean-pathway-fast-track-project",
   "name": "Ocean Pathway - Fast track project",
   "client": "Ministry of Megapolis",
@@ -954,6 +967,32 @@
   "client": "Sanken Construction (Pvt) Ltd",
   "valueLKR": 63000000,
   "value": "Rs 63 M",
+  "year": "2012",
+  "status": "Completed",
+  "sector": "highways-bridges",
+  "overseas": false,
+  "capacity": "",
+  "description": ""
+ },
+ {
+  "slug": "provincial-road-improvement-project-dambulla",
+  "name": "Provincial Road Improvement Project — Dambulla",
+  "client": "State Engineering Corporation",
+  "valueLKR": 230000000,
+  "value": "Rs 230 M",
+  "year": "2014",
+  "status": "Completed",
+  "sector": "highways-bridges",
+  "overseas": false,
+  "capacity": "",
+  "description": ""
+ },
+ {
+  "slug": "improvement-of-kiran-ferry-and-oddumavady-road",
+  "name": "Improvement of Kiran Ferry and Oddumavady Road",
+  "client": "V.V. Karunarathne & Company",
+  "valueLKR": 105000000,
+  "value": "Rs 105 M",
   "year": "2012",
   "status": "Completed",
   "sector": "highways-bridges",

@@ -70,6 +70,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /ritz/, files: ['ritz-carlton-villa'] },
   { test: /alila/, files: ['alila-villa-dusk', 'alila-aerial'] },
   { test: /bentota/, files: ['taj-bentota'] },
+  { test: /falhu/, files: ['island-03-maldives'] },
   { test: /indoor.?net/, files: ['premadasa-indoor-net'] },
   { test: /major.?refurbishment/, files: ['premadasa-refurb'] },
   { test: /premadasa/, files: ['premadasa-stadium'] },
@@ -167,6 +168,7 @@ function galleryKey(p: Project): string | null {
   const c = p.client.toLowerCase();
   if (/alila/.test(n)) return 'alila';
   if (/bentota/.test(n)) return 'taj-bentota';
+  if (/falhu/.test(n)) return 'island-03-maldives';
   if (/indoor.?net/.test(n)) return 'premadasa-indoor-net';
   if (/major.?refurbishment/.test(n)) return 'premadasa-refurb';
   if (/premadasa/.test(n)) return 'premadasa';
