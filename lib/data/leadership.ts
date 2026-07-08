@@ -46,4 +46,10 @@ export const LEADERS: Leader[] = [
     qualifications: 'BBA (sp) (Colombo), ACA',
     photo: 'sriyantha',
   },
+  {
+    name: 'Eng. Ruwan Liyanage',
+    role: 'Director',
+    qualifications: 'B.Sc. Eng, C.Eng, FIE(SL), MBA, M.Sc. Eng, M.Sc. (UNESCO-IHE)',
+    photo: 'liyanage',
+  },
 ];

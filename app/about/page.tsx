@@ -85,7 +85,7 @@ export default function AboutPage() {
             title="Guided by experience"
             description="A focused executive team with decades of construction experience."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {LEADERS.map((l) => (
               <Reveal key={l.name} className="flex flex-col">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-brand-stone">
