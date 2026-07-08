@@ -58,6 +58,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /viaducts-14/, files: ['live-och-viaduct14'] },
   { test: /300mw-combined-cycle/, files: ['live-300mw'] },
   { test: /powerhouse|penstock/, files: ['bogo-power'] },
+  { test: /kirkoswald/, files: ['kirkoswald-channel'] },
   { test: /gunasinghepura/, files: ['gunasinghepura-substation'] },
   { test: /upper-kotmale/, files: ['live-kotmale'] },
   { test: /uma-oya/, files: ['live-umaoya'] },
