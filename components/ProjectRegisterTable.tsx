@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { StatusBadge } from './Badges';
-import { PROJECTS } from '@/lib/data/projects';
+import { PROJECTS, matchesQuery } from '@/lib/data/projects';
 import { SECTOR_MAP, type SectorSlug } from '@/lib/data/sectors';
 
 const ORDER: SectorSlug[] = ['water-supply', 'buildings', 'power-energy', 'highways-bridges'];
@@ -17,33 +17,36 @@ function fmtBn(v: number) {
 export default function ProjectRegisterTable() {
   const searchParams = useSearchParams();
   const filter = searchParams.get('filter') ?? 'all';
+  const q = searchParams.get('q') ?? '';
 
   const groups = useMemo(() => {
     return ORDER.map((slug) => {
       let rows = PROJECTS.filter((p) => p.sector === slug);
       if (filter === 'international') rows = rows.filter((p) => p.overseas);
       else if (filter !== 'all') rows = slug === filter ? rows : [];
+      if (q.trim()) rows = rows.filter((p) => matchesQuery(p, q));
       rows = [...rows].sort((a, b) => (b.valueLKR ?? 0) - (a.valueLKR ?? 0));
       return { slug, rows, value: rows.reduce((s, p) => s + (p.valueLKR ?? 0), 0) };
     }).filter((g) => g.rows.length > 0);
-  }, [filter]);
+  }, [filter, q]);
 
   const total = groups.reduce((s, g) => s + g.rows.length, 0);
+  const narrowed = filter !== 'all' || Boolean(q.trim());
 
   return (
     <div>
       <p className="mb-8 text-sm text-brand-muted">
         Showing <span className="font-semibold text-brand-dark">{total}</span>{' '}
-        {filter === 'all' ? 'projects' : 'matching projects'}
-        {filter !== 'all' && (
+        {narrowed ? 'matching projects' : 'projects'}
+        {narrowed && (
           <Link href="/projects" className="ml-2 font-medium text-brand-green hover:text-brand-greenDark">
-            · clear filter
+            · clear
           </Link>
         )}
       </p>
 
       {groups.length === 0 ? (
-        <p className="py-10 text-center text-brand-muted">No projects match this filter.</p>
+        <p className="py-10 text-center text-brand-muted">No projects match.</p>
       ) : (
         <div className="space-y-12">
           {groups.map(({ slug, rows, value }) => {

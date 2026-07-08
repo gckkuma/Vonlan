@@ -5,7 +5,7 @@
  */
 import raw from './projects.json';
 import galleries from './galleries.json';
-import type { SectorSlug } from './sectors';
+import { SECTOR_MAP, type SectorSlug } from './sectors';
 
 export type ProjectStatus = 'Completed' | 'Ongoing';
 
@@ -126,6 +126,17 @@ export function findProject(keyword: string): Project | undefined {
   const kw = keyword.toLowerCase();
   return PROJECTS.find((p) => `${p.name} ${p.client}`.toLowerCase().includes(kw));
 }
+/** Free-text search predicate over a project's name, client, sector, year and value. */
+export function matchesQuery(p: Project, q: string): boolean {
+  const query = q.trim().toLowerCase();
+  if (!query) return true;
+  const s = SECTOR_MAP[p.sector];
+  const hay = `${p.name} ${p.client} ${s?.name ?? ''} ${s?.shortName ?? ''} ${p.year} ${p.value ?? ''} ${
+    p.overseas ? 'international overseas' : ''
+  }`.toLowerCase();
+  return query.split(/\s+/).every((term) => hay.includes(term));
+}
+
 export function getProjectsBySector(sector: SectorSlug): Project[] {
   // Photographed projects first for stronger cards.
   return PROJECTS.filter((p) => p.sector === sector).sort(
