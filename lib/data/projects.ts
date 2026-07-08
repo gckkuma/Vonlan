@@ -41,15 +41,17 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /clear-water-reservoir/, files: ['live-kandy-reservoir'] },
   { test: /gonigoda/, files: ['live-gonigoda'] },
   { test: /rathnapura/, files: ['live-rathnapura'] },
-  { test: /1000m3-water-tower/, files: ['live-panama-tower'] },
+  { test: /1000m3-water-tower/, files: ['panama-wsp'] },
   { test: /1000m3-capacity-water-tower/, files: ['pottuvil-tower'] },
   { test: /asbestos/, files: ['kelaniya-wsp'] },
+  { test: /elagamuwa/, files: ['elagamuwa'] },
+  { test: /pot-td/, files: ['pottuvil-td'] },
   { test: /kilinochchi/, files: ['live-kilinochchi'] },
   { test: /flocculation/, files: ['live-flocculation'] },
   { test: /medirigiriya/, files: ['live-medirigiriya'] },
   { test: /orunedwewa/, files: ['wp-orunedwewa'] },
   { test: /galpaya/, files: ['wp-galpaya'] },
-  { test: /saddatissa/, files: ['wp-saddatissa'] },
+  { test: /saddatissa/, files: ['kalmunai-wsp'] },
   { test: /1000-cum-capacity-water-tower/, files: ['live-polonnaruwa-1000'] },
   { test: /280nun-hdpe/, files: ['live-kaduruwela-280'] },
   { test: /line-shifting/, files: ['live-pibidemu-lineshift'] },
@@ -199,6 +201,7 @@ function galleryKey(p: Project): string | null {
   if (/sujatha/.test(n)) return 'sujatha';
   if (/ocean.?pathway/.test(n)) return 'ocean-pathway';
   if (/gunasinghepura/.test(n)) return 'gunasinghepura-substation';
+  if (/elagamuwa/.test(n)) return 'elagamuwa';
   if (c.includes('toyota') && /kandy/.test(n)) return 'toyota-kandy';
   return null;
 }
