@@ -197,6 +197,7 @@ function galleryKey(p: Project): string | null {
   if (/sujatha/.test(n)) return 'sujatha';
   if (/ocean.?pathway/.test(n)) return 'ocean-pathway';
   if (/gunasinghepura/.test(n)) return 'gunasinghepura-substation';
+  if (/kirkoswald/.test(n)) return 'kirkoswald-channel';
   if (c.includes('toyota') && /kandy/.test(n)) return 'toyota-kandy';
   return null;
 }
