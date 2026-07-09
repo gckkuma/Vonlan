@@ -16,13 +16,13 @@ export const LEADERS: Leader[] = [
     name: 'Eng. Rohana Wannigama',
     role: 'Chairman',
     qualifications: 'B.Sc. Eng (Hons), M.Eng, C.Eng, MIE(SL), MSSE(SL), MIE Aust.',
-    photo: 'wannigama-v2',
+    photo: 'wannigama-v3',
   },
   {
     name: 'Mr. Lalith Adikari',
     role: 'Chief Executive Officer',
     qualifications: 'I.Eng, MIIESL, MECSL',
-    photo: 'adikari-v2',
+    photo: 'adikari-v3',
     statement:
       'At Vonlan, we are not just in the business of building structures; we are in the business of shaping the future. A foundation rooted in expertise and a relentless pursuit of quality drives every project we take on.',
   },
@@ -30,7 +30,7 @@ export const LEADERS: Leader[] = [
     name: 'Mr. Nalin Gilbert',
     role: 'Chief Operating Officer',
     qualifications: 'B.Sc. Eng, C.Eng MIE(SL), MSc Int.PE(SL), MBA',
-    photo: 'gilbert-v2',
+    photo: 'gilbert-v3',
     statement:
       'We are diversifying into renewable energy, modular construction, green building and build-operate-transfer projects — building not only structures, but a legacy of environmental responsibility and long-term growth.',
   },
@@ -38,18 +38,18 @@ export const LEADERS: Leader[] = [
     name: 'Eng. Maj. Ranjith Gunatilleke',
     role: 'Director',
     qualifications: 'B.Sc. Eng, C.Eng, MICE(Lond), MIE(SL), MSSE(SL)',
-    photo: 'gunatilleke-v2',
+    photo: 'gunatilleke-v3',
   },
   {
     name: 'Mr. Jerad Sriyantha',
     role: 'Director',
     qualifications: 'BBA (sp) (Colombo), ACA',
-    photo: 'sriyantha-v2',
+    photo: 'sriyantha-v3',
   },
   {
     name: 'Eng. Ruwan Liyanage',
     role: 'Director',
     qualifications: 'B.Sc. Eng, C.Eng, FIE(SL), MBA, M.Sc. Eng, M.Sc. (UNESCO-IHE)',
-    photo: 'liyanage-v2',
+    photo: 'liyanage-v3',
   },
 ];
