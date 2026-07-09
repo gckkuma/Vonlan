@@ -64,22 +64,19 @@ export default function Footer() {
       {/* Legal bar */}
       <div className="bg-brand-forest">
         <div className="container-x flex flex-col gap-3 py-5 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p>
-              © {new Date().getFullYear()} {SITE.name}. All rights reserved · Reg. No.{' '}
-              {CONTACT.companyRegistration}
-            </p>
-            <p>
-              Web Design &amp; Development by{' '}
-              <a href="https://lkwebdesign.com" target="_blank" rel="noopener noreferrer" className="font-medium text-white/70 hover:text-white">
-                lkwebdesign.com
-              </a>
-              {' | '}
-              <a href="https://isletech.io" target="_blank" rel="noopener noreferrer" className="font-medium text-white/70 hover:text-white">
-                Isletech.io
-              </a>
-            </p>
-          </div>
+          <p>
+            © {new Date().getFullYear()} {SITE.name}. All rights reserved · Reg. No.{' '}
+            {CONTACT.companyRegistration}
+            {' · '}
+            Web Design &amp; Development by{' '}
+            <a href="https://lkwebdesign.com" target="_blank" rel="noopener noreferrer" className="font-medium text-white/70 hover:text-white">
+              lkwebdesign.com
+            </a>
+            {' | '}
+            <a href="https://isletech.io" target="_blank" rel="noopener noreferrer" className="font-medium text-white/70 hover:text-white">
+              Isletech.io
+            </a>
+          </p>
           <a href="#main" className="inline-flex items-center gap-1.5 font-medium text-white/70 hover:text-white">
             Back to top <ArrowUp className="h-3.5 w-3.5" aria-hidden />
           </a>
