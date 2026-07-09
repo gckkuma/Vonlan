@@ -87,14 +87,14 @@ export default function AboutPage() {
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {LEADERS.map((l) => (
-              <Reveal key={l.name} className="flex flex-col">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-brand-stone">
+              <Reveal key={l.name} className="mx-auto flex w-full max-w-72 flex-col items-center text-center">
+                <div className="relative h-44 w-36 overflow-hidden rounded-xl border border-brand-stone bg-brand-offwhite sm:h-48 sm:w-40">
                   {l.photo ? (
                     <Image
                       src={`/images/team/${l.photo}.jpg`}
                       alt={l.name}
                       fill
-                      sizes="(max-width: 640px) 100vw, 20vw"
+                      sizes="160px"
                       className="object-cover object-top"
                     />
                   ) : (
@@ -103,9 +103,9 @@ export default function AboutPage() {
                     </span>
                   )}
                 </div>
-                <h3 className="mt-4 text-base font-bold text-brand-dark">{l.name}</h3>
+                <h3 className="mt-4 text-base font-bold leading-snug text-brand-dark">{l.name}</h3>
                 <p className="text-sm font-semibold text-brand-green">{l.role}</p>
-                <p className="mt-1 text-xs leading-relaxed text-brand-muted">{l.qualifications}</p>
+                <p className="mt-1 text-center text-xs leading-relaxed text-brand-muted">{l.qualifications}</p>
               </Reveal>
             ))}
           </div>
