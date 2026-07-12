@@ -59,7 +59,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /1500-cum-water-tower/, files: ['live-polonnaruwa-1500'] },
   { test: /kaduwela-bridge/, files: ['live-kaduwela-bridge'] },
   { test: /palawatta/, files: ['palawatta-morawaka', 'live-palawatta'] },
-  { test: /viaduct-2/, files: ['och-viaduct2', 'live-och-viaduct2'] },
+  { test: /viaduct-2/, files: ['och-viaduct2'] },
   { test: /viaducts-14/, files: ['och-viaduct14', 'live-och-viaduct14'] },
   { test: /dambulla/, files: ['dambulla-road'] },
   { test: /oddumavady/, files: ['kiran-ferry-road'] },

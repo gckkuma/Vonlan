@@ -25,7 +25,7 @@ const statements = LEADERS.filter((l) => l.statement);
 // Highest-value milestone projects, shown as a slideshow in the "Our story" card.
 const MILESTONES = [
   { src: '/images/work/live-polonnaruwa-wsp.jpg', value: 'Rs 1.68 Bn', name: 'Polonnaruwa Water Supply Project' },
-  { src: '/images/work/live-och-viaduct2.jpg', value: 'Rs 1.06 Bn', name: 'Outer Circular Highway — Viaduct 2' },
+  { src: '/images/work/och-viaduct2.jpg', value: 'Rs 1.06 Bn', name: 'Outer Circular Highway — Viaduct 2' },
   { src: '/images/work/alila-villa-dusk.jpg', value: 'Rs 804 M', name: 'Alila Kothaifaru, Maldives' },
   { src: '/images/work/live-ampara.jpg', value: 'Rs 757 M', name: 'Ampara Water Supply Project' },
   { src: '/images/work/cargills-square.jpg', value: 'Rs 457 M', name: 'Cargills Square, Bandarawela' },

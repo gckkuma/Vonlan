@@ -31,7 +31,7 @@ const HERO_PHOTOS = [
   'araliya-lounge',
   'live-panama-tower',
   'ritz-carlton-villa',
-  'live-och-viaduct2',
+  'och-viaduct2',
   'live-negombo-wtp',
 ];
 

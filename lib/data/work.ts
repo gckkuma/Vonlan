@@ -65,7 +65,7 @@ export const WORK: Work[] = [
     location: 'Colombo',
     blurb:
       'Expressway-grade civil and structural works for a major viaduct on Colombo’s Outer Circular Highway, delivered for Taisei Corporation.',
-    images: ['live-och-viaduct2'],
+    images: ['och-viaduct2'],
     featured: true,
   },
   {
