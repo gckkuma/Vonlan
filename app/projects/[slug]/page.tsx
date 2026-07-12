@@ -42,10 +42,10 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
   const sector = SECTOR_MAP[project.sector];
   const hero = projectHero(project);
   const allPhotos = projectGallery(project);
-  let gallery = allPhotos.filter((g) => g !== hero);
-  // Single-photo projects: the only image is the hero, which would otherwise
-  // leave the gallery empty — show it in the gallery too instead of hiding it.
-  if (gallery.length === 0) gallery = allPhotos;
+  // Every photo belongs in the gallery, but the hero already runs full-bleed as
+  // the banner above — push it to the end so it lands in the thumbnail grid
+  // rather than repeating as the large lead image.
+  const gallery = [...allPhotos.filter((g) => g !== hero), ...allPhotos.filter((g) => g === hero)];
   const capacity = capacityStats(project.capacity);
 
   const breadcrumb = {
