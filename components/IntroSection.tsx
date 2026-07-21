@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Image from '@/components/Img';
-import { ArrowRight, Building2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import HomeIntroSlider from '@/components/HomeIntroSlider';
 import { ABOUT } from '@/lib/data/about';
 
 /** Company intro — copy + layered imagery, with a CTA into the About page. */
@@ -22,25 +22,8 @@ export default function IntroSection() {
           </Link>
         </div>
 
-        {/* Imagery */}
-        <div className="relative">
-          <div className="relative aspect-square overflow-hidden rounded-3xl">
-            <Image
-              src="/images/home-intro.jpg"
-              alt="The infrastructure Vonlan builds across Sri Lanka — highways, bridges, ports, power and water"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute -right-4 -top-6 hidden items-center gap-3 rounded-2xl bg-brand-forest px-5 py-4 text-white shadow-xl md:flex">
-            <Building2 className="h-7 w-7 text-brand-green" aria-hidden />
-            <div>
-              <div className="text-2xl font-bold leading-none">18+ yrs</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-white/60">Since 2007</div>
-            </div>
-          </div>
-        </div>
+        {/* Imagery — auto-rotating project photos */}
+        <HomeIntroSlider />
       </div>
     </section>
   );
