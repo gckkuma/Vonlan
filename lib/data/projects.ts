@@ -43,7 +43,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /gonigoda/, files: ['live-gonigoda'] },
   { test: /rathnapura/, files: ['live-rathnapura'] },
   { test: /1000m3-water-tower/, files: ['panama-wsp'] },
-  { test: /1000m3-capacity-water-tower/, files: ['pottuvil-tower'] },
+  { test: /1000m3-capacity-water-tower/, files: ['redcross-tower'] },
   { test: /asbestos/, files: ['kelaniya-wsp'] },
   { test: /elagamuwa/, files: ['elagamuwa'] },
   { test: /pot-td/, files: ['pottuvil-td'] },
