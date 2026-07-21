@@ -86,13 +86,13 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
               </span>
             )}
           </div>
-          <h1 className="mt-4 max-w-4xl text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">{project.name}</h1>
+          <h1 className="mt-4 max-w-4xl text-3xl font-bold leading-tight break-words sm:text-4xl lg:text-5xl">{project.name}</h1>
           <div className="mt-5 flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/80">
-            <span className="flex items-center gap-2">
-              <Building2 className="h-4 w-4 text-brand-green" aria-hidden /> {project.client}
+            <span className="flex min-w-0 items-start gap-2">
+              <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" aria-hidden /> <span className="min-w-0 break-words">{project.client}</span>
             </span>
             <span className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-brand-green" aria-hidden /> Sri Lanka
+              <MapPin className="h-4 w-4 shrink-0 text-brand-green" aria-hidden /> Sri Lanka
             </span>
           </div>
         </div>
@@ -106,54 +106,53 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         </div>
         <div className="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-brand-green/15 blur-[120px]" aria-hidden />
         <div className="container-x relative">
-          {singleImage && hero ? (
-            // Single photo: stats on the left, the photo contained on the right —
-            // never blown up full-width, and no redundant gallery repeat below.
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              <div>
-                <SectionHeading dark align="left" eyebrow="By the numbers" title="Project at a glance" />
-                <div className="mt-10">
-                  <ProjectStats
-                    align="start"
-                    valueLKR={project.valueLKR}
-                    sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
-                    sectorShort={sector.shortName}
-                    year={project.year}
-                    status={project.status}
-                    capacity={capacity}
-                  />
-                </div>
-              </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl">
-                <Image src={hero} alt={project.name} fill sizes="(max-width:1024px) 100vw, 560px" className="object-cover" />
-              </div>
-            </div>
-          ) : (
-            <>
-              <SectionHeading dark align="center" eyebrow="By the numbers" title="Project at a glance" className="mx-auto" />
-              <div className="mt-12">
-                <ProjectStats
-                  valueLKR={project.valueLKR}
-                  sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
-                  sectorShort={sector.shortName}
-                  year={project.year}
-                  status={project.status}
-                  capacity={capacity}
-                />
-              </div>
-            </>
-          )}
+          <SectionHeading dark align="center" eyebrow="By the numbers" title="Project at a glance" className="mx-auto" />
+          <div className="mt-12">
+            <ProjectStats
+              valueLKR={project.valueLKR}
+              sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
+              sectorShort={sector.shortName}
+              year={project.year}
+              status={project.status}
+              capacity={capacity}
+            />
+          </div>
         </div>
       </section>
 
-      {/* Overview */}
-      {project.description && (
-        <section className="pt-16 sm:pt-20">
-          <div className="container-x max-w-3xl">
-            <h2 className="text-2xl font-bold text-brand-dark">Overview</h2>
-            <p className="mt-4 text-lg leading-relaxed text-brand-muted">{project.description}</p>
+      {/* Overview — single photo gets an editorial photo + details layout;
+          everyone else keeps a simple text block. */}
+      {singleImage && hero ? (
+        <section className="section bg-white">
+          <div className="container-x">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-brand-stone shadow-xl shadow-brand-dark/5">
+                <Image src={hero} alt={project.name} fill sizes="(max-width:1024px) 100vw, 560px" className="object-cover" />
+              </div>
+              <div>
+                <SectionHeading eyebrow="Overview" title="About this project" />
+                {project.description && (
+                  <p className="mt-6 text-lg leading-relaxed text-brand-muted">{project.description}</p>
+                )}
+                <dl className="mt-8 border-t border-brand-stone text-sm">
+                  <DetailRow label="Client" value={project.client} />
+                  <DetailRow label="Sector" value={sector.name} />
+                  {project.value && <DetailRow label="Contract value" value={project.value} />}
+                  <DetailRow label="Year" value={project.year} />
+                </dl>
+              </div>
+            </div>
           </div>
         </section>
+      ) : (
+        project.description && (
+          <section className="section">
+            <div className="container-x max-w-3xl">
+              <h2 className="text-2xl font-bold text-brand-dark">Overview</h2>
+              <p className="mt-4 text-lg leading-relaxed text-brand-muted">{project.description}</p>
+            </div>
+          </section>
+        )
       )}
 
       {/* Gallery — only for projects with more than one photo (single photos show
@@ -190,5 +189,14 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         </div>
       </section>
     </>
+  );
+}
+
+function DetailRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-6 border-b border-brand-stone py-3">
+      <dt className="shrink-0 text-xs font-medium uppercase tracking-wider text-brand-muted">{label}</dt>
+      <dd className="min-w-0 break-words text-right font-semibold text-brand-dark">{value}</dd>
+    </div>
   );
 }
