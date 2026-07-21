@@ -48,7 +48,7 @@ const IMAGE_RULES: { test: RegExp; files: string[] }[] = [
   { test: /elagamuwa/, files: ['elagamuwa'] },
   { test: /pot-td/, files: ['pottuvil-td'] },
   { test: /kilinochchi/, files: ['kilinochchi'] },
-  { test: /flocculation/, files: ['live-flocculation'] },
+  { test: /flocculation/, files: ['floculation-tank', 'fluculation-2'] },
   { test: /medirigiriya/, files: ['live-medirigiriya'] },
   { test: /orunedwewa/, files: ['wp-orunedwewa'] },
   { test: /galpaya/, files: ['wp-galpaya'] },
