@@ -6,11 +6,11 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Building2 } from 'lucide-react';
 
 const SLIDES = [
-  { src: '/images/intro/bridge.jpg', alt: 'A bridge built by Vonlan Constructions' },
-  { src: '/images/intro/water.jpg', alt: 'A water-supply project by Vonlan Constructions' },
-  { src: '/images/intro/ampara.jpg', alt: 'Ampara water-supply scheme by Vonlan Constructions' },
-  { src: '/images/intro/viaduct.jpg', alt: 'Outer Circular Highway viaduct by Vonlan Constructions' },
-  { src: '/images/intro/tower.jpg', alt: 'An elevated water tower by Vonlan Constructions' },
+  { src: '/images/intro/bridge.jpg', alt: 'A bridge built by Vonlan Constructions', caption: 'Bridge construction' },
+  { src: '/images/intro/water.jpg', alt: 'A water-supply project by Vonlan Constructions', caption: 'Water supply scheme' },
+  { src: '/images/intro/ampara.jpg', alt: 'Ampara water-supply scheme by Vonlan Constructions', caption: 'Ampara Water Supply Project' },
+  { src: '/images/intro/viaduct.jpg', alt: 'Outer Circular Highway viaducts by Vonlan Constructions', caption: 'OCH Viaducts 14 & 15' },
+  { src: '/images/intro/tower.jpg', alt: 'An elevated water tower by Vonlan Constructions', caption: 'Elevated water tower' },
 ];
 
 /**
@@ -62,11 +62,16 @@ export default function HomeIntroSlider() {
               className="object-contain"
               priority={i === 0}
             />
+            {/* Caption over a soft scrim for legibility */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" aria-hidden />
+            <p className="absolute bottom-4 left-4 max-w-[70%] text-sm font-semibold text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
+              {s.caption}
+            </p>
           </motion.div>
         </AnimatePresence>
 
         {/* Slide indicators */}
-        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+        <div className="absolute bottom-4 right-4 z-10 flex gap-1.5">
           {SLIDES.map((_, idx) => (
             <button
               key={idx}
