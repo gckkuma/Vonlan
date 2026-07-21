@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+type Align = 'center' | 'start';
+
 function useInView<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [seen, setSeen] = useState(false);
@@ -24,7 +26,7 @@ function useInView<T extends HTMLElement>() {
   return { ref, seen };
 }
 
-function AnimatedValue({ valueLKR }: { valueLKR: number }) {
+function AnimatedValue({ valueLKR, align }: { valueLKR: number; align: Align }) {
   const { ref, seen } = useInView<HTMLDivElement>();
   const bn = valueLKR >= 1e9;
   const target = bn ? valueLKR / 1e9 : valueLKR / 1e6;
@@ -42,7 +44,7 @@ function AnimatedValue({ valueLKR }: { valueLKR: number }) {
   }, [seen, target]);
   const shown = bn ? n.toFixed(2) : Math.round(n).toLocaleString();
   return (
-    <div ref={ref} className="text-center">
+    <div ref={ref} className={align === 'start' ? 'text-left' : 'text-center'}>
       <div className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">Contract value</div>
       <div className="tnum mt-2 font-display text-6xl font-bold leading-none text-white sm:text-7xl">
         <span className="text-brand-green">Rs</span> {shown}
@@ -52,11 +54,21 @@ function AnimatedValue({ valueLKR }: { valueLKR: number }) {
   );
 }
 
-function ValueBar({ valueLKR, sectorMax, sectorShort }: { valueLKR: number; sectorMax: number; sectorShort: string }) {
+function ValueBar({
+  valueLKR,
+  sectorMax,
+  sectorShort,
+  align,
+}: {
+  valueLKR: number;
+  sectorMax: number;
+  sectorShort: string;
+  align: Align;
+}) {
   const { ref, seen } = useInView<HTMLDivElement>();
   const pct = Math.max(4, Math.min(100, Math.round((valueLKR / sectorMax) * 100)));
   return (
-    <div ref={ref} className="mx-auto mt-8 max-w-md">
+    <div ref={ref} className={`mt-8 max-w-md ${align === 'start' ? 'mx-0' : 'mx-auto'}`}>
       <div className="flex items-end justify-between text-[0.7rem] font-semibold uppercase tracking-wider text-white/50">
         <span>Scale vs our largest {sectorShort.toLowerCase()} project</span>
         <span className="text-brand-green">{pct}%</span>
@@ -87,6 +99,7 @@ export default function ProjectStats({
   year,
   status,
   capacity,
+  align = 'center',
 }: {
   valueLKR: number | null;
   sectorMax: number;
@@ -94,22 +107,23 @@ export default function ProjectStats({
   year: string;
   status: string;
   capacity: { value: string; label: string }[];
+  align?: Align;
 }) {
   return (
-    <div className="relative mx-auto max-w-3xl">
+    <div className={`relative max-w-3xl ${align === 'start' ? 'mx-0' : 'mx-auto'}`}>
       {valueLKR ? (
         <>
-          <AnimatedValue valueLKR={valueLKR} />
-          <ValueBar valueLKR={valueLKR} sectorMax={sectorMax} sectorShort={sectorShort} />
+          <AnimatedValue valueLKR={valueLKR} align={align} />
+          <ValueBar valueLKR={valueLKR} sectorMax={sectorMax} sectorShort={sectorShort} align={align} />
         </>
       ) : (
-        <div className="text-center">
+        <div className={align === 'start' ? 'text-left' : 'text-center'}>
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">Contract value</div>
           <div className="mt-2 font-display text-5xl font-bold text-white">On record</div>
         </div>
       )}
 
-      <div className="mt-10 flex flex-wrap justify-center gap-3">
+      <div className={`mt-10 flex flex-wrap gap-3 ${align === 'start' ? 'justify-start' : 'justify-center'}`}>
         <Tile value={year} label={status === 'Ongoing' ? 'In progress' : 'Completed'} />
         <Tile value={status} label="Status" />
         {capacity.map((c, i) => (

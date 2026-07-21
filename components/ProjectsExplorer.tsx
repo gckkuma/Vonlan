@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Search, X } from 'lucide-react';
 import ProjectCard from './ProjectCard';
-import { PROJECTS, projectImage, matchesQuery } from '@/lib/data/projects';
+import { PROJECTS, hasImage, matchesQuery } from '@/lib/data/projects';
 
 const FILTERS: { label: string; value: string }[] = [
   { label: 'All work', value: 'all' },
@@ -24,11 +24,10 @@ const yearOf = (p: (typeof PROJECTS)[number]) => {
   const years = String(p.year ?? '').match(/\d{4}/g);
   return years ? Math.max(...years.map(Number)) : 0;
 };
-const ORDERED = [...PROJECTS].sort((a, b) => {
+// Only photographed projects appear as cards; photo-less ones stay in the register
+// and reappear here automatically once a photo is added.
+const ORDERED = PROJECTS.filter(hasImage).sort((a, b) => {
   if (yearOf(b) !== yearOf(a)) return yearOf(b) - yearOf(a);
-  const ai = projectImage(a) ? 1 : 0;
-  const bi = projectImage(b) ? 1 : 0;
-  if (ai !== bi) return bi - ai;
   return (b.valueLKR ?? 0) - (a.valueLKR ?? 0);
 });
 

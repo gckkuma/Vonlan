@@ -110,6 +110,8 @@ export function projectImage(p: Project): string | null {
   const f = projectImages(p)[0];
   return f ? `/images/work/${f}.jpg` : null;
 }
+/** Whether a project has real photography (drives card/showcase visibility). */
+export const hasImage = (p: Project): boolean => projectImage(p) !== null;
 export const workSrc = (file: string) => `/images/work/${file}.jpg`;
 
 /** Composed hero banners (16:9) for selected flagship projects. */
@@ -145,9 +147,9 @@ export function matchesQuery(p: Project, q: string): boolean {
 }
 
 export function getProjectsBySector(sector: SectorSlug): Project[] {
-  // Photographed projects first for stronger cards.
-  return PROJECTS.filter((p) => p.sector === sector).sort(
-    (a, b) => (projectImage(b) ? 1 : 0) - (projectImage(a) ? 1 : 0) || (b.valueLKR ?? 0) - (a.valueLKR ?? 0),
+  // Only photographed projects — placeholder cards are hidden until a photo exists.
+  return PROJECTS.filter((p) => p.sector === sector && hasImage(p)).sort(
+    (a, b) => (b.valueLKR ?? 0) - (a.valueLKR ?? 0),
   );
 }
 export function getRelatedProjects(slug: string, sector: SectorSlug, count = 3): Project[] {

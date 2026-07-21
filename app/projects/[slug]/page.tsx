@@ -42,9 +42,11 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
   const sector = SECTOR_MAP[project.sector];
   const hero = projectHero(project);
   const allPhotos = projectGallery(project);
-  // Every photo belongs in the gallery, but the hero already runs full-bleed as
-  // the banner above — push it to the end so it lands in the thumbnail grid
-  // rather than repeating as the large lead image.
+  // A single photo already runs full-bleed as the hero, so instead of repeating it
+  // full-width in a gallery it sits contained beside the stats (see below).
+  const singleImage = allPhotos.length === 1;
+  // Multi-photo gallery: every photo belongs here, but push the hero to the end so it
+  // lands in the thumbnail grid rather than repeating as the large lead image.
   const gallery = [...allPhotos.filter((g) => g !== hero), ...allPhotos.filter((g) => g === hero)];
   const capacity = capacityStats(project.capacity);
 
@@ -104,17 +106,43 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         </div>
         <div className="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-brand-green/15 blur-[120px]" aria-hidden />
         <div className="container-x relative">
-          <SectionHeading dark align="center" eyebrow="By the numbers" title="Project at a glance" className="mx-auto" />
-          <div className="mt-12">
-            <ProjectStats
-              valueLKR={project.valueLKR}
-              sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
-              sectorShort={sector.shortName}
-              year={project.year}
-              status={project.status}
-              capacity={capacity}
-            />
-          </div>
+          {singleImage && hero ? (
+            // Single photo: stats on the left, the photo contained on the right —
+            // never blown up full-width, and no redundant gallery repeat below.
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <SectionHeading dark align="left" eyebrow="By the numbers" title="Project at a glance" />
+                <div className="mt-10">
+                  <ProjectStats
+                    align="start"
+                    valueLKR={project.valueLKR}
+                    sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
+                    sectorShort={sector.shortName}
+                    year={project.year}
+                    status={project.status}
+                    capacity={capacity}
+                  />
+                </div>
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl">
+                <Image src={hero} alt={project.name} fill sizes="(max-width:1024px) 100vw, 560px" className="object-cover" />
+              </div>
+            </div>
+          ) : (
+            <>
+              <SectionHeading dark align="center" eyebrow="By the numbers" title="Project at a glance" className="mx-auto" />
+              <div className="mt-12">
+                <ProjectStats
+                  valueLKR={project.valueLKR}
+                  sectorMax={SECTOR_MAX[project.sector] ?? project.valueLKR ?? 1}
+                  sectorShort={sector.shortName}
+                  year={project.year}
+                  status={project.status}
+                  capacity={capacity}
+                />
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -128,8 +156,9 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         </section>
       )}
 
-      {/* Gallery */}
-      {gallery.length > 0 && (
+      {/* Gallery — only for projects with more than one photo (single photos show
+          contained beside the stats above). */}
+      {!singleImage && gallery.length > 0 && (
         <section className="section">
           <div className="container-x">
             <SectionHeading eyebrow="Gallery" title={`Photography (${gallery.length})`} />
