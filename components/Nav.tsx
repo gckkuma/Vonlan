@@ -39,7 +39,7 @@ export default function Nav() {
       }`}
     >
       <nav className="container-x flex h-[68px] items-center justify-between gap-6 sm:h-[76px]">
-        <Logo variant="dark" height={40} />
+        <Logo variant="dark" height={40} className="logo-glow" />
 
         <ul className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) =>

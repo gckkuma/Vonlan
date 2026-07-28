@@ -12,7 +12,7 @@ interface LogoProps {
   link?: boolean;
 }
 
-const ASPECT = 1983 / 793;
+const ASPECT = 2602 / 758;
 
 export default function Logo({
   variant = 'light',

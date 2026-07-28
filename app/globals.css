@@ -70,6 +70,14 @@
     html { scroll-behavior: auto; }
   }
 
+  /* Bright halo behind the header logo so its black strokes outline against the forest-green bar. */
+  .logo-glow {
+    filter:
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.95))
+      drop-shadow(0 0 6px rgba(255, 255, 255, 0.7))
+      drop-shadow(0 0 18px rgba(58, 179, 96, 0.6));
+  }
+
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
