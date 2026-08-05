@@ -135,9 +135,9 @@ export const SECTORS: Sector[] = [
     scope: [
       'Irrigation channel construction & rehabilitation',
       'Reservoir & bund civil works',
-      'Rural water distribution networks',
+      'Water distribution networks',
     ],
-    metrics: ['Established capability', 'Rural water infrastructure'],
+    metrics: ['Established capability', 'Water infrastructure'],
     hasPhotos: false,
     metaTitle: 'Irrigation & Rural Water Infrastructure',
     metaDescription:

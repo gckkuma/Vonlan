@@ -15,7 +15,7 @@ const PROJECT_TYPES = [
   'Buildings',
   'Irrigation',
   'Sea & Airport',
-  'General',
+  'Other',
 ] as const;
 
 const wordCount = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;

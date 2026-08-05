@@ -20,7 +20,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Contact"
-        title="Discuss your next infrastructure project"
+        title="Discuss your next project"
         intro="Whether you are planning a water supply scheme, road network, power facility, resort or commercial building — our team is ready to discuss your requirements and provide the technical expertise your project needs."
         image="/images/hero/contact.jpg"
       />

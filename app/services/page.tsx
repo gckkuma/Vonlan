@@ -32,7 +32,7 @@ export default function ServicesIndexPage() {
       <PageHeader
         eyebrow="Capabilities"
         title="What we build"
-        intro="Design-build capability backed by an in-house engineering team and decades of site experience — delivering infrastructure across six sectors in Sri Lanka and the Maldives."
+        intro="Design-build capability backed by an in-house engineering team and decades of construction experience — delivering infrastructure across six sectors in Sri Lanka and the Maldives."
         image="/images/hero/sobhadanavi.jpg"
       />
 

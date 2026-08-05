@@ -29,7 +29,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="What we build"
             title="Six sectors, one standard of delivery"
-            description="Design-build capability backed by an in-house engineering team and decades of site experience across Sri Lanka and the Maldives."
+            description="Design-build capability backed by an in-house engineering team and decades of construction experience across Sri Lanka and the Maldives."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SECTORS.map((sector, i) => (
@@ -96,7 +96,7 @@ export default function HomePage() {
             <SectionHeading
               dark
               eyebrow="Get in touch"
-              title="Discuss your next infrastructure project"
+              title="Discuss your next project"
               description="Whether you are planning a water supply scheme, road network, power facility, resort or commercial building — our team is ready to discuss your requirements."
             />
             <dl className="mt-8 space-y-4 text-sm">

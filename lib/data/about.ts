@@ -6,8 +6,8 @@
 export const ABOUT = {
   headline: 'Uplifting the comforts of the nation by enhancing its infrastructure',
   story: [
-    "Vonlan Constructions (Pvt) Ltd was founded on 27th June 2007 with a singular focus: to build the infrastructure that serves communities across Sri Lanka.",
-    'From its first water-supply contracts, Vonlan grew across highways, power and — since 2015 — building construction. Today it executes landmark work across six infrastructure sectors in Sri Lanka and the Maldives, from 350 MW power stations and national venues to luxury island resorts.',
+    "Vonlan Constructions (Pvt) Ltd was founded in 2007 with a singular focus: to build the infrastructure that serves communities across Sri Lanka.",
+    'From its initial water-supply contracts, Vonlan grew across highways, power and — since 2015 — building construction. Today it executes landmark work across six infrastructure sectors in Sri Lanka and the Maldives, from 350 MW power stations and national venues to luxury island resorts.',
     "Vonlan holds CIDA's C1 grade in both Water Supply and Building Construction, and C3 in Roads, Highways and Bridges. Guided by a leadership team driving sustainability, green building and build-operate-transfer projects, quality and safety are embedded in every project we deliver.",
   ],
 } as const;
